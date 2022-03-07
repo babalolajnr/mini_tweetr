@@ -4,6 +4,11 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class Thread(models.Model):
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
+
+
 class Tweet(models.Model):
     body = models.TextField(max_length=280)
     user = models.ForeignKey(User, related_name='tweets',
@@ -11,6 +16,8 @@ class Tweet(models.Model):
     likes = models.IntegerField(default=0)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
+    thread = models.ForeignKey(Thread, related_name="tweets", on_delete=models.CASCADE, null=True)
+    thread_number = models.IntegerField(null=True)
 
     def __str__(self):
         return self.body
@@ -24,5 +31,3 @@ class Retweet(models.Model):
     likes = models.IntegerField(default=0)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
-
-
