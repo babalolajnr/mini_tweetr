@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <title>Mini Tweetr</title>
   </head>
-  <body>
-    Hello {% block content %} {% endblock %}
+  <body class="dark:bg-slate-800 dark:text-white">
+    {% block content %} {% endblock %}
+
+    {% block 'page-specific-scripts' %}{% endblock  %}
   </body>
 </html>
