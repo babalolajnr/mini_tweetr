@@ -1,5 +1,8 @@
 module.exports = {
-  content: [],
+  content: [
+    '../tweet/**/*.html',
+    '../templates/**/*.html',
+  ],
   theme: {
     extend: {},
   },
