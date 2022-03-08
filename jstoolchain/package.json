@@ -1,4 +1,13 @@
 {
+  "name": "jstoolchain",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+
   "dependencies": {
     "autoprefixer": "^10.4.2",
     "postcss-cli": "^9.1.0",
@@ -7,4 +16,5 @@
   "scripts": {
     "build": "postcss css/tailwind.css -o ../static/css/styles.css"
   }
+ 
 }
