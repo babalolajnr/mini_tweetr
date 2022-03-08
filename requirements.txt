@@ -20,6 +20,7 @@ distro-info===0.23ubuntu1
 Django==4.0.3
 entrypoints==0.3
 filelock==3.6.0
+fontawesomefree==6.0.0
 httplib2==0.14.0
 hyperlink==19.0.0
 idna==2.8
