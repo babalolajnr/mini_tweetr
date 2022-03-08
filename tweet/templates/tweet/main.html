@@ -1,5 +1,59 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block content %}
 
-{% block content %}
-    Hello from tweet
-{% endblock  %}
+<div class="lg:flex lg:h-screen lg:flex-row">
+  {% comment %} First column {% endcomment %}
+  <div class="lg:basis-1/4 lg:border-r border-gray-600">
+    <div class="mt-5 mx-7">
+      <span class="text-2xl font-bold">Mini Tweetr</span>
+    </div>
+  </div>
+
+  {% comment %} Second column {% endcomment %}
+  <div class="lg:basis-2/4">
+    <div class="mx-5 mt-4">
+      {% comment %} Title row {% endcomment %}
+      <div class="lg:flex justify-between">
+        <div><span class="font-extrabold text-xl">Home</span></div>
+        <div>Star</div>
+      </div>
+
+      {% comment %} New tweet {% endcomment %}
+      <div class="pt-5 w-full">
+        <div class="lg:flex w-full">
+          <div class="bg-slate-100 w-10 h-10 rounded-full"></div>
+          <div class="pl-5 w-full">
+            <textarea
+              name=""
+              id=""
+              class="w-full bg-transparent focus:outline-none"
+              placeholder="What's happening?"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Second column {% endcomment %}
+  <div
+    class="lg:basis-1/4 lg:border-l border-gray-600 lg:flex justify-center"
+  ></div>
+</div>
+
+{% endblock %} {% block 'page-specific-scripts' %}
+<script>
+  const tx = document.getElementsByTagName("textarea");
+  for (let i = 0; i < tx.length; i++) {
+    tx[i].setAttribute(
+      "style",
+      "height:" + tx[i].scrollHeight + "px;overflow-y:hidden;"
+    );
+    tx[i].addEventListener("input", OnInput, false);
+  }
+
+  function OnInput() {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+  } 
+</script>
+{% endblock %}
