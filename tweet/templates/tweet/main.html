@@ -20,49 +20,44 @@
       {% comment %} New tweet {% endcomment %}
       <div class="pt-5">
         <div class="lg:flex">
+          {% comment %} Avatar {% endcomment %}
           <div class="bg-slate-100 w-10 h-10 rounded-full shrink-0"></div>
+          {% comment %} Form {% endcomment %}
           <div class="pl-3 grow">
-            <textarea
-              name=""
-              id=""
-              class="w-full bg-transparent focus:outline-none"
-              placeholder="What's happening?"
-            ></textarea>
-            <div class="pb-3 border-b border-gray-600 lg:flex">
-              <div
-                class="rounded-full px-4 hover:bg-yellow-400 hover:bg-opacity-20 text-center"
-              >
-                <span
-                  class="font-bold text-yellow-400"
-                  style="font-size: 0.8rem"
-                  ><i class="fa-solid fa-earth-africa"></i> Everyone can reply
-                </span>
+            <form action="{% url 'save_tweet' %}" method="post">
+              {% csrf_token %}
+              <textarea
+                name="body"
+                id=""
+                class="w-full bg-transparent focus:outline-none"
+                placeholder="What's happening?"
+              ></textarea>
+              <div class="pb-3 border-b border-gray-600 lg:flex">
+                <div
+                  class="rounded-full px-4 hover:bg-yellow-400 hover:bg-opacity-20 text-center"
+                >
+                  <span
+                    class="font-bold text-yellow-400"
+                    style="font-size: 0.8rem"
+                    ><i class="fa-solid fa-earth-africa"></i> Everyone can reply
+                  </span>
+                </div>
               </div>
-            </div>
-            <div class="lg:flex justify-between pt-3">
-              <div class="flex justify-between">
-                <div>
+              <div class="lg:flex justify-between pt-3">
+                <div class="flex justify-between">
                   <i class="fa-regular fa-image"></i>
+                  <i class="pl-3 fa-solid fa-location-dot"></i>
+                  <i class="pl-3 fa-solid fa-calendar-days"></i>
+                  <i class="pl-3 fa-regular fa-face-grin"></i>
+                  <i class="pl-3 fa-solid fa-square-poll-horizontal"></i>
                 </div>
-                <div class="pl-3">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div class="pl-3">
-                  <i class="fa-solid fa-calendar-days"></i>
-                </div>
-                <div class="pl-3">
-                  <i class="fa-regular fa-face-grin"></i>
-                </div>
-                <div class="pl-3">
-                  <i class="fa-solid fa-square-poll-horizontal"></i>
+                <div>
+                  <button class="bg-yellow-400 rounded-full" type="submit">
+                    <span class="px-5 py-4 font-bold text-sm">Tweet</span>
+                  </button>
                 </div>
               </div>
-              <div>
-                <button class="bg-yellow-400 rounded-full">
-                  <span class="px-5 py-4 font-bold text-sm">Tweet</span>
-                </button>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
