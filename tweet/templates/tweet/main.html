@@ -18,10 +18,10 @@
       </div>
 
       {% comment %} New tweet {% endcomment %}
-      <div class="pt-5 w-full">
-        <div class="lg:flex w-full">
-          <div class="bg-slate-100 w-10 h-10 rounded-full"></div>
-          <div class="pl-5 w-full">
+      <div class="pt-5">
+        <div class="lg:flex">
+          <div class="bg-slate-100 w-10 h-10 rounded-full shrink-0"></div>
+          <div class="pl-3 grow">
             <textarea
               name=""
               id=""
@@ -45,19 +45,16 @@
                   <i class="fa-regular fa-image"></i>
                 </div>
                 <div class="pl-3">
-                  <i class="fa-regular fa-location-dot"></i>
+                  <i class="fa-solid fa-location-dot"></i>
                 </div>
-                <div>
-                  <i class="fa-regular fa-calendar-lines-pen"></i>
+                <div class="pl-3">
+                  <i class="fa-solid fa-calendar-days"></i>
                 </div>
                 <div class="pl-3">
                   <i class="fa-regular fa-face-grin"></i>
                 </div>
-                <div>
-                  <i class="fa-regular fa-square-poll-horizontal"></i>
-                </div>
                 <div class="pl-3">
-                  <i class="fa-regular fa-gif"></i>
+                  <i class="fa-solid fa-square-poll-horizontal"></i>
                 </div>
               </div>
               <div>
@@ -74,18 +71,123 @@
     {% comment %} Posts {% endcomment %}
     <div class="border-t border-gray-600 mt-6">
       <div class="flex pt-5 px-10">
-        <div class="bg-white w-10 h-10 rounded-full"></div>
-        <div class="pl-5">
+        <div class="bg-white w-10 h-10 rounded-full shrink-0"></div>
+        <div class="pl-3 grow">
           {% comment %} username {% endcomment %}
-          <div class="">
+          <div class="lg:flex justify-between">
             <div>
               <span class="font-bold text-sm">Abdulqudduus</span>
               <span class="font-light text-sm text-slate-500"
                 >@babalolajnr</span
               >
-              <span class="font-light text-xl text-slate-500 align-middle">&middot</span>
+              <span class="font-light text-xl text-slate-500 align-middle"
+                >&middot</span
+              >
               <span class="font-light text-sm text-slate-500">14m</span>
             </div>
+            {% comment %} vertical ellipses {% endcomment %}
+            <div>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </div>
+          {% comment %} post content {% endcomment %}
+          <div class="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+            auctor elit sed vulputate mi sit amet mauris commodo. Mi eget mauris
+            pharetra et ultrices neque ornare aenean. Cursus in hac habitasse
+            platea dictumst. Viverra adipiscing at in tellus integer feugiat
+            scelerisque varius.
+          </div>
+
+          {% comment %} Action buttons {% endcomment %}
+          <div class="flex justify-between pr-16 pt-4">
+            <i class="fa-regular fa-message"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-600 mt-6">
+      <div class="flex pt-5 px-10">
+        <div class="bg-white w-10 h-10 rounded-full shrink-0"></div>
+        <div class="pl-3 grow">
+          {% comment %} username {% endcomment %}
+          <div class="lg:flex justify-between">
+            <div>
+              <span class="font-bold text-sm">Abdulqudduus</span>
+              <span class="font-light text-sm text-slate-500"
+                >@babalolajnr</span
+              >
+              <span class="font-light text-xl text-slate-500 align-middle"
+                >&middot</span
+              >
+              <span class="font-light text-sm text-slate-500">14m</span>
+            </div>
+            {% comment %} vertical ellipses {% endcomment %}
+            <div>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </div>
+          {% comment %} post content {% endcomment %}
+          <div class="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+            auctor elit sed vulputate mi sit amet mauris commodo. Mi eget mauris
+            pharetra et ultrices neque ornare aenean. Cursus in hac habitasse
+            platea dictumst. Viverra adipiscing at in tellus integer feugiat
+            scelerisque varius.
+          </div>
+
+          {% comment %} Action buttons {% endcomment %}
+          <div class="flex justify-between pr-16 pt-4">
+            <i class="fa-regular fa-message"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-600 mt-6">
+      <div class="flex pt-5 px-10">
+        <div class="bg-white w-10 h-10 rounded-full shrink-0"></div>
+        <div class="pl-3 grow">
+          {% comment %} username {% endcomment %}
+          <div class="lg:flex justify-between">
+            <div>
+              <span class="font-bold text-sm">Abdulqudduus</span>
+              <span class="font-light text-sm text-slate-500"
+                >@babalolajnr</span
+              >
+              <span class="font-light text-xl text-slate-500 align-middle"
+                >&middot</span
+              >
+              <span class="font-light text-sm text-slate-500">14m</span>
+            </div>
+            {% comment %} vertical ellipses {% endcomment %}
+            <div>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </div>
+          {% comment %} post content {% endcomment %}
+          <div class="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+            auctor elit sed vulputate mi sit amet mauris commodo. Mi eget mauris
+            pharetra et ultrices neque ornare aenean. Cursus in hac habitasse
+            platea dictumst. Viverra adipiscing at in tellus integer feugiat
+            scelerisque varius.
+          </div>
+
+          {% comment %} Action buttons {% endcomment %}
+          <div class="flex justify-between pr-16 pt-4">
+            <i class="fa-regular fa-message"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </div>
         </div>
       </div>
