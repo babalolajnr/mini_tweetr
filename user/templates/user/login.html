@@ -16,45 +16,53 @@
     />
     <title>Mini Tweetr | Login</title>
   </head>
-  <body class="lg:flex lg:flex-row min-h-screen bg-slate-100">
-    <div class="basis-1/2 lg:flex flex-col justify-center items-center">
-      <div>
-        <div class="mt-7">
-          <span class="font-bold text-2xl">Welcome back</span>
-          <div>
-            <span class="text-slate-500"
-              >Welcome back! Please enter your details.</span
+  <body class="bg-slate-600 w-screen h-screen">
+    <div
+      class="lg:flex lg:flex-row h-full px-5 py-5"
+    >
+      <div class="basis-1/2 lg:flex flex-col justify-center items-center bg-slate-100 rounded-l-lg">
+        <div>
+          <div class="mt-7">
+            <span class="font-bold text-2xl">Welcome back</span>
+            <div>
+              <span class="text-slate-500"
+                >Welcome back! Please enter your details.</span
+              >
+            </div>
+          </div>
+          <div class="mt-7">
+            <div>
+              <label for="Email" class="font-bold text-sm">Email</label><br />
+              <input
+                type="text"
+                class="rounded-lg h-9 px-3 w-96 bg-transparent border border-slate-400"
+                placeholder="Email"
+              />
+            </div>
+            <div class="pt-5">
+              <label for="Password" class="font-bold text-sm">Password</label
+              ><br />
+              <input
+                type="text"
+                placeholder="Password"
+                class="rounded-lg h-9 w-96 px-3 bg-transparent border border-slate-400"
+              />
+            </div>
+          </div>
+          <div class="pt-16 pb-10 flex justify-center">
+            <button
+              class="bg-slate-900 rounded-lg h-11 w-60 grow"
+              type="submit"
             >
+              <span class="px-5 py-4 font-bold text-white">Login</span>
+            </button>
           </div>
-        </div>
-        <div class="mt-7">
-          <div>
-            <label for="Email" class="font-bold text-sm">Email</label><br />
-            <input
-              type="text"
-              class="rounded-lg h-9 px-3 w-96 bg-transparent border border-slate-400"
-              placeholder="Email"
-            />
-          </div>
-          <div class="pt-5">
-            <label for="Password" class="font-bold text-sm">Password</label><br />
-            <input
-              type="text"
-              placeholder="Password"
-              class="rounded-lg h-9 w-96 px-3 bg-transparent border border-slate-400"
-            />
-          </div>
-        </div>
-        <div class="pt-16 pb-10 flex justify-center">
-          <button
-            class="bg-slate-900 rounded-lg h-11 w-60 grow"
-            type="submit"
-          >
-            <span class="px-5 py-4 font-bold text-white">Login</span>
-          </button>
         </div>
       </div>
+      <div
+        class="basis-1/2 bg-cover rounded-r-lg"
+        style="background-image: url('{% static '/images/office.jpg' %}')"
+      ></div>
     </div>
-    <div class="basis-1/2 bg-cover" style="background-image: url('{% static '/images/office.jpg' %}')"></div>
   </body>
 </html>
