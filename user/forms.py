@@ -1,6 +1,6 @@
 import email
 from django import forms
 
-class LoginForm(forms.Forms):
+class LoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField()
