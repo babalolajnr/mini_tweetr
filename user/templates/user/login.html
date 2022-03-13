@@ -16,9 +16,28 @@
     />
     <title>Mini Tweetr | Login</title>
   </head>
-  <body>
-      <div class="lg:flex">
-        Hello
+  <body class="lg:flex justify-center items-center min-h-screen">
+    <div class="border border-black rounded-3xl lg:h-80">
+      <div class="text-center mt-7">
+        <span class="font-bold text-2xl">Login</span>
       </div>
+      <div class="px-5 pt-8">
+        <div>
+          <input type="text" class="border border-black" placeholder="Email" />
+        </div>
+        <div class="pt-5">
+          <input
+            type="text"
+            placeholder="Password"
+            class="border border-black"
+          />
+        </div>
+      </div>
+      <div class="pt-16 flex justify-center px-5">
+        <button class="bg-yellow-400 rounded-full grow" type="submit">
+          <span class="px-5 py-4 font-bold text-sm">Login</span>
+        </button>
+      </div>
+    </div>
   </body>
 </html>
