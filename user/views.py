@@ -1,12 +1,15 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
-from user.forms import LoginForm
+
+from .forms import LoginForm
+from .models import User
 
 # Create your views here.
 
 
-def login(request):
-
+def loginPage(request):
     if request.user.is_authenticated:
         return redirect("home")
 
@@ -27,18 +30,4 @@ def login(request):
         else:
             messages.error(request, "Username OR password does not exit")
 
-    context = {"page": page}
-    return render(request, "base/login_register.html", context)
-
-
-# def login(request):
-#      if request.method == 'POST':
-#         form = LoginForm(request.POST)
-
-# if form.is_valid():
-# user = request.user
-
-# return HttpResponse(user)
-# tweet = Tweet(body=request.POST.get('body'))
-# else:
-# return HttpResponse('Invalid form')
+    return render(request, "user/login.html")
