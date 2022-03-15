@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    {% comment %}
-    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-    {% endcomment %}
     <link
       href="{% static 'fontawesomefree/css/all.min.css' %}"
       rel="stylesheet"
@@ -37,7 +34,7 @@
               <label for="Email" class="font-bold text-sm">Email</label><br />
               <input
                 type="text"
-                class="rounded-lg h-9 px-3 w-72 bg-transparent border placeholder:font-light border-slate-300"
+                class="rounded-lg h-9 px-3 w-72 bg-transparent border placeholder:font-light border-slate-300 focus:outline focus:outline-blue-600"
                 placeholder="Enter your email"
               />
             </div>
@@ -47,7 +44,7 @@
               <input
                 type="password"
                 placeholder="***********"
-                class="rounded-lg h-9 w-72 px-3 bg-transparent border placeholder:font-light border-slate-300"
+                class="rounded-lg h-9 w-72 px-3 bg-transparent border placeholder:font-light focus:outline focus:outline-blue-600 border-slate-300"
               />
             </div>
           </div>
