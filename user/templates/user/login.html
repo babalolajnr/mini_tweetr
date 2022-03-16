@@ -29,49 +29,60 @@
               >
             </div>
           </div>
-          <div class="mt-7">
-            <div>
-              <label for="Email" class="font-bold text-sm">Email</label><br />
-              <input
-                type="text"
-                class="rounded-lg h-9 px-3 w-72 bg-transparent border placeholder:font-light border-slate-300 focus:outline focus:outline-blue-600"
-                placeholder="Enter your email"
-              />
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="mt-7">
+              <div>
+                <label for="Email" class="font-bold text-sm">Email</label><br />
+                <input
+                  autocomplete="email"
+                  type="email"
+                  class="rounded-lg h-9 px-3 w-72 bg-transparent border placeholder:font-light border-slate-300 focus:outline focus:outline-blue-600"
+                  placeholder="Enter your email"
+                  name="email"
+                />
+                <div class="text-sm text-red-600">{{ errors.email }}</div>
+              </div>
+              <div class="pt-3">
+                <label for="Password" class="font-bold text-sm">Password</label
+                ><br />
+                <input
+                  autocomplete="current-password"
+                  name="password"
+                  type="password"
+                  placeholder="***********"
+                  class="rounded-lg h-9 w-72 px-3 bg-transparent border placeholder:font-light focus:outline focus:outline-blue-600 border-slate-300"
+                />
+                <div class="text-sm text-red-600">{{ errors.password }}</div>
+              </div>
             </div>
-            <div class="pt-3">
-              <label for="Password" class="font-bold text-sm">Password</label
-              ><br />
-              <input
-                type="password"
-                placeholder="***********"
-                class="rounded-lg h-9 w-72 px-3 bg-transparent border placeholder:font-light focus:outline focus:outline-blue-600 border-slate-300"
-              />
-            </div>
-          </div>
-          <div class="flex mt-4 justify-between items-baseline">
-            <div>
-              <input type="checkbox" name="" id="" class="accent-slate-900" />
-              <label for="Remember Me" class="text-sm font-bold pl-1"
-                >Remember Me</label
-              >
-            </div>
-            <div>
-              <a href="#">
-                <span
-                  class="text-sm font-bold hover:bg-gradient-to-r hover:from-violet-500 hover:to-fuchsia-500 hover:bg-clip-text hover:text-transparent"
-                  >Forgot Password</span
+            <div class="flex mt-4 justify-between items-baseline">
+              <div>
+                <input type="checkbox" name="" id="" class="accent-slate-900" />
+                <label for="Remember Me" class="text-sm font-bold pl-1"
+                  >Remember Me</label
                 >
-              </a>
+              </div>
+              <div>
+                <a href="#">
+                  <span
+                    class="text-sm font-bold hover:bg-gradient-to-r hover:from-violet-500 hover:to-fuchsia-500 hover:bg-clip-text hover:text-transparent"
+                    >Forgot Password</span
+                  >
+                </a>
+              </div>
             </div>
-          </div>
-          <div class="pt-8 pb-10 flex justify-center">
-            <button
-              class="bg-slate-900 rounded-lg h-11 w-60 grow group hover:bg-gradient-to-r hover:from-violet-500 hover:to-fuchsia-500"
-              type="submit"
-            >
-              <span class="px-5 py-4 font-bold text-white text-sm">Login</span>
-            </button>
-          </div>
+            <div class="pt-8 pb-10 flex justify-center">
+              <button
+                class="bg-slate-900 rounded-lg h-11 w-60 grow group hover:bg-gradient-to-r hover:from-violet-500 hover:to-fuchsia-500"
+                type="submit"
+              >
+                <span class="px-5 py-4 font-bold text-white text-sm"
+                  >Login</span
+                >
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div
