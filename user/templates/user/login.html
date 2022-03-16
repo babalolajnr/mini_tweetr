@@ -42,6 +42,9 @@
                   name="email"
                 />
                 <div class="text-sm text-red-600">{{ errors.email }}</div>
+                {% if messages %} {% for message in messages %}
+                <div class="text-sm text-red-600">{{ message}}</div>
+                {% endfor %} {% endif %}
               </div>
               <div class="pt-3">
                 <label for="Password" class="font-bold text-sm">Password</label
