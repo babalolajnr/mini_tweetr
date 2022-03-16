@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -9,25 +10,26 @@ from .models import User
 # Create your views here.
 
 
-def loginPage(request):
+def login(request):
     if request.user.is_authenticated:
         return redirect("home")
 
     if request.method == "POST":
-        email = request.POST.get("email").lower()
-        password = request.POST.get("password")
+        form = LoginForm(request.POST)
 
-        try:
-            user = User.objects.get(email=email)
-        except:
-            messages.error(request, "User does not exist")
+        if form.is_valid():
 
-        user = authenticate(request, email=email, password=password)
+            email = form.cleaned_data["email"].lower()
+            password = form.cleaned_data["password"]
 
-        if user is not None:
-            login(request, user)
-            return redirect("home")
-        else:
-            messages.error(request, "Username OR password does not exit")
+            user = authenticate(request, email=email, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect("home")
+            else:
+                messages.error(request, "Username OR password does not exit")
+
+        return render(request, 'user/login.html', {'errors': form.errors})
 
     return render(request, "user/login.html")
