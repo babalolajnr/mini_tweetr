@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
@@ -25,11 +26,11 @@ def login(request):
             user = authenticate(request, email=email, password=password)
 
             if user is not None:
-                login(request, user)
+                auth.login(request, user)
                 return redirect("home")
             else:
-                messages.error(request, "Username OR password does not exit")
+                messages.error(request, "Email/password is invalid")
 
-        return render(request, 'user/login.html', {'errors': form.errors})
+        return render(request, "user/login.html", {"errors": form.errors})
 
     return render(request, "user/login.html")
