@@ -25,4 +25,4 @@ def save_tweet(request):
             messages.success(request, "Tweet Sent!")
             return redirect(index)
         else:
-            return render(request, "tweet/main.html", {"errors": form.errors})
+            return render(request, "tweet/main.html", {"errors": form.errors, 'form': form})
