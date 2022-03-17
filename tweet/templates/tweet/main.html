@@ -1,6 +1,6 @@
 {% extends 'layout.html' %} {% block content %}
 
-<div class="lg:flex lg:h-screen lg:flex-row">
+<div class="lg:flex lg:flex-row">
   {% comment %} First column {% endcomment %}
   <div class="lg:basis-1/4 lg:border-r border-gray-600">
     <div class="mt-5 mx-7">
@@ -9,7 +9,7 @@
   </div>
 
   {% comment %} Second column {% endcomment %}
-  <div class="lg:basis-2/4">
+  <div class="lg:basis-2/4 pb-7">
     <div class="mt-4 px-10">
       {% comment %} Title row {% endcomment %}
       <div class="lg:flex justify-between">
@@ -31,9 +31,7 @@
                 id=""
                 class="w-full bg-transparent focus:outline-none"
                 placeholder="What's happening?"
-              >
-{{ form.body.value }}</textarea
-              >
+              >{{ form.body.value }}</textarea>
               <div class="text-sm text-red-600">{{ errors.body }}</div>
 
               {% if messages %}
@@ -99,9 +97,7 @@
             </div>
           </div>
           {% comment %} post content {% endcomment %}
-          <div class="text-sm">
-           {{tweet.body}}
-          </div>
+          <div class="text-sm">{{tweet.body}}</div>
 
           {% comment %} Action buttons {% endcomment %}
           <div class="flex justify-between pr-16 pt-4">
@@ -199,9 +195,7 @@
   </div>
 
   {% comment %} Second column {% endcomment %}
-  <div
-    class="lg:basis-1/4 lg:border-l border-gray-600 lg:flex justify-center"
-  ></div>
+  <div class="lg:basis-1/4 lg:border-l border-gray-600 lg:flex justify-center"></div>
 </div>
 
 {% endblock %} {% block 'page-specific-scripts' %}
