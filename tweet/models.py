@@ -9,7 +9,7 @@ class Thread(models.Model):
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
 
-
+# if the thread column is empty on a row then the tweet is not a thread
 class Tweet(models.Model):
     body = models.TextField(max_length=280)
     user = models.ForeignKey(User, related_name='tweets',
