@@ -31,9 +31,9 @@
                 id=""
                 class="w-full bg-transparent focus:outline-none"
                 placeholder="What's happening?"
-              ></textarea>
+              >{{ form.body.value }}</textarea>
               <div class="text-sm text-red-600">{{ errors.body }}</div>
-              
+
               {% if messages %}
               <ul class="messages">
                 {% for message in messages %}
