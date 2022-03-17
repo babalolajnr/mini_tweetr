@@ -10,7 +10,9 @@ from tweet.models import Tweet
 
 @login_required
 def index(request):
-    return render(request, "tweet/main.html")
+    tweets = Tweet.objects.filter(user=request.user)
+    return render(request, "tweet/main.html", {'tweets': tweets})
+
 
 
 @login_required
