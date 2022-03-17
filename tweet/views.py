@@ -1,18 +1,28 @@
+from django.contrib import messages
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 from tweet.forms import TweetForm
+from tweet.models import Tweet
 
 # Create your views here.
 
 
+@login_required
 def index(request):
-    return render(request, 'tweet/main.html')
+    return render(request, "tweet/main.html")
 
 
+@login_required
 def save_tweet(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = TweetForm(request.POST)
 
         if form.is_valid():
-            return HttpResponse(request.body)
+            user = request.user
+            tweet = Tweet(body=form.cleaned_data["body"], user=request.user)
+            tweet.save()
+            messages.success(request, "Tweet Sent!")
+            return redirect(index)
+        else:
+            return render(request, "tweet/main.html", {"errors": form.errors})
