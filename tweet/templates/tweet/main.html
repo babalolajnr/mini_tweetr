@@ -31,7 +31,9 @@
                 id=""
                 class="w-full bg-transparent focus:outline-none"
                 placeholder="What's happening?"
-              >{{ form.body.value }}</textarea>
+              >
+{{ form.body.value }}</textarea
+              >
               <div class="text-sm text-red-600">{{ errors.body }}</div>
 
               {% if messages %}
@@ -72,7 +74,7 @@
       </div>
     </div>
 
-    {% comment %} Posts {% endcomment %}
+    {% comment %} Posts {% endcomment %} {% for tweet in tweets %}
     <div class="border-t border-gray-600 mt-6">
       <div class="flex pt-5 px-10">
         <div class="bg-white w-10 h-10 rounded-full shrink-0"></div>
@@ -80,9 +82,11 @@
           {% comment %} username {% endcomment %}
           <div class="lg:flex justify-between">
             <div>
-              <span class="font-bold text-sm">Abdulqudduus</span>
+              <span class="font-bold text-sm"
+                >{{ tweet.user.first_name }} {{ tweet.user.last_name }}</span
+              >
               <span class="font-light text-sm text-slate-500"
-                >@babalolajnr</span
+                >@{{tweet.user.username}}</span
               >
               <span class="font-light text-xl text-slate-500 align-middle"
                 >&middot</span
@@ -96,12 +100,7 @@
           </div>
           {% comment %} post content {% endcomment %}
           <div class="text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-            auctor elit sed vulputate mi sit amet mauris commodo. Mi eget mauris
-            pharetra et ultrices neque ornare aenean. Cursus in hac habitasse
-            platea dictumst. Viverra adipiscing at in tellus integer feugiat
-            scelerisque varius.
+           {{tweet.body}}
           </div>
 
           {% comment %} Action buttons {% endcomment %}
@@ -114,6 +113,7 @@
         </div>
       </div>
     </div>
+    {% endfor %}
     <div class="border-t border-gray-600 mt-6">
       <div class="flex pt-5 px-10">
         <div class="bg-white w-10 h-10 rounded-full shrink-0"></div>
