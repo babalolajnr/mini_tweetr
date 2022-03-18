@@ -68,7 +68,7 @@
           <i class="fa-solid fa-ellipsis"></i><span class="ml-4">More</span>
         </div>
       </div>
-      <div class="">
+      <div class="mr-5">
         <button
           class="bg-yellow-400 rounded-full h-14 w-full group hover:opacity-80"
           type="submit"
@@ -79,19 +79,21 @@
     </div>
 
     {% comment %} Account Actions {% endcomment %}
-    <div class="flex justify-between mx-16 mt-8 mb-4">
-      <div class="flex">
-        <div class="h-10 w-10 rounded-full">
-          {% load static %}
-          <img src="{% static 'images/' %}{{request.user.avatar}}" alt="" />
+    <div class="ml-10 mr-5 mt-8 mb-4 hover:bg-gray-700 rounded-full cursor-pointer">
+      <div class="flex px-3 py-2 justify-between ">
+        <div class="flex">
+          <div class="h-10 w-10 rounded-full">
+            {% load static %}
+            <img src="{% static 'images/' %}{{request.user.avatar}}" alt="" />
+          </div>
+          <div class="flex flex-col pl-2">
+            <span class="font-bold text-sm">Abdulqudduus</span>
+            <span class="font-light text-sm text-slate-500">@babalolajnr</span>
+          </div>
         </div>
-        <div class="flex flex-col pl-4">
-          <span class="font-bold text-sm">Abdulqudduus</span>
-          <span class="font-light text-sm text-slate-500">@babalolajnr</span>
+        <div class="flex items-center">
+          <i class="fa-solid fa-ellipsis"></i>
         </div>
-      </div>
-      <div>
-        <i class="fa-solid fa-ellipsis"></i>
       </div>
     </div>
   </div>
@@ -147,19 +149,29 @@
               </div>
               <div class="lg:flex justify-between pt-3 items-center">
                 <div class="flex justify-between text-yellow-400 basis-2/5">
-                  <div class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20">
+                  <div
+                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+                  >
                     <i class="fa-regular fa-image px-2 py-2"></i>
                   </div>
-                  <div class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20">
+                  <div
+                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+                  >
                     <i class="fa-solid fa-square-poll-horizontal px-2 py-2"></i>
                   </div>
-                  <div class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20">
+                  <div
+                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+                  >
                     <i class="fa-regular fa-face-grin px-2 py-2"></i>
                   </div>
-                  <div class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20">
+                  <div
+                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+                  >
                     <i class="fa-solid fa-calendar-days px-2 py-2"></i>
                   </div>
-                  <div class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20">
+                  <div
+                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+                  >
                     <i class="fa-solid fa-location-dot px-2 py-2"></i>
                   </div>
                 </div>
