@@ -539,10 +539,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity));
 }
-.bg-slate-100{
-  --tw-bg-opacity: 1;
-  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
-}
 .bg-transparent{
   background-color: transparent;
 }
@@ -553,6 +549,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-slate-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 .bg-slate-900{
   --tw-bg-opacity: 1;
@@ -594,6 +594,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-3{
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+.pb-7{
+  padding-bottom: 1.75rem;
 }
 .pt-5{
   padding-top: 1.25rem;
@@ -677,6 +680,36 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.placeholder\:text-lg::-moz-placeholder{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.placeholder\:text-lg:-ms-input-placeholder{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.placeholder\:text-lg::placeholder{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.placeholder\:text-2xl::-moz-placeholder{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.placeholder\:text-2xl:-ms-input-placeholder{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.placeholder\:text-2xl::placeholder{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .placeholder\:font-light::-moz-placeholder{
   font-weight: 300;
 }
@@ -687,6 +720,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .placeholder\:font-light::placeholder{
   font-weight: 300;
+}
+
+.placeholder\:font-extrabold::-moz-placeholder{
+  font-weight: 800;
+}
+
+.placeholder\:font-extrabold:-ms-input-placeholder{
+  font-weight: 800;
+}
+
+.placeholder\:font-extrabold::placeholder{
+  font-weight: 800;
 }
 
 .hover\:bg-yellow-400:hover{
@@ -750,10 +795,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:flex{
     display: flex;
-  }
-
-  .lg\:h-screen{
-    height: 100vh;
   }
 
   .lg\:basis-1\/4{
