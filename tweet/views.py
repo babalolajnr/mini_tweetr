@@ -11,8 +11,8 @@ from tweet.models import Tweet
 @login_required
 def index(request):
     tweets = Tweet.objects.filter(user=request.user)
-    return render(request, "tweet/main.html", {'tweets': tweets})
-
+   
+    return render(request, "tweet/main.html", {"tweets": tweets})
 
 
 @login_required
@@ -27,4 +27,6 @@ def save_tweet(request):
             messages.success(request, "Tweet Sent!")
             return redirect(index)
         else:
-            return render(request, "tweet/main.html", {"errors": form.errors, 'form': form})
+            return render(
+                request, "tweet/main.html", {"errors": form.errors, "form": form}
+            )
