@@ -3,30 +3,65 @@
 <div class="lg:flex">
   {% comment %} First column {% endcomment %}
   <div
-    class="lg:basis-1/4 lg:border-r h-screen border-gray-600 lg:flex lg:flex-col">
+    class="lg:basis-1/4 lg:border-r h-screen border-gray-600 lg:flex lg:flex-col overflow-y-hidden"
+  >
     {% comment %} Navigation Buttons {% endcomment %}
-    <div class="mt-2 mx-16 lg:flex lg:flex-col justify-between basis-4/5">
+    <div class="mt-2 ml-10 mr-7 lg:flex lg:flex-col justify-between basis-11/12">
       <div class="text-2xl font-bold">Mini Tweetr</div>
-      <div class="text-xl"><i class="fa-solid fa-house"></i><span class="pl-4">Home</span></div>
-      <div class="text-xl"><i class="fa-solid fa-house"></i><span class="pl-4">Explore</span></div>
-      <div class="text-xl"><i class="fa-solid fa-house"></i><span class="pl-4">Notifications</span></div>
-      <div class="text-xl"><i class="fa-solid fa-house"></i><span class="pl-4">Messages</span></div>
-      <div class="text-xl"><i class="fa-solid fa-house"></i><span class="pl-4">Bookmarks</span></div>
-      <div class="text-xl"><i class="fa-solid fa-house"></i><span class="pl-4">Lists</span></div>
-      <div class="text-xl"><i class="fa-solid fa-house"></i><span class="pl-4">Profile</span></div>
-      <div class="text-xl"><i class="fa-solid fa-house"></i><span class="pl-4">More</span></div>
-      <div>
+      <div class="text-xl pl-5 hover:bg-gray-500 w-fit rounded-full">
+        <div class="py-3 pr-7">
+          <i class="fa-solid fa-house"></i><span class="ml-4">Home</span>
+        </div>
+      </div>
+      <div class="text-xl pl-5 hover:bg-gray-500 w-fit rounded-full">
+        <div class="py-3 pr-7">
+          <i class="fa-solid fa-hashtag"></i><span class="ml-4">Explore</span>
+        </div>
+      </div>
+      <div class="text-xl pl-5 hover:bg-gray-500 w-fit rounded-full">
+        <div class="py-3 pr-7">
+          <i class="fa-solid fa-bell"></i
+          ><span class="ml-4">Notifications</span>
+        </div>
+      </div>
+      <div class="text-xl pl-5 hover:bg-gray-500 w-fit rounded-full">
+        <div class="py-3 pr-7">
+          <i class="fa-solid fa-envelope"></i><span class="ml-4">Messages</span>
+        </div>
+      </div>
+      <div class="text-xl pl-5 hover:bg-gray-500 w-fit rounded-full">
+        <div class="py-3 pr-7">
+          <i class="fa-solid fa-bookmark"></i
+          ><span class="ml-4">Bookmarks</span>
+        </div>
+      </div>
+      <div class="text-xl pl-5 hover:bg-gray-500 w-fit rounded-full">
+        <div class="py-3 pr-7">
+          <i class="fa-solid fa-list"></i><span class="ml-4">Lists</span>
+        </div>
+      </div>
+      <div class="text-xl pl-5 hover:bg-gray-500 w-fit rounded-full">
+        <div class="py-3 pr-7">
+          <i class="fa-solid fa-user"></i><span class="ml-4">Profile</span>
+        </div>
+      </div>
+      <div class="text-xl pl-5 hover:bg-gray-500 w-fit rounded-full">
+        <div class="py-3 pr-7">
+          <i class="fa-solid fa-ellipsis"></i><span class="ml-4">More</span>
+        </div>
+      </div>
+      <div class="">
         <button
-          class="bg-yellow-400 rounded-lg h-11 w-60 grow group hover:bg-gradient-to-r hover:from-violet-500 hover:to-fuchsia-500"
+          class="bg-yellow-400 rounded-full h-14 w-full group hover:opacity-80"
           type="submit"
         >
-          <span class="px-5 py-4 font-bold text-white text-sm">Tweet</span>
+          <span class="font-bold text-white text-sm">Tweet</span>
         </button>
       </div>
     </div>
 
     {% comment %} Account Actions {% endcomment %}
-    <div class="flex justify-between mx-16 mt-16">
+    <div class="flex justify-between mx-16 mt-8 mb-4">
       <div class="flex">
         <div class="h-10 w-10 bg-white rounded-full"></div>
         <div class="flex flex-col pl-4">
@@ -89,7 +124,7 @@
                   </span>
                 </div>
               </div>
-              <div class="lg:flex justify-between pt-3">
+              <div class="lg:flex justify-between pt-3 items-center">
                 <div class="flex justify-between">
                   <i class="fa-regular fa-image"></i>
                   <i class="pl-3 fa-solid fa-location-dot"></i>
@@ -98,8 +133,11 @@
                   <i class="pl-3 fa-solid fa-square-poll-horizontal"></i>
                 </div>
                 <div>
-                  <button class="bg-yellow-400 rounded-full" type="submit">
-                    <span class="px-5 py-4 font-bold text-sm">Tweet</span>
+                  <button
+                    class="bg-yellow-400 rounded-full h-8 w-16 hover:opacity-80"
+                    type="submit"
+                  >
+                    <span class="font-bold text-sm">Tweet</span>
                   </button>
                 </div>
               </div>
@@ -110,7 +148,7 @@
     </div>
 
     {% comment %} Posts {% endcomment %} {% for tweet in tweets %}
-    <div class="border-t border-gray-600 mt-6">
+    <div class="border-t border-gray-600 mt-3">
       <div class="flex pt-5 px-10">
         {% comment %} User Avatar {% endcomment %}
         <div class="w-10 h-10 rounded-full shrink-0">
