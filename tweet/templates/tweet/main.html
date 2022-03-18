@@ -21,7 +21,10 @@
       <div class="pt-5">
         <div class="lg:flex">
           {% comment %} Avatar {% endcomment %}
-          <div class="bg-slate-100 w-10 h-10 rounded-full shrink-0"></div>
+          <div class="w-10 h-10 rounded-full shrink-0">
+            {% load static %}
+            <img src="{% static 'images/' %}{{request.user.avatar}}" alt="" />
+          </div>
           {% comment %} Form {% endcomment %}
           <div class="pl-3 grow">
             <form action="{% url 'save_tweet' %}" method="post">
@@ -31,7 +34,9 @@
                 id=""
                 class="w-full bg-transparent focus:outline-none"
                 placeholder="What's happening?"
-              >{{ form.body.value }}</textarea>
+              >
+{{ form.body.value }}</textarea
+              >
               <div class="text-sm text-red-600">{{ errors.body }}</div>
 
               {% if messages %}
@@ -72,10 +77,14 @@
       </div>
     </div>
 
-    {% comment %} Posts {% endcomment %} {% for tweet in tweets %}
+    {% comment %} Posts {% endcomment %} 
+    {% for tweet in tweets %}
     <div class="border-t border-gray-600 mt-6">
       <div class="flex pt-5 px-10">
-        <div class="bg-white w-10 h-10 rounded-full shrink-0"></div>
+        {% comment %} User Avatar {% endcomment %}
+        <div class="w-10 h-10 rounded-full shrink-0">
+          <img src="{% static 'images/' %}{{tweet.user.avatar}}" alt="" />
+        </div>
         <div class="pl-3 grow">
           {% comment %} username {% endcomment %}
           <div class="lg:flex justify-between">
@@ -195,7 +204,9 @@
   </div>
 
   {% comment %} Second column {% endcomment %}
-  <div class="lg:basis-1/4 lg:border-l border-gray-600 lg:flex justify-center"></div>
+  <div
+    class="lg:basis-1/4 lg:border-l border-gray-600 lg:flex justify-center"
+  ></div>
 </div>
 
 {% endblock %} {% block 'page-specific-scripts' %}
