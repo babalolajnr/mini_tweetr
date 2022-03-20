@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    {% comment %}
-    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-    {% endcomment %}
     <link
       href="{% static 'fontawesomefree/css/all.min.css' %}"
       rel="stylesheet"
@@ -24,7 +21,7 @@
       >
         {% include 'components/navigation.html' %}
       </div>
-      
+
       {% comment %} Second column {% endcomment %}
       <div class="lg:basis-1/2 pb-7">{% block content %}{% endblock %}</div>
 
