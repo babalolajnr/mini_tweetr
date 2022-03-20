@@ -12,7 +12,7 @@ from tweet.models import Tweet
 def index(request):
     tweets = Tweet.objects.filter(user=request.user)
    
-    return render(request, "tweet/main.html", {"tweets": tweets})
+    return render(request, "tweet/home.html", {"tweets": tweets})
 
 
 @login_required
@@ -27,5 +27,5 @@ def save_tweet(request):
             return redirect(index)
         else:
             return render(
-                request, "tweet/main.html", {"errors": form.errors, "form": form}
+                request, "tweet/home.html", {"errors": form.errors, "form": form}
             )
