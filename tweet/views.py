@@ -21,7 +21,6 @@ def save_tweet(request):
         form = TweetForm(request.POST)
 
         if form.is_valid():
-            user = request.user
             tweet = Tweet(body=form.cleaned_data["body"], user=request.user)
             tweet.save()
             messages.success(request, "Tweet Sent!")
