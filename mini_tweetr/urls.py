@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import include, path
 
-from user.views import login
 from tweet.views import index
 
 
@@ -27,7 +26,7 @@ def home(request):
 
 urlpatterns = [
     path("", home),
-    path("login/", login, name="login"),
     path("admin/", admin.site.urls),
+    path("user/", include("user.urls")),
     path("tweet/", include("tweet.urls")),
 ]
