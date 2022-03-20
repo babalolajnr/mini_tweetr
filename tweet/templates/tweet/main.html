@@ -1,245 +1,134 @@
 {% extends 'layout.html' %} {% block content %}
 
-<div class="lg:flex">
-  {% comment %} First column {% endcomment %}
-  <div
-    class="lg:basis-1/4 lg:border-r h-screen border-gray-600 lg:flex lg:flex-col overflow-y-hidden"
-  >
-    {% comment %} Navigation Buttons {% endcomment %}
-    <div
-      class="mt-2 ml-10 mr-7 lg:flex lg:flex-col justify-between basis-11/12"
-    >
-      <div class="text-2xl font-bold">Mini Tweetr</div>
-      <div
-        class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
-      >
-        <div class="py-2 pr-7">
-          <i class="fa-solid fa-house"></i><span class="ml-4">Home</span>
-        </div>
+<div class="mt-4 px-10">
+  {% comment %} Title row {% endcomment %}
+  <div class="lg:flex justify-between">
+    <div><span class="font-extrabold text-xl">Home</span></div>
+    <div><i class="fa-solid fa-bahai"></i></div>
+  </div>
+
+  {% comment %} New tweet {% endcomment %}
+  <div class="pt-5">
+    <div class="lg:flex">
+      {% comment %} Avatar {% endcomment %}
+      <div class="w-10 h-10 rounded-full shrink-0">
+        {% load static %}
+        <img src="{% static 'images/' %}{{request.user.avatar}}" alt="" />
       </div>
-      <div
-        class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
-      >
-        <div class="py-2 pr-7">
-          <i class="fa-solid fa-hashtag"></i><span class="ml-4">Explore</span>
-        </div>
-      </div>
-      <div
-        class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
-      >
-        <div class="py-2 pr-7">
-          <i class="fa-solid fa-bell"></i
-          ><span class="ml-4">Notifications</span>
-        </div>
-      </div>
-      <div
-        class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
-      >
-        <div class="py-2 pr-7">
-          <i class="fa-solid fa-envelope"></i><span class="ml-4">Messages</span>
-        </div>
-      </div>
-      <div
-        class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
-      >
-        <div class="py-2 pr-7">
-          <i class="fa-solid fa-bookmark"></i
-          ><span class="ml-4">Bookmarks</span>
-        </div>
-      </div>
-      <div
-        class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
-      >
-        <div class="py-2 pr-7">
-          <i class="fa-solid fa-list"></i><span class="ml-4">Lists</span>
-        </div>
-      </div>
-      <div
-        class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
-      >
-        <div class="py-2 pr-7">
-          <i class="fa-solid fa-user"></i><span class="ml-4">Profile</span>
-        </div>
-      </div>
-      <div
-        class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
-      >
-        <div class="py-2 pr-7">
-          <i class="fa-solid fa-ellipsis"></i><span class="ml-4">More</span>
-        </div>
-      </div>
-      <div class="mr-5">
-        <button
-          class="bg-yellow-400 rounded-full h-14 w-full group hover:opacity-80"
-          type="submit"
-        >
-          <span class="font-bold text-white text-sm">Tweet</span>
-        </button>
+      {% comment %} Form {% endcomment %}
+      <div class="pl-3 grow">
+        <form action="{% url 'save_tweet' %}" method="post">
+          {% csrf_token %}
+          <textarea
+            name="body"
+            id=""
+            class="w-full bg-transparent focus:outline-none"
+            placeholder="What's happening?"
+          >
+{{ form.body.value }}</textarea
+          >
+          <div class="text-sm text-red-600">{{ errors.body }}</div>
+
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <div class="text-sm text-green-500">{{ message }}</div>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          <div class="pb-3 border-b border-gray-600 lg:flex">
+            <div
+              class="rounded-full px-4 hover:bg-yellow-400 hover:bg-opacity-20 text-center"
+            >
+              <span class="font-bold text-yellow-400" style="font-size: 0.8rem"
+                ><i class="fa-solid fa-earth-africa"></i> Everyone can reply
+              </span>
+            </div>
+          </div>
+          <div class="lg:flex justify-between pt-3 items-center">
+            <div class="flex justify-between text-yellow-400 basis-2/5">
+              <div
+                class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+              >
+                <i class="fa-regular fa-image px-2 py-2"></i>
+              </div>
+              <div
+                class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+              >
+                <i class="fa-solid fa-square-poll-horizontal px-2 py-2"></i>
+              </div>
+              <div
+                class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+              >
+                <i class="fa-regular fa-face-grin px-2 py-2"></i>
+              </div>
+              <div
+                class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+              >
+                <i class="fa-solid fa-calendar-days px-2 py-2"></i>
+              </div>
+              <div
+                class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
+              >
+                <i class="fa-solid fa-location-dot px-2 py-2"></i>
+              </div>
+            </div>
+            <div>
+              <button
+                class="bg-yellow-400 rounded-full h-8 w-16 hover:opacity-80"
+                type="submit"
+              >
+                <span class="font-bold text-sm">Tweet</span>
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
+</div>
 
-    {% comment %} Account Actions {% endcomment %}
-    <div class="ml-10 mr-5 mt-8 mb-4 hover:bg-gray-700 rounded-full cursor-pointer">
-      <div class="flex px-3 py-2 justify-between ">
-        <div class="flex">
-          <div class="h-10 w-10 rounded-full">
-            {% load static %}
-            <img src="{% static 'images/' %}{{request.user.avatar}}" alt="" />
-          </div>
-          <div class="flex flex-col pl-2">
-            <span class="font-bold text-sm">Abdulqudduus</span>
-            <span class="font-light text-sm text-slate-500">@babalolajnr</span>
-          </div>
+{% comment %} Posts {% endcomment %} {% for tweet in tweets %}
+<div class="border-t border-gray-600 mt-3">
+  <div class="flex pt-5 px-10">
+    {% comment %} User Avatar {% endcomment %}
+    <div class="w-10 h-10 rounded-full shrink-0">
+      <img src="{% static 'images/' %}{{tweet.user.avatar}}" alt="" />
+    </div>
+    <div class="pl-3 grow">
+      {% comment %} username {% endcomment %}
+      <div class="lg:flex justify-between">
+        <div>
+          <span class="font-bold text-sm"
+            >{{ tweet.user.first_name }} {{ tweet.user.last_name }}</span
+          >
+          <span class="font-light text-sm text-slate-500"
+            >@{{tweet.user.username}}</span
+          >
+          <span class="font-light text-xl text-slate-500 align-middle"
+            >&middot</span
+          >
+          <span class="font-light text-sm text-slate-500">14m</span>
         </div>
-        <div class="flex items-center">
+        {% comment %} vertical ellipses {% endcomment %}
+        <div>
           <i class="fa-solid fa-ellipsis"></i>
         </div>
       </div>
+      {% comment %} post content {% endcomment %}
+      <div class="text-sm">{{tweet.body}}</div>
+
+      {% comment %} Action buttons {% endcomment %}
+      <div class="flex justify-between pr-16 pt-4">
+        <i class="fa-regular fa-message"></i>
+        <i class="fa-solid fa-retweet"></i>
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+      </div>
     </div>
   </div>
-
-  {% comment %} Second column {% endcomment %}
-  <div class="lg:basis-1/2 pb-7">
-    <div class="mt-4 px-10">
-      {% comment %} Title row {% endcomment %}
-      <div class="lg:flex justify-between">
-        <div><span class="font-extrabold text-xl">Home</span></div>
-        <div><i class="fa-solid fa-bahai"></i></div>
-      </div>
-
-      {% comment %} New tweet {% endcomment %}
-      <div class="pt-5">
-        <div class="lg:flex">
-          {% comment %} Avatar {% endcomment %}
-          <div class="w-10 h-10 rounded-full shrink-0">
-            {% load static %}
-            <img src="{% static 'images/' %}{{request.user.avatar}}" alt="" />
-          </div>
-          {% comment %} Form {% endcomment %}
-          <div class="pl-3 grow">
-            <form action="{% url 'save_tweet' %}" method="post">
-              {% csrf_token %}
-              <textarea
-                name="body"
-                id=""
-                class="w-full bg-transparent focus:outline-none"
-                placeholder="What's happening?"
-              >
-{{ form.body.value }}</textarea
-              >
-              <div class="text-sm text-red-600">{{ errors.body }}</div>
-
-              {% if messages %}
-              <ul class="messages">
-                {% for message in messages %}
-                <div class="text-sm text-green-500">{{ message }}</div>
-                {% endfor %}
-              </ul>
-              {% endif %}
-              <div class="pb-3 border-b border-gray-600 lg:flex">
-                <div
-                  class="rounded-full px-4 hover:bg-yellow-400 hover:bg-opacity-20 text-center"
-                >
-                  <span
-                    class="font-bold text-yellow-400"
-                    style="font-size: 0.8rem"
-                    ><i class="fa-solid fa-earth-africa"></i> Everyone can reply
-                  </span>
-                </div>
-              </div>
-              <div class="lg:flex justify-between pt-3 items-center">
-                <div class="flex justify-between text-yellow-400 basis-2/5">
-                  <div
-                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
-                  >
-                    <i class="fa-regular fa-image px-2 py-2"></i>
-                  </div>
-                  <div
-                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
-                  >
-                    <i class="fa-solid fa-square-poll-horizontal px-2 py-2"></i>
-                  </div>
-                  <div
-                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
-                  >
-                    <i class="fa-regular fa-face-grin px-2 py-2"></i>
-                  </div>
-                  <div
-                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
-                  >
-                    <i class="fa-solid fa-calendar-days px-2 py-2"></i>
-                  </div>
-                  <div
-                    class="rounded-full bg-yellow-400 bg-opacity-0 hover:bg-opacity-20"
-                  >
-                    <i class="fa-solid fa-location-dot px-2 py-2"></i>
-                  </div>
-                </div>
-                <div>
-                  <button
-                    class="bg-yellow-400 rounded-full h-8 w-16 hover:opacity-80"
-                    type="submit"
-                  >
-                    <span class="font-bold text-sm">Tweet</span>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {% comment %} Posts {% endcomment %} {% for tweet in tweets %}
-    <div class="border-t border-gray-600 mt-3">
-      <div class="flex pt-5 px-10">
-        {% comment %} User Avatar {% endcomment %}
-        <div class="w-10 h-10 rounded-full shrink-0">
-          <img src="{% static 'images/' %}{{tweet.user.avatar}}" alt="" />
-        </div>
-        <div class="pl-3 grow">
-          {% comment %} username {% endcomment %}
-          <div class="lg:flex justify-between">
-            <div>
-              <span class="font-bold text-sm"
-                >{{ tweet.user.first_name }} {{ tweet.user.last_name }}</span
-              >
-              <span class="font-light text-sm text-slate-500"
-                >@{{tweet.user.username}}</span
-              >
-              <span class="font-light text-xl text-slate-500 align-middle"
-                >&middot</span
-              >
-              <span class="font-light text-sm text-slate-500">14m</span>
-            </div>
-            {% comment %} vertical ellipses {% endcomment %}
-            <div>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </div>
-          {% comment %} post content {% endcomment %}
-          <div class="text-sm">{{tweet.body}}</div>
-
-          {% comment %} Action buttons {% endcomment %}
-          <div class="flex justify-between pr-16 pt-4">
-            <i class="fa-regular fa-message"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-regular fa-heart"></i>
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-
-  {% comment %} Third column {% endcomment %}
-  <div
-    class="lg:basis-1/4 lg:border-l border-gray-600 lg:flex justify-center"
-  ></div>
 </div>
-
-{% endblock %} {% block 'page-specific-scripts' %}
+{% endfor %} {% endblock %} {% block 'page-specific-scripts' %}
 <script>
   const tx = document.getElementsByTagName("textarea");
   for (let i = 0; i < tx.length; i++) {
