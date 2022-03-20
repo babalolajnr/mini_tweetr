@@ -34,3 +34,6 @@ def login(request):
         return render(request, "user/login.html", {"errors": form.errors})
 
     return render(request, "user/login.html")
+
+def profile(request):
+    pass
