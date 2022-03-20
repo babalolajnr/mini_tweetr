@@ -1,11 +1,15 @@
 {% comment %} Navigation Buttons {% endcomment %}
 <div class="mt-2 ml-10 mr-7 lg:flex lg:flex-col justify-between basis-11/12">
   <div class="text-2xl font-bold">Mini Tweetr</div>
-  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
-    <div class="py-2 pr-7">
-      <i class="fa-solid fa-house"></i><span class="ml-4">Home</span>
+  <a href="{% url 'home' %}">
+    <div
+      class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer"
+    >
+      <div class="py-2 pr-7">
+        <i class="fa-solid fa-house"></i><span class="ml-4">Home</span>
+      </div>
     </div>
-  </div>
+  </a>
   <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
     <div class="py-2 pr-7">
       <i class="fa-solid fa-hashtag"></i><span class="ml-4">Explore</span>
