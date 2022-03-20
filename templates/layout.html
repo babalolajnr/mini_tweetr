@@ -17,7 +17,22 @@
     <title>Mini Tweetr</title>
   </head>
   <body class="dark:bg-gray-800 dark:text-white">
-    {% block content %} {% endblock %} 
+    <div class="lg:flex">
+      {% comment %} First column {% endcomment %}
+      <div
+        class="lg:basis-1/4 lg:border-r h-screen border-gray-600 lg:flex lg:flex-col overflow-y-hidden"
+      >
+        {% include 'components/navigation.html' %}
+      </div>
+      
+      {% comment %} Second column {% endcomment %}
+      <div class="lg:basis-1/2 pb-7">{% block content %}{% endblock %}</div>
+
+      {% comment %} Third column {% endcomment %}
+      <div
+        class="lg:basis-1/4 lg:border-l border-gray-600 lg:flex justify-center"
+      ></div>
+    </div>
     {% block 'page-specific-scripts'%}{%endblock %}
   </body>
 </html>
