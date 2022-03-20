@@ -1,0 +1,71 @@
+{% comment %} Navigation Buttons {% endcomment %}
+<div class="mt-2 ml-10 mr-7 lg:flex lg:flex-col justify-between basis-11/12">
+  <div class="text-2xl font-bold">Mini Tweetr</div>
+  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
+    <div class="py-2 pr-7">
+      <i class="fa-solid fa-house"></i><span class="ml-4">Home</span>
+    </div>
+  </div>
+  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
+    <div class="py-2 pr-7">
+      <i class="fa-solid fa-hashtag"></i><span class="ml-4">Explore</span>
+    </div>
+  </div>
+  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
+    <div class="py-2 pr-7">
+      <i class="fa-solid fa-bell"></i><span class="ml-4">Notifications</span>
+    </div>
+  </div>
+  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
+    <div class="py-2 pr-7">
+      <i class="fa-solid fa-envelope"></i><span class="ml-4">Messages</span>
+    </div>
+  </div>
+  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
+    <div class="py-2 pr-7">
+      <i class="fa-solid fa-bookmark"></i><span class="ml-4">Bookmarks</span>
+    </div>
+  </div>
+  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
+    <div class="py-2 pr-7">
+      <i class="fa-solid fa-list"></i><span class="ml-4">Lists</span>
+    </div>
+  </div>
+  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
+    <div class="py-2 pr-7">
+      <i class="fa-solid fa-user"></i><span class="ml-4">Profile</span>
+    </div>
+  </div>
+  <div class="text-xl pl-5 hover:bg-gray-700 w-fit rounded-full cursor-pointer">
+    <div class="py-2 pr-7">
+      <i class="fa-solid fa-ellipsis"></i><span class="ml-4">More</span>
+    </div>
+  </div>
+  <div class="mr-5">
+    <button
+      class="bg-yellow-400 rounded-full h-14 w-full group hover:opacity-80"
+      type="submit"
+    >
+      <span class="font-bold text-white text-sm">Tweet</span>
+    </button>
+  </div>
+</div>
+
+{% comment %} Account Actions {% endcomment %}
+<div class="ml-10 mr-5 mt-8 mb-4 hover:bg-gray-700 rounded-full cursor-pointer">
+  <div class="flex px-3 py-2 justify-between">
+    <div class="flex">
+      <div class="h-10 w-10 rounded-full">
+        {% load static %}
+        <img src="{% static 'images/' %}{{request.user.avatar}}" alt="" />
+      </div>
+      <div class="flex flex-col pl-2">
+        <span class="font-bold text-sm">Abdulqudduus</span>
+        <span class="font-light text-sm text-slate-500">@babalolajnr</span>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <i class="fa-solid fa-ellipsis"></i>
+    </div>
+  </div>
+</div>
