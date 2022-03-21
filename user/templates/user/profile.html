@@ -1,7 +1,7 @@
 {% extends 'layout.html' %} {% block content %}
 <div class="lg:flex lg:flex-col">
   {% comment %} Title Bar {% endcomment %}
-  <section class="lg:flex mx-6 mt-3">
+  <section class="lg:flex mx-6 mt-2">
     <div class="lg:flex items-center">
       <i class="fa-solid fa-arrow-left"></i>
     </div>
@@ -65,6 +65,43 @@
         <span class="pl-4"
           >86<span class="text-slate-500 pl-1">Followers</span></span
         >
+      </div>
+    </div>
+  </section>
+  {% comment %} Tab Controls {% endcomment %}
+  <section class="mt-7">
+    <div class="flex justify-between h-14 cursor-pointer">
+      <div
+        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
+      >
+        <div class="flex items-center justify-center basis-11/12">
+          <span class="font-bold text-sm"> Tweets </span>
+        </div>
+        <div class="w-16 h-1 bg-yellow-400 rounded-full"></div>
+      </div>
+      <div
+        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
+      >
+        <div class="flex items-center justify-center basis-11/12">
+          <span class="font-bold text-sm"> Tweet & Replies </span>
+        </div>
+        {% comment %} <div class="w-16 h-1 bg-yellow-400 rounded-full"></div> {% endcomment %}
+      </div>
+      <div
+        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
+      >
+        <div class="flex items-center justify-center basis-11/12">
+          <span class="font-bold text-sm"> Media </span>
+        </div>
+        {% comment %} <div class="w-16 h-1 bg-yellow-400 rounded-full"></div> {% endcomment %}
+      </div>
+      <div
+        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
+      >
+        <div class="flex items-center justify-center basis-11/12">
+          <span class="font-bold text-sm"> Likes </span>
+        </div>
+        {% comment %} <div class="w-16 h-1 bg-yellow-400 rounded-full"></div> {% endcomment %}
       </div>
     </div>
   </section>
