@@ -1,16 +1,28 @@
 {% extends 'layout.html' %} {% block content %}
-<div class="lg:flex lg:flex-col mx-6 mt-3">
+<div class="lg:flex lg:flex-col">
   {% comment %} Title Bar {% endcomment %}
-  <div class="lg:flex">
+  <div class="lg:flex mx-6 mt-3">
     <div class="lg:flex items-center">
       <i class="fa-solid fa-arrow-left"></i>
     </div>
-    <div class="pl-8 flex flex-col">
+    <div class="pl-10 flex flex-col pb-2">
       <span class="font-bold text-lg">Abdulqudduus</span>
       <span class="text-slate-500 text-xs -mt-1">397 Tweets</span>
     </div>
   </div>
-  
+  {% comment %} Header photo {% endcomment %}
+  <div class="h-56 w-full bg-slate-100"></div>
+  {% comment %} Profile photo {% endcomment %}
+  <div class="mx-6 flex justify-between">
+    <div class="h-32 w-32 rounded-full bg-red-600 -mt-16"></div>
+    <div class="mt-3">
+      <button
+        class="hover:bg-gray-500 hover:bg-opacity-20 border w-28 text-sm font-bold h-9 border-gray-600 rounded-full"
+      >
+        Edit profile
+      </button>
+    </div>
+  </div>
 </div>
 {% endblock %} {% block 'page-specific-scripts' %}
 <script></script>
