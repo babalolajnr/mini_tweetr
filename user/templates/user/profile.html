@@ -1,5 +1,17 @@
 {% extends 'layout.html' %} {% block content %}
-<h1>Profile</h1>
+<div class="lg:flex lg:flex-col mx-6 mt-3">
+  {% comment %} Title Bar {% endcomment %}
+  <div class="lg:flex">
+    <div class="lg:flex items-center">
+      <i class="fa-solid fa-arrow-left"></i>
+    </div>
+    <div class="pl-8 flex flex-col">
+      <span class="font-bold text-lg">Abdulqudduus</span>
+      <span class="text-slate-500 text-xs -mt-1">397 Tweets</span>
+    </div>
+  </div>
+  
+</div>
 {% endblock %} {% block 'page-specific-scripts' %}
 <script></script>
 {% endblock %}
