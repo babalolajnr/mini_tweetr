@@ -4,11 +4,9 @@ from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-
 from .forms import LoginForm
 from .models import User
-
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
 
 def login(request):
@@ -35,5 +33,8 @@ def login(request):
 
     return render(request, "user/login.html")
 
+
+@login_required
 def profile(request):
+    return render(request, "user/profile.html")
     pass
