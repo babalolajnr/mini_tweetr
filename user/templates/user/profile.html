@@ -75,41 +75,35 @@
     <div class="flex justify-between h-14 cursor-pointer">
       <div
         class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
+        id="tweets-tab"
       >
         <div class="flex items-center justify-center basis-11/12">
           <span class="font-bold text-sm"> Tweets </span>
         </div>
-        <div class="w-16 h-1 bg-yellow-400 rounded-full"></div>
       </div>
       <div
         class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
+        id="tweets-and-replies-tab"
       >
         <div class="flex items-center justify-center basis-11/12">
           <span class="font-bold text-sm"> Tweet & Replies </span>
         </div>
-        {% comment %}
-        <div class="w-16 h-1 bg-yellow-400 rounded-full"></div>
-        {% endcomment %}
       </div>
       <div
+        id="media-tab"
         class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
       >
         <div class="flex items-center justify-center basis-11/12">
           <span class="font-bold text-sm"> Media </span>
         </div>
-        {% comment %}
-        <div class="w-16 h-1 bg-yellow-400 rounded-full"></div>
-        {% endcomment %}
       </div>
       <div
+        id="likes-tab"
         class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
       >
         <div class="flex items-center justify-center basis-11/12">
           <span class="font-bold text-sm"> Likes </span>
         </div>
-        {% comment %}
-        <div class="w-16 h-1 bg-yellow-400 rounded-full"></div>
-        {% endcomment %}
       </div>
     </div>
   </section>
@@ -293,6 +287,6 @@
     </div>
   </section>
 </div>
-{% endblock %} {% block 'page-specific-scripts' %}
-<script></script>
+{% endblock %} {% block 'page-specific-scripts' %} {% load static %}
+<script src="{% static  'js/profile.js' %}"></script>
 {% endblock %}
