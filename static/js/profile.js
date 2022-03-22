@@ -26,6 +26,7 @@ const activeTabIndicator = parser.parseFromString(activeTabIndicatorString, 'tex
 
 // On page load set tweetsTab as active
 tweetsTab.appendChild(activeTabIndicator)
+tweetsTabView.classList.remove('hidden')
 
 tabs.forEach(element => {
     element.onclick = () => {
