@@ -107,184 +107,189 @@
       </div>
     </div>
   </section>
-  {% comment %} Tab view {% endcomment %}
+  {% comment %} Tabs view {% endcomment %}
   <section>
-    <div class="border-t border-gray-600 pb-4">
-      <div class="flex pt-5 px-10">
-        {% comment %} User Avatar {% endcomment %}
-        <div class="w-10 h-10 rounded-full shrink-0">
-          {% load static %}
-          <img src="{% static 'images/avatar.png' %}" alt="" />
-        </div>
-        <div class="pl-3 grow">
-          {% comment %} username {% endcomment %}
-          <div class="lg:flex justify-between">
-            <div>
-              <span class="font-bold text-sm">Abdulqudduus Babalola</span>
-              <span class="font-light text-sm text-slate-500"
-                >@babalolajnr</span
-              >
-              <span class="font-light text-xl text-slate-500 align-middle"
-                >&middot</span
-              >
-              <span class="font-light text-sm text-slate-500">14m</span>
-            </div>
-            {% comment %} vertical ellipses {% endcomment %}
-            <div>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
+    <div id="tweets-tab-view" class="hidden">
+      <div class="border-t border-gray-600 pb-4">
+        <div class="flex pt-5 px-10">
+          {% comment %} User Avatar {% endcomment %}
+          <div class="w-10 h-10 rounded-full shrink-0">
+            {% load static %}
+            <img src="{% static 'images/avatar.png' %}" alt="" />
           </div>
-          {% comment %} post content {% endcomment %}
-          <div class="text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent
-            semper feugiat nibh sed pulvinar proin gravida hendrerit. Urna et
-            pharetra pharetra massa massa ultricies. Elit ullamcorper dignissim
-            cras tincidul
-          </div>
+          <div class="pl-3 grow">
+            {% comment %} username {% endcomment %}
+            <div class="lg:flex justify-between">
+              <div>
+                <span class="font-bold text-sm">Abdulqudduus Babalola</span>
+                <span class="font-light text-sm text-slate-500"
+                  >@babalolajnr</span
+                >
+                <span class="font-light text-xl text-slate-500 align-middle"
+                  >&middot</span
+                >
+                <span class="font-light text-sm text-slate-500">14m</span>
+              </div>
+              {% comment %} vertical ellipses {% endcomment %}
+              <div>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            </div>
+            {% comment %} post content {% endcomment %}
+            <div class="text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
+              Urna et pharetra pharetra massa massa ultricies. Elit ullamcorper
+              dignissim cras tincidul
+            </div>
 
-          {% comment %} Action buttons {% endcomment %}
-          <div class="flex justify-between pr-16 pt-4">
-            <i class="fa-regular fa-message"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-regular fa-heart"></i>
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            {% comment %} Action buttons {% endcomment %}
+            <div class="flex justify-between pr-16 pt-4">
+              <i class="fa-regular fa-message"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-regular fa-heart"></i>
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-600 pb-4">
+        <div class="flex pt-5 px-10">
+          {% comment %} User Avatar {% endcomment %}
+          <div class="w-10 h-10 rounded-full shrink-0">
+            {% load static %}
+            <img src="{% static 'images/avatar.png' %}" alt="" />
+          </div>
+          <div class="pl-3 grow">
+            {% comment %} username {% endcomment %}
+            <div class="lg:flex justify-between">
+              <div>
+                <span class="font-bold text-sm">Abdulqudduus Babalola</span>
+                <span class="font-light text-sm text-slate-500"
+                  >@babalolajnr</span
+                >
+                <span class="font-light text-xl text-slate-500 align-middle"
+                  >&middot</span
+                >
+                <span class="font-light text-sm text-slate-500">14m</span>
+              </div>
+              {% comment %} vertical ellipses {% endcomment %}
+              <div>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            </div>
+            {% comment %} post content {% endcomment %}
+            <div class="text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
+              Urna et pharetra pharetra massa massa ultricies. Elit ullamcorper
+              dignissim cras tincidul
+            </div>
+
+            {% comment %} Action buttons {% endcomment %}
+            <div class="flex justify-between pr-16 pt-4">
+              <i class="fa-regular fa-message"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-regular fa-heart"></i>
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-600 pb-4">
+        <div class="flex pt-5 px-10">
+          {% comment %} User Avatar {% endcomment %}
+          <div class="w-10 h-10 rounded-full shrink-0">
+            {% load static %}
+            <img src="{% static 'images/avatar.png' %}" alt="" />
+          </div>
+          <div class="pl-3 grow">
+            {% comment %} username {% endcomment %}
+            <div class="lg:flex justify-between">
+              <div>
+                <span class="font-bold text-sm">Abdulqudduus Babalola</span>
+                <span class="font-light text-sm text-slate-500"
+                  >@babalolajnr</span
+                >
+                <span class="font-light text-xl text-slate-500 align-middle"
+                  >&middot</span
+                >
+                <span class="font-light text-sm text-slate-500">14m</span>
+              </div>
+              {% comment %} vertical ellipses {% endcomment %}
+              <div>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            </div>
+            {% comment %} post content {% endcomment %}
+            <div class="text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
+              Urna et pharetra pharetra massa massa ultricies. Elit ullamcorper
+              dignissim cras tincidul
+            </div>
+
+            {% comment %} Action buttons {% endcomment %}
+            <div class="flex justify-between pr-16 pt-4">
+              <i class="fa-regular fa-message"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-regular fa-heart"></i>
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-600 pb-4">
+        <div class="flex pt-5 px-10">
+          {% comment %} User Avatar {% endcomment %}
+          <div class="w-10 h-10 rounded-full shrink-0">
+            {% load static %}
+            <img src="{% static 'images/avatar.png' %}" alt="" />
+          </div>
+          <div class="pl-3 grow">
+            {% comment %} username {% endcomment %}
+            <div class="lg:flex justify-between">
+              <div>
+                <span class="font-bold text-sm">Abdulqudduus Babalola</span>
+                <span class="font-light text-sm text-slate-500"
+                  >@babalolajnr</span
+                >
+                <span class="font-light text-xl text-slate-500 align-middle"
+                  >&middot</span
+                >
+                <span class="font-light text-sm text-slate-500">14m</span>
+              </div>
+              {% comment %} vertical ellipses {% endcomment %}
+              <div>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            </div>
+            {% comment %} post content {% endcomment %}
+            <div class="text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
+              Urna et pharetra pharetra massa massa ultricies. Elit ullamcorper
+              dignissim cras tincidul
+            </div>
+
+            {% comment %} Action buttons {% endcomment %}
+            <div class="flex justify-between pr-16 pt-4">
+              <i class="fa-regular fa-message"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-regular fa-heart"></i>
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="border-t border-gray-600 pb-4">
-      <div class="flex pt-5 px-10">
-        {% comment %} User Avatar {% endcomment %}
-        <div class="w-10 h-10 rounded-full shrink-0">
-          {% load static %}
-          <img src="{% static 'images/avatar.png' %}" alt="" />
-        </div>
-        <div class="pl-3 grow">
-          {% comment %} username {% endcomment %}
-          <div class="lg:flex justify-between">
-            <div>
-              <span class="font-bold text-sm">Abdulqudduus Babalola</span>
-              <span class="font-light text-sm text-slate-500"
-                >@babalolajnr</span
-              >
-              <span class="font-light text-xl text-slate-500 align-middle"
-                >&middot</span
-              >
-              <span class="font-light text-sm text-slate-500">14m</span>
-            </div>
-            {% comment %} vertical ellipses {% endcomment %}
-            <div>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </div>
-          {% comment %} post content {% endcomment %}
-          <div class="text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent
-            semper feugiat nibh sed pulvinar proin gravida hendrerit. Urna et
-            pharetra pharetra massa massa ultricies. Elit ullamcorper dignissim
-            cras tincidul
-          </div>
-
-          {% comment %} Action buttons {% endcomment %}
-          <div class="flex justify-between pr-16 pt-4">
-            <i class="fa-regular fa-message"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-regular fa-heart"></i>
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="border-t border-gray-600 pb-4">
-      <div class="flex pt-5 px-10">
-        {% comment %} User Avatar {% endcomment %}
-        <div class="w-10 h-10 rounded-full shrink-0">
-          {% load static %}
-          <img src="{% static 'images/avatar.png' %}" alt="" />
-        </div>
-        <div class="pl-3 grow">
-          {% comment %} username {% endcomment %}
-          <div class="lg:flex justify-between">
-            <div>
-              <span class="font-bold text-sm">Abdulqudduus Babalola</span>
-              <span class="font-light text-sm text-slate-500"
-                >@babalolajnr</span
-              >
-              <span class="font-light text-xl text-slate-500 align-middle"
-                >&middot</span
-              >
-              <span class="font-light text-sm text-slate-500">14m</span>
-            </div>
-            {% comment %} vertical ellipses {% endcomment %}
-            <div>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </div>
-          {% comment %} post content {% endcomment %}
-          <div class="text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent
-            semper feugiat nibh sed pulvinar proin gravida hendrerit. Urna et
-            pharetra pharetra massa massa ultricies. Elit ullamcorper dignissim
-            cras tincidul
-          </div>
-
-          {% comment %} Action buttons {% endcomment %}
-          <div class="flex justify-between pr-16 pt-4">
-            <i class="fa-regular fa-message"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-regular fa-heart"></i>
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="border-t border-gray-600 pb-4">
-      <div class="flex pt-5 px-10">
-        {% comment %} User Avatar {% endcomment %}
-        <div class="w-10 h-10 rounded-full shrink-0">
-          {% load static %}
-          <img src="{% static 'images/avatar.png' %}" alt="" />
-        </div>
-        <div class="pl-3 grow">
-          {% comment %} username {% endcomment %}
-          <div class="lg:flex justify-between">
-            <div>
-              <span class="font-bold text-sm">Abdulqudduus Babalola</span>
-              <span class="font-light text-sm text-slate-500"
-                >@babalolajnr</span
-              >
-              <span class="font-light text-xl text-slate-500 align-middle"
-                >&middot</span
-              >
-              <span class="font-light text-sm text-slate-500">14m</span>
-            </div>
-            {% comment %} vertical ellipses {% endcomment %}
-            <div>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </div>
-          {% comment %} post content {% endcomment %}
-          <div class="text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent
-            semper feugiat nibh sed pulvinar proin gravida hendrerit. Urna et
-            pharetra pharetra massa massa ultricies. Elit ullamcorper dignissim
-            cras tincidul
-          </div>
-
-          {% comment %} Action buttons {% endcomment %}
-          <div class="flex justify-between pr-16 pt-4">
-            <i class="fa-regular fa-message"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-regular fa-heart"></i>
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="tweets-and-replies-tab-view" class="hidden"></div>
+    <div id="likes-tab-view" class="hidden"></div>
+    <div id="media-tab-view" class="hidden"></div>
   </section>
 </div>
 {% endblock %} {% block 'page-specific-scripts' %} {% load static %}
