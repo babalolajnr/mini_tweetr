@@ -1,4 +1,5 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %}
+{% block content %}
 <div class="lg:flex lg:flex-col">
   {% comment %} Title Bar {% endcomment %}
   <section class="sticky top-0 bg-gray-800 bg-opacity-75 backdrop-blur-sm">
@@ -7,27 +8,26 @@
         <i class="fa-solid fa-arrow-left"></i>
       </div>
       <div class="pl-10 flex flex-col pb-2">
-        <span class="font-bold text-lg">Abdulqudduus</span>
-        <span class="text-slate-500 text-xs -mt-1">397 Tweets</span>
+        <span class="font-bold text-lg">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+        <span class="text-slate-500 text-xs -mt-1">{{ count_tweets }} Tweets</span>
       </div>
     </div>
-  </section>  
+  </section>
   {% comment %} Header photo {% endcomment %}
   {% load static %}
-  <section class="h-56 w-full bg-cover" style="background-image: url({% static 'images/nature.jpg' %})"></section>
+  <section class="h-56 w-full bg-cover" style="background-image: url({% static 'images/nature.jpg' %})">
+  </section>
   {% comment %} Profile photo {% endcomment %}
   <section class="mx-6 flex justify-between">
     {% load static %}
-    <div
-      class="h-32 w-32 rounded-full -mt-16 bg-cover border-4 border-gray-800"
-      style="background-image: url({% static 'images/cat.jpg' %})"
-    ></div>
+    <div class="h-32 w-32 rounded-full -mt-16 bg-cover border-4 border-gray-800"
+      style="background-image: url({% static'images/cat.jpg' %})">
+    </div>
     <div class="mt-3">
       <button
-        class="hover:bg-gray-500 hover:bg-opacity-20 border w-28 text-sm font-bold h-9 border-gray-600 rounded-full"
-      >
+        class="hover:bg-gray-500 hover:bg-opacity-20 border w-28 text-sm font-bold h-9 border-gray-600 rounded-full">
         Edit profile
-      </button>
+         </button>
     </div>
   </section>
   {% comment %} Info section {% endcomment %}
@@ -41,11 +41,9 @@
       </div>
       <div class="mt-3">
         {% comment %} Bio (Max 160 chars) {% endcomment %}
-        <span class=""
-          >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent
-          semper feugiat nibh sed pul</span
-        >
+          semper feugiat nibh sed pul</span>
       </div>
       {% comment %} Other info {% endcomment %}
       <div class="mt-3 flex text-slate-500 mr-20 justify-between text-sm">
@@ -69,45 +67,35 @@
       {% comment %} Follow info {% endcomment %}
       <div class="mt-3 text-sm">
         <span>249<span class="text-slate-500 pl-1">Following</span></span>
-        <span class="pl-4"
-          >86<span class="text-slate-500 pl-1">Followers</span></span
-        >
+        <span class="pl-4">86<span class="text-slate-500 pl-1">Followers</span></span>
       </div>
     </div>
   </section>
   {% comment %} Tab Controls {% endcomment %}
   <section class="mt-7">
     <div class="flex justify-between h-14 cursor-pointer">
-      <div
-        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
-        id="tweets-tab"
-      >
+      <div class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
+        id="tweets-tab">
         <div class="flex items-center justify-center basis-11/12">
-          <span class="font-bold text-sm"> Tweets </span>
+          <span class="font-bold text-sm">Tweets</span>
         </div>
       </div>
-      <div
-        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
-        id="tweets-and-replies-tab"
-      >
+      <div class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
+        id="tweets-and-replies-tab">
         <div class="flex items-center justify-center basis-11/12">
-          <span class="font-bold text-sm"> Tweet & Replies </span>
+          <span class="font-bold text-sm">Tweet & Replies</span>
         </div>
       </div>
-      <div
-        id="media-tab"
-        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
-      >
+      <div id="media-tab"
+        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between">
         <div class="flex items-center justify-center basis-11/12">
-          <span class="font-bold text-sm"> Media </span>
+          <span class="font-bold text-sm">Media</span>
         </div>
       </div>
-      <div
-        id="likes-tab"
-        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
-      >
+      <div id="likes-tab"
+        class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between">
         <div class="flex items-center justify-center basis-11/12">
-          <span class="font-bold text-sm"> Likes </span>
+          <span class="font-bold text-sm">Likes</span>
         </div>
       </div>
     </div>
@@ -119,19 +107,16 @@
         <div class="flex pt-5 px-10">
           {% comment %} User Avatar {% endcomment %}
           {% load static %}
-          <div class="w-14 h-14 rounded-full shrink-0 bg-cover" style="background-image: url({% static 'images/cat.jpg' %})">
+          <div class="w-14 h-14 rounded-full shrink-0 bg-cover"
+            style="background-image: url({% static'images/cat.jpg' %})">
           </div>
           <div class="pl-3 grow">
             {% comment %} username {% endcomment %}
             <div class="lg:flex justify-between">
               <div>
                 <span class="font-bold text-sm">Abdulqudduus Babalola</span>
-                <span class="font-light text-sm text-slate-500"
-                  >@babalolajnr</span
-                >
-                <span class="font-light text-xl text-slate-500 align-middle"
-                  >&middot</span
-                >
+                <span class="font-light text-sm text-slate-500">@babalolajnr</span>
+                <span class="font-light text-xl text-slate-500 align-middle">&middot</span>
                 <span class="font-light text-sm text-slate-500">14m</span>
               </div>
               {% comment %} vertical ellipses {% endcomment %}
@@ -147,7 +132,6 @@
               Urna et pharetra pharetra massa massa ultricies. Elit ullamcorper
               dignissim cras tincidul
             </div>
-
             {% comment %} Action buttons {% endcomment %}
             <div class="flex justify-between pr-16 pt-4">
               <i class="fa-regular fa-message"></i>
@@ -158,141 +142,18 @@
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-600 pb-4">
-        <div class="flex pt-5 px-10">
-          {% comment %} User Avatar {% endcomment %}
-          {% load static %}
-          <div class="w-14 h-14 rounded-full shrink-0 bg-cover" style="background-image: url({% static 'images/cat.jpg' %})">
-          </div>
-          <div class="pl-3 grow">
-            {% comment %} username {% endcomment %}
-            <div class="lg:flex justify-between">
-              <div>
-                <span class="font-bold text-sm">Abdulqudduus Babalola</span>
-                <span class="font-light text-sm text-slate-500"
-                  >@babalolajnr</span
-                >
-                <span class="font-light text-xl text-slate-500 align-middle"
-                  >&middot</span
-                >
-                <span class="font-light text-sm text-slate-500">14m</span>
-              </div>
-              {% comment %} vertical ellipses {% endcomment %}
-              <div>
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
-            </div>
-            {% comment %} post content {% endcomment %}
-            <div class="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
-              Urna et pharetra pharetra massa massa ultricies. Elit ullamcorper
-              dignissim cras tincidul
-            </div>
-
-            {% comment %} Action buttons {% endcomment %}
-            <div class="flex justify-between pr-16 pt-4">
-              <i class="fa-regular fa-message"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-arrow-up-from-bracket"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="border-t border-gray-600 pb-4">
-        <div class="flex pt-5 px-10">
-          {% comment %} User Avatar {% endcomment %}
-          {% load static %}
-          <div class="w-14 h-14 rounded-full shrink-0 bg-cover" style="background-image: url({% static 'images/cat.jpg' %})">
-          </div>
-          <div class="pl-3 grow">
-            {% comment %} username {% endcomment %}
-            <div class="lg:flex justify-between">
-              <div>
-                <span class="font-bold text-sm">Abdulqudduus Babalola</span>
-                <span class="font-light text-sm text-slate-500"
-                  >@babalolajnr</span
-                >
-                <span class="font-light text-xl text-slate-500 align-middle"
-                  >&middot</span
-                >
-                <span class="font-light text-sm text-slate-500">14m</span>
-              </div>
-              {% comment %} vertical ellipses {% endcomment %}
-              <div>
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
-            </div>
-            {% comment %} post content {% endcomment %}
-            <div class="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
-              Urna et pharetra pharetra massa massa ultricies. Elit ullamcorper
-              dignissim cras tincidul
-            </div>
-
-            {% comment %} Action buttons {% endcomment %}
-            <div class="flex justify-between pr-16 pt-4">
-              <i class="fa-regular fa-message"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-arrow-up-from-bracket"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="border-t border-gray-600 pb-4">
-        <div class="flex pt-5 px-10">
-          {% comment %} User Avatar {% endcomment %}
-          {% load static %}
-          <div class="w-14 h-14 rounded-full shrink-0 bg-cover" style="background-image: url({% static 'images/cat.jpg' %})">
-          </div>
-          <div class="pl-3 grow">
-            {% comment %} username {% endcomment %}
-            <div class="lg:flex justify-between">
-              <div>
-                <span class="font-bold text-sm">Abdulqudduus Babalola</span>
-                <span class="font-light text-sm text-slate-500"
-                  >@babalolajnr</span
-                >
-                <span class="font-light text-xl text-slate-500 align-middle"
-                  >&middot</span
-                >
-                <span class="font-light text-sm text-slate-500">14m</span>
-              </div>
-              {% comment %} vertical ellipses {% endcomment %}
-              <div>
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
-            </div>
-            {% comment %} post content {% endcomment %}
-            <div class="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.
-              Urna et pharetra pharetra massa massa ultricies. Elit ullamcorper
-              dignissim cras tincidul
-            </div>
-
-            {% comment %} Action buttons {% endcomment %}
-            <div class="flex justify-between pr-16 pt-4">
-              <i class="fa-regular fa-message"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-arrow-up-from-bracket"></i>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </div>
-    <div id="tweets-and-replies-tab-view" class="hidden"></div>
-    <div id="likes-tab-view" class="hidden"></div>
-    <div id="media-tab-view" class="hidden"></div>
+    <div id="tweets-and-replies-tab-view" class="hidden">
+    </div>
+    <div id="likes-tab-view" class="hidden">
+    </div>
+    <div id="media-tab-view" class="hidden">
+    </div>
   </section>
 </div>
-{% endblock %} {% block 'page-specific-scripts' %} {% load static %}
+{% endblock %}
+{% block 'page-specific-scripts' %}
+{% load static %}
 <script src="{% static  'js/profile.js' %}"></script>
 {% endblock %}
