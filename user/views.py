@@ -4,6 +4,8 @@ from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
+from tweet.models import Tweet
+
 from .forms import LoginForm
 from .models import User
 from django.contrib.auth.decorators import login_required
@@ -36,5 +38,9 @@ def login(request):
 
 @login_required
 def profile(request):
-    return render(request, "user/profile.html")
-    pass
+    user = request.user
+    tweets = Tweet.objects.filter(user=user)
+    count_tweets = tweets.count()
+    # return HttpResponse(count_tweets)
+
+    return render(request, "user/profile.html", {tweets: tweets, count_tweets: count_tweets})
