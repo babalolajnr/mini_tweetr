@@ -41,6 +41,6 @@ def profile(request):
     user = request.user
     tweets = Tweet.objects.filter(user=user)
     count_tweets = tweets.count()
-    # return HttpResponse(count_tweets)
+    # return HttpResponse(tweets)
 
-    return render(request, "user/profile.html", {tweets: tweets, count_tweets: count_tweets})
+    return render(request, "user/profile.html", {"tweets": tweets, "count_tweets": count_tweets})
