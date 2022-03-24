@@ -24,7 +24,7 @@
       style="background-image: url({% static 'images/cat.jpg' %})">
     </div>
     <div class="mt-3">
-      <button
+      <button id="edit-profile"
         class="hover:bg-gray-500 hover:bg-opacity-20 border w-28 text-sm font-bold h-9 border-gray-600 rounded-full">
         Edit profile
       </button>
@@ -149,7 +149,7 @@
     </div>
   </section>
 </div>
-{% include 'components/modal.html' %}
+{% include 'components/edit-profile-modal.html' %}
 {% endblock %}
 {% block 'page-specific-scripts' %}
 {% load static %}
