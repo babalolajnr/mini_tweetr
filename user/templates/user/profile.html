@@ -35,9 +35,9 @@
     <div class="flex flex-col">
       <div class="flex flex-col">
         {% comment %} Name {% endcomment %}
-        <span class="font-bold text-xl">Abdulqudduus</span>
+        <span class="font-bold text-xl">{{ user.first_name }} {{ user.last_name }}</span>
         {% comment %} Username {% endcomment %}
-        <span class="text-slate-500 text-sm">@babalolajnr</span>
+        <span class="text-slate-500 text-sm">@{{user.username}}</span>
       </div>
       <div class="mt-3">
         {% comment %} Bio (Max 160 chars) {% endcomment %}
@@ -140,7 +140,6 @@
         </div>
       </div>
       {% endfor %}
-
     </div>
     <div id="tweets-and-replies-tab-view" class="hidden">
     </div>
@@ -150,6 +149,7 @@
     </div>
   </section>
 </div>
+{% include 'components/modal.html' %}
 {% endblock %}
 {% block 'page-specific-scripts' %}
 {% load static %}
