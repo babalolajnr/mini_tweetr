@@ -1,11 +1,17 @@
-<div id="edit-profile-modal" class="fixed top-0 left-0 bg-gray-600 w-screen h-screen bg-opacity-50 transition justify-center items-center hidden">
+<div id="edit-profile-modal"
+    class="fixed top-0 left-0 bg-gray-600 w-screen h-screen bg-opacity-50 transition justify-center items-center flex">
     <div class="h-[38rem] w-[40rem] bg-gray-800 rounded-3xl overflow-auto">
         <div class="pb-3 sticky top-0 pt-3 bg-gray-800 bg-opacity-75 backdrop-blur-sm">
             <div class="mx-4 flex justify-between items-center">
-                <div class="text-lg">
-                    <i class="fa-solid fa-xmark font-thin"></i>
+                {% comment %} Close button {% endcomment %}
+                <div class="text-lg flex">
+                    <span
+                        class="h-8 w-8 hover:bg-gray-700 hover:bg-opacity-80 flex justify-center items-center rounded-full">
+                        <i class="fa-solid fa-xmark font-thin"></i>
+                    </span>
                     <span class="pl-9 font-bold">Edit Profile</span>
                 </div>
+                {% comment %} Save button {% endcomment %}
                 <div>
                     <button
                         class="hover:bg-opacity-90 border w-20 text-sm font-bold h-8 bg-slate-100 rounded-full text-slate-900">Save</button>
