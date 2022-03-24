@@ -2,6 +2,8 @@ const tweetsTab = document.getElementById('tweets-tab')
 const tweetsAndRepliesTab = document.getElementById('tweets-and-replies-tab');
 const likesTab = document.getElementById('likes-tab');
 const mediaTab = document.getElementById('media-tab');
+const editProfile = document.getElementById('edit-profile')
+const editProfileModal = document.getElementById('edit-profile-modal')
 
 const tweetsTabView = document.getElementById('tweets-tab-view');
 const tweetsAndRepliesTabView = document.getElementById('tweets-and-replies-tab-view')
@@ -45,3 +47,9 @@ tabs.forEach(element => {
         })
     }
 });
+
+// Display edit modal
+editProfile.onclick = () => {
+    editProfileModal.classList.remove('hidden')
+    editProfileModal.classList.add('flex')
+}
