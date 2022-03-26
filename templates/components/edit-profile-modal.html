@@ -26,22 +26,25 @@
             <div class="h-28 w-28 rounded-full -mt-14 bg-cover border-4 border-gray-800"
                 style="background-image: url({% static 'images/cat.jpg' %})">
             </div>
-            <form action="{% url 'save_profile' %}" id="profile-form">
+            <form action="{% url 'save_profile' %}" id="profile-form" method="post">
                 {% csrf_token %}
                 <div
                     class="group mt-5 w-full border border-gray-500 rounded-md focus-within:border-2 transition focus-within:border-yellow-400">
                     <div class="mx-2 mb-2">
-                        <label for="Name"
-                            class="text-sm text-gray-500 group-focus-within:text-yellow-400">First name</label><br>
+                        <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">First
+                            name</label><br>
                         <input type="text" name="first_name" id="" class="w-full bg-transparent focus:outline-none">
+                        <span class="text-sm text-red-600">{{ errors.first_name }}</span>
                     </div>
                 </div>
                 <div
                     class="group mt-5 w-full border border-gray-500 rounded-md focus-within:border-2 transition focus-within:border-yellow-400">
                     <div class="mx-2 mb-2">
-                        <label for="Name"
-                            class="text-sm text-gray-500 group-focus-within:text-yellow-400">Last name</label><br>
+                        <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">Last
+                            name</label><br>
                         <input type="text" name="last_name" id="" class="w-full bg-transparent focus:outline-none">
+                        <span class="text-sm text-red-600">{{ errors.last_name }}</span>
+
                     </div>
                 </div>
                 <div
@@ -51,6 +54,7 @@
                             class="text-sm text-gray-500 group-focus-within:text-yellow-400">Bio</label><br>
                         <textarea type="text" name="bio" id=""
                             class="w-full bg-transparent focus:outline-none resize-none"></textarea>
+                        <span class="text-sm text-red-600">{{ errors.bio }}</span>
                     </div>
                 </div>
                 <div
@@ -59,6 +63,7 @@
                         <label for="Name"
                             class="text-sm text-gray-500 group-focus-within:text-yellow-400">Location</label><br>
                         <input type="text" name="location" id="" class="w-full bg-transparent focus:outline-none">
+                        <span class="text-sm text-red-600">{{ errors.location }}</span>
                     </div>
                 </div>
                 <div
@@ -67,6 +72,7 @@
                         <label for="Name"
                             class="text-sm text-gray-500 group-focus-within:text-yellow-400">Website</label><br>
                         <input type="text" name="website" id="" class="w-full bg-transparent focus:outline-none">
+                        <span class="text-sm text-red-600">{{ errors.website }}</span>
                     </div>
                 </div>
             </form>
