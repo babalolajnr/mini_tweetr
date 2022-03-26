@@ -6,7 +6,7 @@ from django.contrib import messages
 
 from tweet.models import Tweet
 
-from .forms import LoginForm
+from .forms import LoginForm, ProfileForm
 from .models import User
 from django.contrib.auth.decorators import login_required
 
@@ -43,4 +43,35 @@ def profile(request):
     count_tweets = tweets.count()
     # return HttpResponse(tweets)
 
-    return render(request, "user/profile.html", {"tweets": tweets, "count_tweets": count_tweets})
+    return render(
+        request, "user/profile.html", {"tweets": tweets, "count_tweets": count_tweets}
+    )
+
+
+@login_required
+def save_profile(request):
+
+    if request.method != "POST":
+        return render(request, "user/profile.html")
+
+    form = ProfileForm(request.POST)
+
+    if not form.is_valid():
+        return render(request, "user/profile.html", {"errors": form.errors})
+
+    first_name = form.cleaned_data["first_name"]
+    last_name = form.cleaned_data["last_name"]
+    bio = form.cleaned_data["bio"]
+    website = form.cleaned_data["website"]
+    location = form.cleaned_data["location"]
+
+    user = request.user
+    user.first_name = first_name
+    user.last_name = last_name
+    user.save()
+
+    messages.success(request, "User details updated")
+    return render(request, "user/profile.html")
+
+    # return HttpResponse([first_name, last_name, bio, website, location])
+    # return HttpResponse("Hey!!!")
