@@ -48,3 +48,14 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
+class Profile(models.Model):
+    header_photo = models.ImageField(null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    location = models.TextField(null=True, blank=True)
+    website = models.TextField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+
+    user = models.ForeignKey(User, related_name="profile", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
