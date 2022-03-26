@@ -16,3 +16,9 @@ document.getElementById('edit-profile-modal').onclick = e => {
         editProfileModal.classList.add('hidden')
     }
 }
+
+const saveButton = document.getElementById('save')
+const profileForm = document.getElementById('profile-form')
+save.onclick = () => {
+    profileForm.submit()
+}
