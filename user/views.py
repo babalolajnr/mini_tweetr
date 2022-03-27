@@ -42,8 +42,13 @@ def profile(request):
     tweets = Tweet.objects.filter(user=user)
     count_tweets = tweets.count()
 
+    try:
+        profile = Profile.objects.get(user=user)
+    except Profile.DoesNotExist:
+        profile = None
+
     return render(
-        request, "user/profile.html", {"tweets": tweets, "count_tweets": count_tweets}
+        request, "user/profile.html", {"tweets": tweets, "count_tweets": count_tweets, "profile": profile}
     )
 
 
