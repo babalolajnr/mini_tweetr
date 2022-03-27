@@ -33,7 +33,8 @@
                     <div class="mx-2 mb-2">
                         <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">First
                             name</label><br>
-                        <input type="text" name="first_name" id="" class="w-full bg-transparent focus:outline-none">
+                        <input type="text" name="first_name" id="" class="w-full bg-transparent focus:outline-none"
+                            value="{{request.user.first_name}}">
                         <span class="text-sm text-red-600">{{ errors.first_name }}</span>
                     </div>
                 </div>
@@ -42,7 +43,8 @@
                     <div class="mx-2 mb-2">
                         <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">Last
                             name</label><br>
-                        <input type="text" name="last_name" id="" class="w-full bg-transparent focus:outline-none">
+                        <input type="text" name="last_name" id="" class="w-full bg-transparent focus:outline-none"
+                            value="{{request.user.last_name}}">
                         <span class="text-sm text-red-600">{{ errors.last_name }}</span>
 
                     </div>
@@ -53,7 +55,7 @@
                         <label for="Name"
                             class="text-sm text-gray-500 group-focus-within:text-yellow-400">Bio</label><br>
                         <textarea type="text" name="bio" id=""
-                            class="w-full bg-transparent focus:outline-none resize-none"></textarea>
+                            class="w-full bg-transparent focus:outline-none resize-none">{{request.user.profile.bio}}</textarea>
                         <span class="text-sm text-red-600">{{ errors.bio }}</span>
                     </div>
                 </div>
@@ -62,7 +64,8 @@
                     <div class="mx-2 mb-2">
                         <label for="Name"
                             class="text-sm text-gray-500 group-focus-within:text-yellow-400">Location</label><br>
-                        <input type="text" name="location" id="" class="w-full bg-transparent focus:outline-none">
+                        <input type="text" name="location" id="" value="{{request.user.profile.location}}"
+                            class="w-full bg-transparent focus:outline-none">
                         <span class="text-sm text-red-600">{{ errors.location }}</span>
                     </div>
                 </div>
@@ -71,7 +74,8 @@
                     <div class="mx-2 mb-2">
                         <label for="Name"
                             class="text-sm text-gray-500 group-focus-within:text-yellow-400">Website</label><br>
-                        <input type="text" name="website" id="" class="w-full bg-transparent focus:outline-none">
+                        <input type="text" name="website" id="" value="{{request.user.profile.website}}"
+                            class="w-full bg-transparent focus:outline-none">
                         <span class="text-sm text-red-600">{{ errors.website }}</span>
                     </div>
                 </div>
