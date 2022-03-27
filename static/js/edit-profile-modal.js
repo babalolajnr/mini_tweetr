@@ -22,3 +22,20 @@ const profileForm = document.getElementById('profile-form')
 save.onclick = () => {
     profileForm.submit()
 }
+
+const firstNameInput = document.getElementById("first-name-input")
+const firstNameInputCount = document.getElementById("first-name-input-count")
+const firstNameInputMax = document.getElementById("first-name-input-max")
+
+let firstNameInputLength = firstNameInput.value.length
+const firstNameInputMaxLength = 25
+
+firstNameInput.setAttribute('maxlength', firstNameInputMaxLength)
+
+firstNameInputCount.innerText = firstNameInputLength
+firstNameInputMax.innerText = firstNameInputMaxLength
+
+firstNameInput.oninput = function () {
+    firstNameInputLength = this.value.length
+    firstNameInputCount.innerText = firstNameInputLength
+}
