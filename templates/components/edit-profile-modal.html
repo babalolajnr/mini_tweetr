@@ -14,7 +14,7 @@
                 {% comment %} Save button {% endcomment %}
                 <div>
                     <button id="save"
-                        class="hover:bg-opacity-90 border w-20 text-sm font-bold h-8 bg-slate-100 rounded-full text-slate-900">Save</button>
+                        class="hover:bg-opacity-90 border w-12 text-sm font-bold h-8 bg-slate-100 rounded-full text-slate-900">Save</button>
                 </div>
             </div>
         </div>
@@ -35,12 +35,12 @@
                             <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">First
                                 name</label>
                             <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
-                                <span id="first-name-input-count">12</span>
+                                <span id="first-name-input-count"></span>
                                 /
-                                <span id="first-name-input-max">20</span>
+                                <span id="first-name-input-max">25</span>
                             </span>
                         </div>
-                        <input type="text" name="first_name" id="first-name-input"
+                        <input type="text" name="first_name" id="first-name-input" maxlength="25"
                             class="w-full bg-transparent focus:outline-none" value="{{request.user.first_name}}">
                         <span class="text-sm text-red-600">{{ errors.first_name }}</span>
                     </div>
@@ -52,12 +52,12 @@
                             <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">Last
                                 name</label>
                             <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
-                                <span id="last-name-input-count">12</span>
+                                <span id="last-name-input-count"></span>
                                 /
-                                <span id="last-name-input-max">20</span>
+                                <span id="last-name-input-max">25</span>
                             </span>
                         </div>
-                        <input type="text" name="last_name" id="last-name-input"
+                        <input type="text" name="last_name" id="last-name-input" maxlength="25"
                             class="w-full bg-transparent focus:outline-none" value="{{request.user.last_name}}">
                         <span class="text-sm text-red-600">{{ errors.last_name }}</span>
 
@@ -71,12 +71,12 @@
                             <label for="Name"
                                 class="text-sm text-gray-500 group-focus-within:text-yellow-400">Bio</label>
                             <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
-                                <span id="bio-input-count">12</span>
+                                <span id="bio-input-count"></span>
                                 /
-                                <span id="bio-input-max">20</span>
+                                <span id="bio-input-max">160</span>
                             </span>
                         </div>
-                        <textarea type="text" name="bio" id="bio-input"
+                        <textarea type="text" name="bio" id="bio-input" maxlength="160"
                             class="w-full bg-transparent focus:outline-none resize-none">{{profile.bio}}</textarea>
                         <span class="text-sm text-red-600">{{ errors.bio }}</span>
                     </div>
@@ -89,12 +89,12 @@
                             <label for="Name"
                                 class="text-sm text-gray-500 group-focus-within:text-yellow-400">Location</label>
                             <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
-                                <span id="location-input-count">12</span>
+                                <span id="location-input-count"></span>
                                 /
-                                <span id="location-input-max">20</span>
+                                <span id="location-input-max">30</span>
                             </span>
                         </div>
-                        <input type="text" name="location" id="location-input" value="{{profile.location}}"
+                        <input type="text" name="location" id="location-input" maxlength="30" value="{{profile.location}}"
                             class="w-full bg-transparent focus:outline-none">
                         <span class="text-sm text-red-600">{{ errors.location }}</span>
                     </div>
@@ -106,12 +106,12 @@
                             <label for="Name"
                                 class="text-sm text-gray-500 group-focus-within:text-yellow-400">Website</label>
                             <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
-                                <span id="website-input-count">12</span>
+                                <span id="website-input-count"></span>
                                 /
-                                <span id="website-input-max">20</span>
+                                <span id="website-input-max">100</span>
                             </span>
                         </div>
-                        <input type="text" name="website" id="website-input" value="{{profile.website}}"
+                        <input type="text" name="website" id="website-input" maxlength="100" value="{{profile.website}}"
                             class="w-full bg-transparent focus:outline-none">
                         <span class="text-sm text-red-600">{{ errors.website }}</span>
                     </div>
