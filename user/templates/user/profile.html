@@ -46,19 +46,17 @@
       </div>
       <div class="mt-3">
         {% comment %} Bio (Max 160 chars) {% endcomment %}
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent
-          semper feugiat nibh sed pul</span>
+        <span>{{profile.bio}}</span>
       </div>
       {% comment %} Other info {% endcomment %}
       <div class="mt-3 flex text-slate-500 mr-20 justify-between text-sm">
         <div>
           <i class="fa-solid fa-location-dot"></i>
-          <span class="ml-1">Nigeria</span>
+          <span class="ml-1">{{profile.location}}</span>
         </div>
         <div>
           <i class="fa-solid fa-link"></i>
-          <span class="text-yellow-400 ml-1">babalolajnr.netlify.app</span>
+          <span class="text-yellow-400 ml-1"><a href="https://{{profile.website}}" target="_blank">{{profile.website}}</a></span>
         </div>
         <div>
           <i class="fa-solid fa-cake-candles"></i>
