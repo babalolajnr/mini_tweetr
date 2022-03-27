@@ -7,7 +7,7 @@ from django.contrib import messages
 from tweet.models import Tweet
 
 from .forms import LoginForm, ProfileForm
-from .models import User
+from .models import Profile, User
 from django.contrib.auth.decorators import login_required
 
 
@@ -41,7 +41,6 @@ def profile(request):
     user = request.user
     tweets = Tweet.objects.filter(user=user)
     count_tweets = tweets.count()
-    # return HttpResponse(tweets)
 
     return render(
         request, "user/profile.html", {"tweets": tweets, "count_tweets": count_tweets}
@@ -70,8 +69,16 @@ def save_profile(request):
     user.last_name = last_name
     user.save()
 
+    try:
+        profile = Profile.objects.get(pk=user.id)
+    except Profile.DoesNotExist:
+        profile = Profile(user=user)
+
+    profile.bio = bio
+    profile.website = website
+    profile.location = location
+    profile.save()
+
     messages.success(request, "User details updated")
     return render(request, "user/profile.html")
 
-    # return HttpResponse([first_name, last_name, bio, website, location])
-    # return HttpResponse("Hey!!!")
