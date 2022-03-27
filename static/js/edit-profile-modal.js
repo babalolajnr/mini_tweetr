@@ -23,19 +23,21 @@ save.onclick = () => {
     profileForm.submit()
 }
 
-const firstNameInput = document.getElementById("first-name-input")
-const firstNameInputCount = document.getElementById("first-name-input-count")
-const firstNameInputMax = document.getElementById("first-name-input-max")
-
-let firstNameInputLength = firstNameInput.value.length
-const firstNameInputMaxLength = 25
-
-firstNameInput.setAttribute('maxlength', firstNameInputMaxLength)
-
-firstNameInputCount.innerText = firstNameInputLength
-firstNameInputMax.innerText = firstNameInputMaxLength
-
-firstNameInput.oninput = function () {
-    firstNameInputLength = this.value.length
-    firstNameInputCount.innerText = firstNameInputLength
+// Count input length and update it
+function inputCounter(input, inputCount) {
+    input.oninput = function () {
+        inputCount.innerText = this.value.length
+    }
 }
+
+// Get all input fields
+const inputElements = document.querySelectorAll('[id$="input"]')
+const inputElementsArray = Array.from(inputElements)
+
+inputElementsArray.forEach(element => {
+    let id = element.id
+    let inputCount = document.getElementById(id + '-count')
+    inputCount.innerText = element.value.length
+
+    inputCounter(element, inputCount)
+});
