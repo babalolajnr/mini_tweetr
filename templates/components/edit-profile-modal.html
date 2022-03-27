@@ -31,20 +31,34 @@
                 <div
                     class="group mt-5 w-full border border-gray-500 rounded-md focus-within:border-2 transition focus-within:border-yellow-400">
                     <div class="mx-2 mb-2">
-                        <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">First
-                            name</label><br>
-                        <input type="text" name="first_name" id="" class="w-full bg-transparent focus:outline-none"
-                            value="{{request.user.first_name}}">
+                        <div class="flex justify-between pt-1">
+                            <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">First
+                                name</label>
+                            <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
+                                <span id="first-name-input-count">12</span>
+                                /
+                                <span id="first-name-input-max">20</span>
+                            </span>
+                        </div>
+                        <input type="text" name="first_name" id="first-name-input"
+                            class="w-full bg-transparent focus:outline-none" value="{{request.user.first_name}}">
                         <span class="text-sm text-red-600">{{ errors.first_name }}</span>
                     </div>
                 </div>
                 <div
                     class="group mt-5 w-full border border-gray-500 rounded-md focus-within:border-2 transition focus-within:border-yellow-400">
                     <div class="mx-2 mb-2">
-                        <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">Last
-                            name</label><br>
-                        <input type="text" name="last_name" id="" class="w-full bg-transparent focus:outline-none"
-                            value="{{request.user.last_name}}">
+                        <div class="flex justify-between pt-1">
+                            <label for="Name" class="text-sm text-gray-500 group-focus-within:text-yellow-400">Last
+                                name</label>
+                            <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
+                                <span id="last-name-input-count">12</span>
+                                /
+                                <span id="last-name-input-max">20</span>
+                            </span>
+                        </div>
+                        <input type="text" name="last_name" id="last-name-input"
+                            class="w-full bg-transparent focus:outline-none" value="{{request.user.last_name}}">
                         <span class="text-sm text-red-600">{{ errors.last_name }}</span>
 
                     </div>
@@ -52,9 +66,17 @@
                 <div
                     class="group mt-5 w-full border border-gray-500 rounded-md focus-within:border-2 transition focus-within:border-yellow-400">
                     <div class="mx-2 mb-2">
-                        <label for="Name"
-                            class="text-sm text-gray-500 group-focus-within:text-yellow-400">Bio</label><br>
-                        <textarea type="text" name="bio" id=""
+                        <div class="flex justify-between pt-1">
+
+                            <label for="Name"
+                                class="text-sm text-gray-500 group-focus-within:text-yellow-400">Bio</label>
+                            <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
+                                <span id="bio-input-count">12</span>
+                                /
+                                <span id="bio-input-max">20</span>
+                            </span>
+                        </div>
+                        <textarea type="text" name="bio" id="bio-input"
                             class="w-full bg-transparent focus:outline-none resize-none">{{profile.bio}}</textarea>
                         <span class="text-sm text-red-600">{{ errors.bio }}</span>
                     </div>
@@ -62,9 +84,17 @@
                 <div
                     class="group mt-5 w-full border border-gray-500 rounded-md focus-within:border-2 transition focus-within:border-yellow-400">
                     <div class="mx-2 mb-2">
-                        <label for="Name"
-                            class="text-sm text-gray-500 group-focus-within:text-yellow-400">Location</label><br>
-                        <input type="text" name="location" id="" value="{{profile.location}}"
+                        <div class="flex justify-between pt-1">
+
+                            <label for="Name"
+                                class="text-sm text-gray-500 group-focus-within:text-yellow-400">Location</label>
+                            <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
+                                <span id="location-input-count">12</span>
+                                /
+                                <span id="location-input-max">20</span>
+                            </span>
+                        </div>
+                        <input type="text" name="location" id="location-input" value="{{profile.location}}"
                             class="w-full bg-transparent focus:outline-none">
                         <span class="text-sm text-red-600">{{ errors.location }}</span>
                     </div>
@@ -72,9 +102,16 @@
                 <div
                     class="group mt-5 w-full border border-gray-500 rounded-md focus-within:border-2 transition focus-within:border-yellow-400">
                     <div class="mx-2 mb-2">
-                        <label for="Name"
-                            class="text-sm text-gray-500 group-focus-within:text-yellow-400">Website</label><br>
-                        <input type="text" name="website" id="" value="{{profile.website}}"
+                        <div class="flex justify-between pt-1">
+                            <label for="Name"
+                                class="text-sm text-gray-500 group-focus-within:text-yellow-400">Website</label>
+                            <span class="text-xs hidden text-yellow-400 group-focus-within:block transition">
+                                <span id="website-input-count">12</span>
+                                /
+                                <span id="website-input-max">20</span>
+                            </span>
+                        </div>
+                        <input type="text" name="website" id="website-input" value="{{profile.website}}"
                             class="w-full bg-transparent focus:outline-none">
                         <span class="text-sm text-red-600">{{ errors.website }}</span>
                     </div>
