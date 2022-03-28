@@ -19,7 +19,16 @@
             </div>
         </div>
         {% load static %}
-        <div class="h-44 w-full bg-cover" style="background-image: url({% static 'images/nature.jpg' %})">
+        <div class="h-44 w-full bg-cover flex justify-center items-center"
+            style="background-image: url({% static 'images/nature.jpg' %})">
+            <div class="flex">
+                <div class="bg-gray-700 flex w-12 h-12 justify-center items-center rounded-full">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+                <div class="ml-4 bg-gray-700 flex w-12 h-12 justify-center items-center rounded-full">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
         </div>
         <div class="mx-4 pb-9">
             {% load static %}
@@ -94,8 +103,8 @@
                                 <span id="location-input-max">30</span>
                             </span>
                         </div>
-                        <input type="text" name="location" id="location-input" maxlength="30" value="{{profile.location}}"
-                            class="w-full bg-transparent focus:outline-none">
+                        <input type="text" name="location" id="location-input" maxlength="30"
+                            value="{{profile.location}}" class="w-full bg-transparent focus:outline-none">
                         <span class="text-sm text-red-600">{{ errors.location }}</span>
                     </div>
                 </div>
