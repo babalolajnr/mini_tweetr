@@ -23,7 +23,7 @@ save.onclick = () => {
     profileForm.submit()
 }
 
-// Count input length and update it
+// Count input value length and update counter
 function inputCounter(input, inputCount) {
     input.oninput = function () {
         inputCount.innerText = this.value.length
