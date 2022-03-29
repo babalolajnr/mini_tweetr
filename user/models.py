@@ -55,7 +55,7 @@ class Profile(models.Model):
     website = models.TextField(null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
-    user = models.ForeignKey(User, related_name="profile", on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE, unique=True)
 
     def __str__(self):
         return self.user.username
