@@ -39,6 +39,8 @@ class CustomUserManager(BaseUserManager):
 class User(AbstractUser):
     email = models.EmailField('email address', unique=True)
     avatar = models.ImageField(default='avatar.png')
+    following = models.ManyToManyField('self')
+    followers = models.ManyToManyField('self')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
