@@ -3,15 +3,15 @@
 <div class="lg:flex lg:flex-col">
   {% comment %} Title Bar {% endcomment %}
   <section class="sticky top-0 bg-gray-800 bg-opacity-75 backdrop-blur-sm">
-    <div class="mx-6 mt-2 flex">
+    <div class="mx-4 mt-2 flex">
       <div class="lg:flex items-center">
         <i class="fa-solid fa-arrow-left"></i>
       </div>
       <div class="pl-10 flex flex-col pb-2">
-        {% if messages %} 
-          {% for message in messages %}
-            <div class="text-sm text-green-600">{{ message}}</div>
-          {% endfor %} 
+        {% if messages %}
+        {% for message in messages %}
+        <div class="text-sm text-green-600">{{ message}}</div>
+        {% endfor %}
         {% endif %}
         <span class="font-bold text-lg">{{ user.first_name }} {{ user.last_name }}</span>
         <span class="text-slate-500 text-xs -mt-1">{{ count_tweets }} Tweets</span>
@@ -20,12 +20,12 @@
   </section>
   {% comment %} Header photo {% endcomment %}
   {% load static %}
-  <section class="h-56 w-full bg-cover" style="background-image: url({% static 'images/nature.jpg' %})">
+  <section class="h-48 w-full bg-cover" style="background-image: url({% static 'images/nature.jpg' %})">
   </section>
   {% comment %} Profile photo {% endcomment %}
-  <section class="mx-6 flex justify-between">
+  <section class="mx-4 flex justify-between">
     {% load static %}
-    <div class="h-32 w-32 rounded-full -mt-16 bg-cover border-4 border-gray-800"
+    <div class="h-36 w-36 rounded-full -mt-16 bg-cover border-4 border-gray-800"
       style="background-image: url({% static 'images/cat.jpg' %})">
     </div>
     <div class="mt-3">
@@ -36,7 +36,7 @@
     </div>
   </section>
   {% comment %} Info section {% endcomment %}
-  <section class="mx-6 mt-6">
+  <section class="mx-4 mt-6">
     <div class="flex flex-col">
       <div class="flex flex-col">
         {% comment %} Name {% endcomment %}
@@ -56,7 +56,8 @@
         </div>
         <div>
           <i class="fa-solid fa-link"></i>
-          <span class="text-yellow-400 ml-1"><a href="https://{{profile.website}}" target="_blank">{{profile.website}}</a></span>
+          <span class="text-yellow-400 ml-1"><a href="https://{{profile.website}}"
+              target="_blank">{{profile.website}}</a></span>
         </div>
         <div>
           <i class="fa-solid fa-cake-candles"></i>
@@ -75,7 +76,7 @@
     </div>
   </section>
   {% comment %} Tab Controls {% endcomment %}
-  <section class="mt-7">
+  <section class="mt-4">
     <div class="flex justify-between h-14 cursor-pointer">
       <div class="hover:bg-gray-500 hover:bg-opacity-20 basis-1/4 flex flex-col items-center justify-between"
         id="tweets-tab">
@@ -108,7 +109,7 @@
     <div id="tweets-tab-view" class="hidden">
       {% for tweet in tweets %}
       <div class="border-t border-gray-600 pb-4">
-        <div class="flex pt-5 px-10">
+        <div class="flex pt-5 mx-4">
           {% comment %} User Avatar {% endcomment %}
           {% load static %}
           <div class="w-14 h-14 rounded-full shrink-0 bg-cover"
