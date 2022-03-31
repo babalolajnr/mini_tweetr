@@ -1,0 +1,13 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class="sticky bottom-14 left-1/2 w-fit -translate-x-1/2" id="popup">
+                <div class="px-4 py-3 bg-yellow-400 rounded-md">
+                    <span>Your tweet was sent.</span>
+                    <a href="" class="font-bold pl-2">View</a>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% include '' %}
