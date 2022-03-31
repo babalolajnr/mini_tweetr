@@ -26,13 +26,7 @@
       {% include 'components/search-trending-suggestion.html' %}
     </div>
   </div>
-
-  <div class="absolute bottom-14 left-1/2  -translate-x-1/2">
-    <div class="px-4 py-3 bg-yellow-400 rounded-md">
-      <span class>Your tweet was sent.</span>
-      <a href="" class="font-bold">View</a>
-    </div>
-  </div>
+  {% include 'components/popup-alert.html' %}
   {% block 'page-specific-scripts'%}{%endblock %}
 </body>
 
