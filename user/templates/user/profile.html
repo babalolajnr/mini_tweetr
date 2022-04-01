@@ -8,11 +8,6 @@
         <i class="fa-solid fa-arrow-left"></i>
       </div>
       <div class="pl-10 flex flex-col pb-2">
-        {% if messages %}
-        {% for message in messages %}
-        <div class="text-sm text-green-600">{{ message}}</div>
-        {% endfor %}
-        {% endif %}
         <span class="font-bold text-lg">{{ user.first_name }} {{ user.last_name }}</span>
         <span class="text-slate-500 text-xs -mt-1">{{ count_tweets }} Tweets</span>
       </div>
