@@ -163,9 +163,19 @@ $c7fc48236b5c00cc$var$inputElementsArray.forEach((element)=>{
 
 });
 
-// import './popup'
+parcelRequire.register("7Ky6S", function(module, exports) {
+const $5a4749d04ed42564$var$popup = document.getElementById('popup');
+setTimeout(()=>{
+    $5a4749d04ed42564$var$popup.classList.replace('sticky', 'hidden');
+}, 5000);
+
+});
+
 const $9184024f63534557$var$body = document.getElementsByTagName('body')[0];
 const $9184024f63534557$var$view = $9184024f63534557$var$body.dataset.view;
+const $9184024f63534557$var$popup = document.getElementById('popup');
+
+if ($9184024f63534557$var$popup != null) (parcelRequire("7Ky6S"));
 
 
 if ($9184024f63534557$var$view === 'profile') {
