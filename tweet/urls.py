@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.urls import path
 
-from tweet.views import index, save_tweet
+from tweet.views import index, like_tweet, save_tweet
 
 
 urlpatterns = [
     path('', index, name='home'),
     path('save_tweet', save_tweet, name='save_tweet'),
+    path('like_tweet/<int:tweet_id>/', like_tweet, name='like_tweet'),
 ]
