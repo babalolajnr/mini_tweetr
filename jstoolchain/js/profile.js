@@ -75,9 +75,8 @@ function likeTweet(id) {
             'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
         },
     }).then(response => {
-        // response.json().then(data => {
-        //     console.log(data)
-        // })
-        console.log(response)
+        if (response.status == 200) {
+
+        }
     })
 }

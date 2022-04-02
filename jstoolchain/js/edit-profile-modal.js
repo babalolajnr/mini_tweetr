@@ -1,5 +1,6 @@
 const close = document.getElementById('close')
 const modalContent = document.getElementById('modal-content')
+const editProfileModal = document.getElementById('edit-profile-modal')
 
 close.onclick = () => {
     editProfileModal.classList.remove('flex')
