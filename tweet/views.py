@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from tweet.forms import TweetForm
@@ -29,3 +29,9 @@ def save_tweet(request):
             return render(
                 request, "tweet/home.html", {"errors": form.errors, "form": form}
             )
+
+@login_required
+def like_tweet(request, tweet_id):
+    tweet = Tweet.objects.get(pk=tweet_id)
+    tweet.likes.add(request.user)
+    return JsonResponse({"message": "Tweet liked!"})
