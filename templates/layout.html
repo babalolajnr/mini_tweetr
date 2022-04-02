@@ -11,7 +11,7 @@
   <title>Mini Tweetr</title>
 </head>
 
-<body class="dark:bg-gray-800 dark:text-white sans-pro">
+<body class="dark:bg-gray-800 dark:text-white sans-pro" data-view="{{request.resolver_match.view_name}}">
   <div class="lg:flex">
     {% comment %} First column {% endcomment %}
     <div class="lg:basis-[23%] h-screen lg:flex lg:flex-col sticky top-0">
@@ -27,7 +27,7 @@
     </div>
   </div>
   {% include 'components/popup.html' %}
-  {% block 'page-specific-scripts'%}{%endblock %}
+  <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
