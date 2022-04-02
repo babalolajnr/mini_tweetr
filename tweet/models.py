@@ -9,15 +9,16 @@ class Thread(models.Model):
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
 
+
 # if the thread column is empty on a row then the tweet is not a thread
 class Tweet(models.Model):
-    '''
-    Note: 
+    """
+    Note:
     * There are three types of tweets: Tweet, Reply, and Retweet
     * The body field can be null because the tweet can be a retweet of another tweet.
-    * The reply_parent field is used to determine if the tweet is a reply to another tweet 
+    * The reply_parent field is used to determine if the tweet is a reply to another tweet
     and also to know if a tweet is a tweet or a reply to a tweet.
-    * The retweet_parent field is used to determine if the tweet is a retweet of another 
+    * The retweet_parent field is used to determine if the tweet is a retweet of another
     tweet.
     * The thread field is used to determine if the tweet is a thread. It links to a thread
     in the table.
@@ -46,27 +47,23 @@ class Tweet(models.Model):
     is a retweet of.
     4. A retweet does not have a reply_parent.
     5. A retweet does not have a thread or thread_rank.
-    '''
+    """
+
     body = models.TextField(max_length=280, blank=True, null=True)
-    user = models.ForeignKey(User, related_name='tweets',
-                             on_delete=models.CASCADE)
-    reply_parent = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
-    retweet_parent = models.ForeignKey('self', null=True, blank=True, related_name='retweets', on_delete=models.CASCADE)
-    thread = models.ForeignKey(Thread, related_name="tweets", on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, related_name="tweets", on_delete=models.CASCADE)
+    reply_parent = models.ForeignKey(
+        "self", null=True, blank=True, related_name="replies", on_delete=models.CASCADE
+    )
+    retweet_parent = models.ForeignKey(
+        "self", null=True, blank=True, related_name="retweets", on_delete=models.CASCADE
+    )
+    thread = models.ForeignKey(
+        Thread, related_name="tweets", on_delete=models.CASCADE, null=True, blank=True
+    )
     thread_rank = models.IntegerField(null=True, blank=True)
+    likes = models.ManyToManyField(User, related_name="liked_tweets")
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.body
-
-class Likes(models.Model):
-    user = models.ForeignKey(User, related_name='likes',
-                             on_delete=models.CASCADE)
-    tweet = models.ForeignKey(Tweet, related_name='likes',
-                              on_delete=models.CASCADE)
-    created = models.DateField(auto_now_add=True)
-    updated = models.DateField(auto_now=True)
-
-    def __str__(self):
-        return self.user.username
