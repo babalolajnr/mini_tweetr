@@ -167,11 +167,19 @@ const $008d1ac2ee3314ea$var$likeButtons = document.querySelectorAll('[id^="like-
 const $008d1ac2ee3314ea$var$likeButtonsArray = Array.from($008d1ac2ee3314ea$var$likeButtons);
 $008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
     element.onclick = ()=>{
+        // Make icon filled
+        const likeIcon = element.querySelectorAll('i')[0];
+        likeIcon.classList.replace('fa-regular', 'fa-solid');
+        likeIcon.classList.add('text-red-500');
+        // Increase likes count
+        const likesCount = element.querySelectorAll('span')[0];
+        const likesCountNumber = parseInt(likesCount.innerText);
+        likesCount.innerText = likesCountNumber + 1;
         tweetId = element.id.split('-')[2];
-        $008d1ac2ee3314ea$var$likeTweet(tweetId);
+        $008d1ac2ee3314ea$var$likeTweet(tweetId, element);
     };
 });
-function $008d1ac2ee3314ea$var$likeTweet(id) {
+function $008d1ac2ee3314ea$var$likeTweet(id, likeButton) {
     fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, {
         method: 'POST',
         headers: {
@@ -180,14 +188,14 @@ function $008d1ac2ee3314ea$var$likeTweet(id) {
             'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
         }
     }).then((response)=>{
-        if (response.status == 200) {
-            const likeButton = document.getElementById(`like-button-${id}`);
-            const likeCount = document.getElementById(`like-count-${id}`);
-            const likeCountNumber = parseInt(likeCount.innerText);
-            likeCount.innerText = likeCountNumber + 1;
-            likeButton.classList.add('hidden');
-            const unlikeButton = document.getElementById(`unlike-button-${id}`);
-            unlikeButton.classList.remove('hidden');
+        if (response.status != 200) {
+            // Reset like button and count when the request fails
+            const likeIcon = likeButton.querySelectorAll('i')[0];
+            likeIcon.classList.replace('fa-solid', 'fa-regular');
+            likeIcon.classList.remove('text-red-500');
+            const likesCount = likeButton.querySelectorAll('span')[0];
+            const likesCountNumber = parseInt(likesCount.innerText);
+            likesCount.innerText = likesCountNumber - 1;
         }
     });
 }

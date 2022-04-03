@@ -4,6 +4,16 @@ const likeButtonsArray = Array.from(likeButtons)
 
 likeButtonsArray.forEach(element => {
     element.onclick = () => {
+        // Make icon filled
+        const likeIcon = element.querySelectorAll('i')[0]
+        likeIcon.classList.replace('fa-regular', 'fa-solid')
+        likeIcon.classList.add('text-red-500')
+
+        // Increase likes count
+        const likesCount = element.querySelectorAll('span')[0]
+        const likesCountNumber = parseInt(likesCount.innerText)
+        likesCount.innerText = likesCountNumber + 1
+
         tweetId = element.id.split('-')[2]
         likeTweet(tweetId, element)
     }
@@ -18,15 +28,16 @@ function likeTweet(id, likeButton) {
             'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
         },
     }).then(response => {
-        if (response.status == 200) {
-            // Make icon filled
+        if (response.status != 200) {
+
+            // Reset like button and count when the request fails
             const likeIcon = likeButton.querySelectorAll('i')[0]
-            likeIcon.classList.replace('fa-regular', 'fa-solid')
-            likeIcon.classList.add('text-red-500')
+            likeIcon.classList.replace('fa-solid', 'fa-regular')
+            likeIcon.classList.remove('text-red-500')
 
             const likesCount = likeButton.querySelectorAll('span')[0]
             const likesCountNumber = parseInt(likesCount.innerText)
-            likesCount.innerText = likesCountNumber + 1
+            likesCount.innerText = likesCountNumber - 1
         }
     })
 }
