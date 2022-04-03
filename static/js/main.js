@@ -167,19 +167,22 @@ const $008d1ac2ee3314ea$var$likeButtons = document.querySelectorAll('[id^="like-
 const $008d1ac2ee3314ea$var$likeButtonsArray = Array.from($008d1ac2ee3314ea$var$likeButtons);
 $008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
     element.onclick = ()=>{
-        // Make icon filled
-        const likeIcon = element.querySelectorAll('i')[0];
-        likeIcon.classList.replace('fa-regular', 'fa-solid');
-        likeIcon.classList.add('text-red-500');
-        // Increase likes count
-        const likesCount = element.querySelectorAll('span')[0];
-        const likesCountNumber = parseInt(likesCount.innerText);
-        likesCount.innerText = likesCountNumber + 1;
-        tweetId = element.id.split('-')[2];
-        $008d1ac2ee3314ea$var$likeTweet(tweetId, element);
+        if (element.dataset.state == 'liked') {
+            $008d1ac2ee3314ea$var$changeLikeButtonState(element);
+            tweetId = element.id.split('-')[2];
+            $008d1ac2ee3314ea$var$unlikeTweet(tweetId, element);
+        } else {
+            $008d1ac2ee3314ea$var$changeUnlikeButtonState(element);
+            tweetId = element.id.split('-')[2];
+            $008d1ac2ee3314ea$var$likeTweet(tweetId, element);
+        }
     };
 });
-function $008d1ac2ee3314ea$var$likeTweet(id, likeButton) {
+/**
+ * @param  {} id
+ * @param  {} likeButton
+ * Send like tweet request to server
+ */ function $008d1ac2ee3314ea$var$likeTweet(id, likeButton) {
     fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, {
         method: 'POST',
         headers: {
@@ -188,16 +191,37 @@ function $008d1ac2ee3314ea$var$likeTweet(id, likeButton) {
             'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
         }
     }).then((response)=>{
-        if (response.status != 200) {
-            // Reset like button and count when the request fails
-            const likeIcon = likeButton.querySelectorAll('i')[0];
-            likeIcon.classList.replace('fa-solid', 'fa-regular');
-            likeIcon.classList.remove('text-red-500');
-            const likesCount = likeButton.querySelectorAll('span')[0];
-            const likesCountNumber = parseInt(likesCount.innerText);
-            likesCount.innerText = likesCountNumber - 1;
-        }
+        if (response.status != 200) // Reset like button and count when the request fails
+        $008d1ac2ee3314ea$var$changeLikeButtonState(likeButton);
     });
+}
+function $008d1ac2ee3314ea$var$unlikeTweet(id, likeButton) {
+    console.log('unliked');
+}
+/**
+ * @param  {} likeButton
+ *  Change like button state to ulike button state
+ */ function $008d1ac2ee3314ea$var$changeLikeButtonState(likeButton) {
+    const likeIcon = likeButton.querySelectorAll('i')[0];
+    likeIcon.classList.replace('fa-solid', 'fa-regular');
+    likeIcon.classList.remove('text-red-500');
+    const likesCount = likeButton.querySelectorAll('span')[0];
+    const likesCountNumber = parseInt(likesCount.innerText);
+    likesCount.innerText = likesCountNumber - 1;
+    likeButton.dataset.state = 'unliked';
+}
+/**
+ * @param  {} unlikeButton
+ *  Change unlike button state to like button state
+ */ function $008d1ac2ee3314ea$var$changeUnlikeButtonState(unlikeButton) {
+    const likeIcon = unlikeButton.querySelectorAll('i')[0];
+    likeIcon.classList.replace('fa-regular', 'fa-solid');
+    likeIcon.classList.add('text-red-500');
+    // Increase likes count
+    const likesCount = unlikeButton.querySelectorAll('span')[0];
+    const likesCountNumber = parseInt(likesCount.innerText);
+    likesCount.innerText = likesCountNumber + 1;
+    unlikeButton.dataset.state = 'liked';
 }
 
 

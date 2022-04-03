@@ -4,21 +4,23 @@ const likeButtonsArray = Array.from(likeButtons)
 
 likeButtonsArray.forEach(element => {
     element.onclick = () => {
-        // Make icon filled
-        const likeIcon = element.querySelectorAll('i')[0]
-        likeIcon.classList.replace('fa-regular', 'fa-solid')
-        likeIcon.classList.add('text-red-500')
-
-        // Increase likes count
-        const likesCount = element.querySelectorAll('span')[0]
-        const likesCountNumber = parseInt(likesCount.innerText)
-        likesCount.innerText = likesCountNumber + 1
-
-        tweetId = element.id.split('-')[2]
-        likeTweet(tweetId, element)
+        if (element.dataset.state == 'liked') {
+            changeLikeButtonState(element)
+            tweetId = element.id.split('-')[2]
+            unlikeTweet(tweetId, element)
+        } else {
+            changeUnlikeButtonState(element)
+            tweetId = element.id.split('-')[2]
+            likeTweet(tweetId, element)
+        }
     }
 })
 
+/**
+ * @param  {} id
+ * @param  {} likeButton
+ * Send like tweet request to server
+ */
 function likeTweet(id, likeButton) {
     fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, {
         method: 'POST',
@@ -29,15 +31,45 @@ function likeTweet(id, likeButton) {
         },
     }).then(response => {
         if (response.status != 200) {
-
             // Reset like button and count when the request fails
-            const likeIcon = likeButton.querySelectorAll('i')[0]
-            likeIcon.classList.replace('fa-solid', 'fa-regular')
-            likeIcon.classList.remove('text-red-500')
-
-            const likesCount = likeButton.querySelectorAll('span')[0]
-            const likesCountNumber = parseInt(likesCount.innerText)
-            likesCount.innerText = likesCountNumber - 1
+            changeLikeButtonState(likeButton)
         }
     })
+}
+
+function unlikeTweet(id, likeButton) {
+    console.log('unliked')
+}
+
+/**
+ * @param  {} likeButton
+ *  Change like button state to ulike button state
+ */
+function changeLikeButtonState(likeButton) {
+    const likeIcon = likeButton.querySelectorAll('i')[0]
+    likeIcon.classList.replace('fa-solid', 'fa-regular')
+    likeIcon.classList.remove('text-red-500')
+
+    const likesCount = likeButton.querySelectorAll('span')[0]
+    const likesCountNumber = parseInt(likesCount.innerText)
+    likesCount.innerText = likesCountNumber - 1
+
+    likeButton.dataset.state = 'unliked'
+}
+
+/**
+ * @param  {} unlikeButton
+ *  Change unlike button state to like button state
+ */
+function changeUnlikeButtonState(unlikeButton) {
+    const likeIcon = unlikeButton.querySelectorAll('i')[0]
+    likeIcon.classList.replace('fa-regular', 'fa-solid')
+    likeIcon.classList.add('text-red-500')
+
+    // Increase likes count
+    const likesCount = unlikeButton.querySelectorAll('span')[0]
+    const likesCountNumber = parseInt(likesCount.innerText)
+    likesCount.innerText = likesCountNumber + 1
+
+    unlikeButton.dataset.state = 'liked'
 }
