@@ -195,8 +195,22 @@ $008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
         $008d1ac2ee3314ea$var$changeLikeButtonState(likeButton);
     });
 }
-function $008d1ac2ee3314ea$var$unlikeTweet(id, likeButton) {
-    console.log('unliked');
+/**
+ * @param  {} id
+ * @param  {} unlikeButton
+ * Send unlike tweet request to server
+ */ function $008d1ac2ee3314ea$var$unlikeTweet(id, unlikeButton) {
+    fetch(`http://127.0.0.1:8000/tweet/unlike_tweet/${id}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
+        }
+    }).then((response)=>{
+        if (response.status != 200) // Reset unlike button and count when the request fails
+        $008d1ac2ee3314ea$var$changeUnlikeButtonState(unlikeButton);
+    });
 }
 /**
  * @param  {} likeButton

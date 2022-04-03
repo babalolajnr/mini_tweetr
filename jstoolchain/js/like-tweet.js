@@ -37,8 +37,25 @@ function likeTweet(id, likeButton) {
     })
 }
 
-function unlikeTweet(id, likeButton) {
-    console.log('unliked')
+/**
+ * @param  {} id
+ * @param  {} unlikeButton
+ * Send unlike tweet request to server
+ */
+function unlikeTweet(id, unlikeButton) {
+    fetch(`http://127.0.0.1:8000/tweet/unlike_tweet/${id}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
+        },
+    }).then(response => {
+        if (response.status != 200) {
+            // Reset unlike button and count when the request fails
+            changeUnlikeButtonState(unlikeButton)
+        }
+    })
 }
 
 /**
