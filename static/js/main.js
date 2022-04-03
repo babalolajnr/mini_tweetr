@@ -36,6 +36,14 @@ if (parcelRequire == null) {
 
   $parcel$global["parcelRequire938a"] = parcelRequire;
 }
+parcelRequire.register("7Ky6S", function(module, exports) {
+const $5a4749d04ed42564$var$popup = document.getElementById('popup');
+setTimeout(()=>{
+    $5a4749d04ed42564$var$popup.classList.replace('sticky', 'hidden');
+}, 5000);
+
+});
+
 parcelRequire.register("a5kBe", function(module, exports) {
 const $757a59a0cba01a58$var$tweetsTab = document.getElementById('tweets-tab');
 const $757a59a0cba01a58$var$tweetsAndRepliesTab = document.getElementById('tweets-and-replies-tab');
@@ -100,26 +108,6 @@ $757a59a0cba01a58$var$editProfile.onclick = ()=>{
     $757a59a0cba01a58$var$editProfileModal.classList.remove('hidden');
     $757a59a0cba01a58$var$editProfileModal.classList.add('flex');
 };
-const $757a59a0cba01a58$var$likeButtons = document.querySelectorAll('[id^="like-button-"]');
-const $757a59a0cba01a58$var$likeButtonsArray = Array.from($757a59a0cba01a58$var$likeButtons);
-$757a59a0cba01a58$var$likeButtonsArray.forEach((element)=>{
-    element.onclick = ()=>{
-        tweetId = element.id.split('-')[2];
-        $757a59a0cba01a58$var$likeTweet(tweetId);
-    };
-});
-function $757a59a0cba01a58$var$likeTweet(id) {
-    fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
-        }
-    }).then((response)=>{
-        response.status;
-    });
-}
 
 });
 
@@ -163,13 +151,47 @@ $c7fc48236b5c00cc$var$inputElementsArray.forEach((element)=>{
 
 });
 
-parcelRequire.register("7Ky6S", function(module, exports) {
-const $5a4749d04ed42564$var$popup = document.getElementById('popup');
-setTimeout(()=>{
-    $5a4749d04ed42564$var$popup.classList.replace('sticky', 'hidden');
-}, 5000);
+// Resize textarea on input dynamically
+const $f47f3ce0831b0c7f$var$tx = document.getElementsByTagName("textarea");
+for(let i = 0; i < $f47f3ce0831b0c7f$var$tx.length; i++){
+    $f47f3ce0831b0c7f$var$tx[i].setAttribute("style", "height:" + $f47f3ce0831b0c7f$var$tx[i].scrollHeight + "px;overflow-y:hidden;");
+    $f47f3ce0831b0c7f$var$tx[i].addEventListener("input", $f47f3ce0831b0c7f$var$OnInput, false);
+}
+function $f47f3ce0831b0c7f$var$OnInput() {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+}
 
+
+const $008d1ac2ee3314ea$var$likeButtons = document.querySelectorAll('[id^="like-button-"]');
+const $008d1ac2ee3314ea$var$likeButtonsArray = Array.from($008d1ac2ee3314ea$var$likeButtons);
+$008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
+    element.onclick = ()=>{
+        tweetId = element.id.split('-')[2];
+        $008d1ac2ee3314ea$var$likeTweet(tweetId);
+    };
 });
+function $008d1ac2ee3314ea$var$likeTweet(id) {
+    fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
+        }
+    }).then((response)=>{
+        if (response.status == 200) {
+            const likeButton = document.getElementById(`like-button-${id}`);
+            const likeCount = document.getElementById(`like-count-${id}`);
+            const likeCountNumber = parseInt(likeCount.innerText);
+            likeCount.innerText = likeCountNumber + 1;
+            likeButton.classList.add('hidden');
+            const unlikeButton = document.getElementById(`unlike-button-${id}`);
+            unlikeButton.classList.remove('hidden');
+        }
+    });
+}
+
 
 const $9184024f63534557$var$body = document.getElementsByTagName('body')[0];
 const $9184024f63534557$var$view = $9184024f63534557$var$body.dataset.view;
@@ -181,16 +203,6 @@ if ($9184024f63534557$var$popup != null) (parcelRequire("7Ky6S"));
 if ($9184024f63534557$var$view === 'profile') {
     (parcelRequire("a5kBe"));
     (parcelRequire("haw7a"));
-}
-// Resize textarea on input dynamically
-const $9184024f63534557$var$tx = document.getElementsByTagName("textarea");
-for(let i = 0; i < $9184024f63534557$var$tx.length; i++){
-    $9184024f63534557$var$tx[i].setAttribute("style", "height:" + $9184024f63534557$var$tx[i].scrollHeight + "px;overflow-y:hidden;");
-    $9184024f63534557$var$tx[i].addEventListener("input", $9184024f63534557$var$OnInput, false);
-}
-function $9184024f63534557$var$OnInput() {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + "px";
 }
 
 
