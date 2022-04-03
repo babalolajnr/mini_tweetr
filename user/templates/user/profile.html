@@ -104,13 +104,18 @@
     <div id="tweets-tab-view" class="hidden">
       {% for tweet in tweets %}
       <div class="border-t border-gray-600 pb-4">
-       {% include 'tweet/components/tweets.html' %}
+        {% include 'tweet/components/tweets.html' %}
       </div>
       {% endfor %}
     </div>
     <div id="tweets-and-replies-tab-view" class="hidden">
     </div>
     <div id="likes-tab-view" class="hidden">
+      {% for tweet in liked_tweets %}
+      <div class="border-t border-gray-600 pb-4">
+        {% include 'tweet/components/tweets.html' %}
+      </div>
+      {% endfor %}
     </div>
     <div id="media-tab-view" class="hidden">
     </div>
