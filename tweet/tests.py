@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from tweet.models import Tweet
 
 from user.models import User
 
@@ -17,4 +18,8 @@ class TweetTestCase(TestCase):
         # self.assertDictContainsSubset({'tweets': tweets}, response.context)
 
     def test_tweet_can_be_created(self):
-        pass
+        self.client.login(**self.user)
+        response = self.client.post(reverse('save_tweet'), {'body': 'Test tweet'})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Tweet.objects.count(), 1)
+        self.assertEqual(Tweet.objects.first().body, 'Test tweet')
