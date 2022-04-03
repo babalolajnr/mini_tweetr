@@ -13,3 +13,7 @@ class UserTestCase(TestCase):
         self.client.login(**self.user)
         response = self.client.get(reverse("profile"), self.user)
         self.assertEqual(response.status_code, 200)
+
+    def test_user_login(self):
+        response = self.client.post(reverse("login"), self.user)
+        self.assertEqual(response.status_code, 302)
