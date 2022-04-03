@@ -11,7 +11,6 @@ from tweet.models import Tweet
 @login_required
 def index(request):
     tweets = Tweet.objects.filter(user=request.user)
-   
     return render(request, "tweet/home.html", {"tweets": tweets})
 
 
@@ -35,3 +34,9 @@ def like_tweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
     tweet.likes.add(request.user)
     return JsonResponse({"message": "Tweet liked!"})
+
+@login_required
+def unlike_tweet(request, tweet_id):
+    tweet = Tweet.objects.get(pk=tweet_id)
+    tweet.likes.remove(request.user)
+    return JsonResponse({"message": "Tweet unliked!"})    
