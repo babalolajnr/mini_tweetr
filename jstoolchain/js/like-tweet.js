@@ -5,11 +5,11 @@ const likeButtonsArray = Array.from(likeButtons)
 likeButtonsArray.forEach(element => {
     element.onclick = () => {
         tweetId = element.id.split('-')[2]
-        likeTweet(tweetId)
+        likeTweet(tweetId, element)
     }
 })
 
-function likeTweet(id) {
+function likeTweet(id, likeButton) {
     fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, {
         method: 'POST',
         headers: {
@@ -19,13 +19,14 @@ function likeTweet(id) {
         },
     }).then(response => {
         if (response.status == 200) {
-            const likeButton = document.getElementById(`like-button-${id}`)
-            const likeCount = document.getElementById(`like-count-${id}`)
-            const likeCountNumber = parseInt(likeCount.innerText)
-            likeCount.innerText = likeCountNumber + 1
-            likeButton.classList.add('hidden')
-            const unlikeButton = document.getElementById(`unlike-button-${id}`)
-            unlikeButton.classList.remove('hidden')
+            // Make icon filled
+            const likeIcon = likeButton.querySelectorAll('i')[0]
+            likeIcon.classList.replace('fa-regular', 'fa-solid')
+            likeIcon.classList.add('text-red-500')
+
+            const likesCount = likeButton.querySelectorAll('span')[0]
+            const likesCountNumber = parseInt(likesCount.innerText)
+            likesCount.innerText = likesCountNumber + 1
         }
     })
 }
