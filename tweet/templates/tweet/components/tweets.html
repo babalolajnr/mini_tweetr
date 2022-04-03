@@ -22,18 +22,29 @@
             {{ tweet.body }}
         </div>
         {% comment %} Action buttons {% endcomment %}
-        <div class="flex justify-between pr-16 pt-4">
-            <div class="rounded-full bg-blue-500 bg-opacity-0 hover:bg-opacity-10">
-                <i class="fa-regular fa-message hover:text-blue-500 px-3 py-3"></i>
+        <div class="flex justify-between pr-16 pt-4 text-slate-400">
+            <div class="flex items-center group cursor-pointer">
+                <div class="rounded-full bg-blue-500 bg-opacity-0 group-hover:bg-opacity-10">
+                    <i class="fa-regular fa-message group-hover:text-blue-500 px-3 py-3"></i>
+                </div>
+                <span id="replies-count-{{tweet.id}}" class="ml-1 group-hover:text-blue-500">43</span>
             </div>
-            <div class="rounded-full bg-green-500 bg-opacity-0 hover:bg-opacity-10">
-                <i class="fa-solid fa-repeat hover:text-green-500 px-3 py-3"></i>
+            <div class="flex items-center group cursor-pointer">
+                <div class="rounded-full bg-green-500 bg-opacity-0 group-hover:bg-opacity-10">
+                    <i class="fa-solid fa-repeat group-hover:text-green-500 px-3 py-3"></i>
+                </div>
+                <span id="retweets-count-{{tweet.id}}" class="ml-1 group-hover:text-green-500">43</span>
             </div>
-            <div class="rounded-full bg-red-500 bg-opacity-0 hover:bg-opacity-10" id="like-button-{{tweet.id}}">
-                <i class="fa-regular fa-heart hover:text-red-500 px-3 py-3"></i>
+            <div class="flex items-center group cursor-pointer">
+                <div class="rounded-full bg-red-500 bg-opacity-0 group-hover:bg-opacity-10" id="like-button-{{tweet.id}}">
+                    <i class="fa-regular fa-heart group-hover:text-red-500 px-3 py-3"></i>
+                </div>
+                <span id="likes-count-{{tweet.id}}" class="ml-1 group-hover:text-red-500">43</span>
             </div>
-            <div class="rounded-full bg-blue-500 bg-opacity-0 hover:bg-opacity-10">
-                <i class="fa-solid fa-arrow-up-from-bracket hover:text-blue-500 px-3 py-3"></i>
+            <div class="flex items-center cursor-pointer">
+                <div class="rounded-full bg-blue-500 bg-opacity-0 hover:bg-opacity-10">
+                    <i class="fa-solid fa-arrow-up-from-bracket hover:text-blue-500 px-3 py-3"></i>
+                </div>
             </div>
         </div>
     </div>
