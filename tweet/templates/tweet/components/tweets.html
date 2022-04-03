@@ -1,0 +1,40 @@
+<div class="flex pt-5 mx-4">
+    {% comment %} User Avatar {% endcomment %}
+    {% load static %}
+    <div class="w-14 h-14 rounded-full shrink-0 bg-cover" style="background-image: url({% static 'images/cat.jpg' %})">
+    </div>
+    <div class="pl-3 grow">
+        {% comment %} username {% endcomment %}
+        <div class="lg:flex justify-between">
+            <div>
+                <span class="font-bold text-sm">{{ user.first_name }} {{ user.last_name }}</span>
+                <span class="font-light text-sm text-slate-500">{{ user.username }}</span>
+                <span class="font-light text-xl text-slate-500 align-middle">&middot</span>
+                <span class="font-light text-sm text-slate-500">14m</span>
+            </div>
+            {% comment %} vertical ellipses {% endcomment %}
+            <div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        {% comment %} post content {% endcomment %}
+        <div class="text-sm">
+            {{ tweet.body }}
+        </div>
+        {% comment %} Action buttons {% endcomment %}
+        <div class="flex justify-between pr-16 pt-4">
+            <div class="rounded-full bg-blue-500 bg-opacity-0 hover:bg-opacity-10">
+                <i class="fa-regular fa-message hover:text-blue-500 px-3 py-3"></i>
+            </div>
+            <div class="rounded-full bg-green-500 bg-opacity-0 hover:bg-opacity-10">
+                <i class="fa-solid fa-repeat hover:text-green-500 px-3 py-3"></i>
+            </div>
+            <div class="rounded-full bg-red-500 bg-opacity-0 hover:bg-opacity-10" id="like-button-{{tweet.id}}">
+                <i class="fa-regular fa-heart hover:text-red-500 px-3 py-3"></i>
+            </div>
+            <div class="rounded-full bg-blue-500 bg-opacity-0 hover:bg-opacity-10">
+                <i class="fa-solid fa-arrow-up-from-bracket hover:text-blue-500 px-3 py-3"></i>
+            </div>
+        </div>
+    </div>
+</div>
