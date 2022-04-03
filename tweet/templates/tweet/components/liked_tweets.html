@@ -1,0 +1,51 @@
+<div class="flex pt-5 mx-4">
+    {% comment %} User Avatar {% endcomment %}
+    {% load static %}
+    <div class="w-14 h-14 rounded-full shrink-0 bg-cover" style="background-image: url({% static 'images/cat.jpg' %})">
+    </div>
+    <div class="pl-3 grow">
+        {% comment %} username {% endcomment %}
+        <div class="lg:flex justify-between">
+            <div>
+                <span class="font-bold text-sm">{{ user.first_name }} {{ user.last_name }}</span>
+                <span class="font-light text-sm text-slate-500">{{ user.username }}</span>
+                <span class="font-light text-xl text-slate-500 align-middle">&middot</span>
+                <span class="font-light text-sm text-slate-500">14m</span>
+            </div>
+            {% comment %} vertical ellipses {% endcomment %}
+            <div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        {% comment %} post content {% endcomment %}
+        <div class="text-sm">
+            {{ tweet.body }}
+        </div>
+        {% comment %} Action buttons {% endcomment %}
+        <div class="flex justify-between pr-20 text-slate-400 text-sm">
+            <div class="flex items-center group cursor-pointer">
+                <div class="rounded-full bg-blue-500 bg-opacity-0 group-hover:bg-opacity-10">
+                    <i class="fa-regular fa-message group-hover:text-blue-500 px-3 py-3"></i>
+                </div>
+                <span id="replies-count-{{tweet.id}}" class="ml-1 group-hover:text-blue-500">43</span>
+            </div>
+            <div class="flex items-center group cursor-pointer">
+                <div class="rounded-full bg-green-500 bg-opacity-0 group-hover:bg-opacity-10">
+                    <i class="fa-solid fa-repeat group-hover:text-green-500 px-3 py-3"></i>
+                </div>
+                <span id="liked-tweet-retweets-count-{{tweet.id}}" class="ml-1 group-hover:text-green-500">43</span>
+            </div>
+            <div class="flex items-center group cursor-pointer" id="liked-tweet-like-button-{{tweet.id}}">
+                <div class="rounded-full bg-red-500 bg-opacity-0 group-hover:bg-opacity-10">
+                    <i class="fa-regular fa-heart group-hover:text-red-500 px-3 py-3"></i>
+                </div>
+                <span id="liked-tweet-likes-count-{{tweet.id}}" class="ml-1 group-hover:text-red-500">43</span>
+            </div>
+            <div class="flex items-center cursor-pointer">
+                <div class="rounded-full bg-blue-500 bg-opacity-0 hover:bg-opacity-10">
+                    <i class="fa-solid fa-arrow-up-from-bracket hover:text-blue-500 px-3 py-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
