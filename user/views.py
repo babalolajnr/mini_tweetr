@@ -41,6 +41,7 @@ def profile(request):
     user = request.user
     tweets = Tweet.objects.filter(user=user)
     count_tweets = tweets.count()
+    liked_tweets = user.liked_tweets.all()
 
     try:
         profile = Profile.objects.get(user=user)
@@ -48,7 +49,14 @@ def profile(request):
         profile = None
 
     return render(
-        request, "user/profile.html", {"tweets": tweets, "count_tweets": count_tweets, "profile": profile}
+        request,
+        "user/profile.html",
+        {
+            "tweets": tweets,
+            "count_tweets": count_tweets,
+            "profile": profile,
+            "liked_tweets": liked_tweets,
+        },
     )
 
 
@@ -86,4 +94,3 @@ def save_profile(request):
 
     messages.success(request, "User details updated")
     return render(request, "user/profile.html")
-
