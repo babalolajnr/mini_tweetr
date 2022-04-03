@@ -69,36 +69,6 @@
 
 {% comment %} Posts {% endcomment %} {% for tweet in tweets %}
 <div class="border-t border-gray-600 mt-3">
-  <div class="flex pt-5 px-10">
-    {% comment %} User Avatar {% endcomment %}
-    <div class="w-10 h-10 rounded-full shrink-0">
-      <img src="{% static 'images/' %}{{tweet.user.avatar}}" alt="" />
-    </div>
-    <div class="pl-3 grow">
-      {% comment %} username {% endcomment %}
-      <div class="lg:flex justify-between">
-        <div>
-          <span class="font-bold text-sm">{{ tweet.user.first_name }} {{ tweet.user.last_name }}</span>
-          <span class="font-light text-sm text-slate-500">@{{tweet.user.username}}</span>
-          <span class="font-light text-xl text-slate-500 align-middle">&middot</span>
-          <span class="font-light text-sm text-slate-500">14m</span>
-        </div>
-        {% comment %} vertical ellipses {% endcomment %}
-        <div>
-          <i class="fa-solid fa-ellipsis"></i>
-        </div>
-      </div>
-      {% comment %} post content {% endcomment %}
-      <div class="text-sm">{{tweet.body}}</div>
-
-      {% comment %} Action buttons {% endcomment %}
-      <div class="flex justify-between pr-16 pt-4">
-        <i class="fa-regular fa-message"></i>
-        <i class="fa-solid fa-retweet"></i>
-        <i class="fa-regular fa-heart"></i>
-        <i class="fa-solid fa-arrow-up-from-bracket"></i>
-      </div>
-    </div>
-  </div>
+  {% include 'tweet/components/tweets.html' %}
 </div>
 {% endfor %} {% endblock %}
