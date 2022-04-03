@@ -35,16 +35,21 @@
                 </div>
                 <span id="retweets-count-{{tweet.id}}" class="ml-1 group-hover:text-green-500">43</span>
             </div>
-            <div class="flex items-center group cursor-pointer" id="like-button-{{tweet.id}}">
+            {% if tweet in liked_tweets %}
+            <div class="flex items-center group cursor-pointer" id="like-button-{{tweet.id}}" data-state="liked">
                 <div class="rounded-full bg-red-500 bg-opacity-0 group-hover:bg-opacity-10">
-                    {% if tweet in liked_tweets %}
                     <i class="fa-solid text-red-500 fa-heart group-hover:text-red-500 px-3 py-3"></i>
-                    {% else %}
-                    <i class="fa-regular fa-heart group-hover:text-red-500 px-3 py-3"></i>
-                    {% endif %}
                 </div>
                 <span id="likes-count-{{tweet.id}}" class="ml-1 group-hover:text-red-500">43</span>
             </div>
+            {% else %}
+            <div class="flex items-center group cursor-pointer" id="like-button-{{tweet.id}}" data-state="unliked">
+                <div class="rounded-full bg-red-500 bg-opacity-0 group-hover:bg-opacity-10">
+                    <i class="fa-regular fa-heart group-hover:text-red-500 px-3 py-3"></i>
+                </div>
+                <span id="likes-count-{{tweet.id}}" class="ml-1 group-hover:text-red-500">43</span>
+            </div>
+            {% endif %}
             <div class="flex items-center cursor-pointer">
                 <div class="rounded-full bg-blue-500 bg-opacity-0 hover:bg-opacity-10">
                     <i class="fa-solid fa-arrow-up-from-bracket hover:text-blue-500 px-3 py-3"></i>
