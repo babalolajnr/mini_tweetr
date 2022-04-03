@@ -53,30 +53,3 @@ editProfile.onclick = () => {
     editProfileModal.classList.remove('hidden')
     editProfileModal.classList.add('flex')
 }
-
-
-
-const likeButtons = document.querySelectorAll('[id^="like-button-"]')
-const likeButtonsArray = Array.from(likeButtons)
-
-likeButtonsArray.forEach(element => {
-    element.onclick = () => {
-        tweetId = element.id.split('-')[2]
-        likeTweet(tweetId)
-    }
-})
-
-function likeTweet(id) {
-    fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
-        },
-    }).then(response => {
-        if (response.status == 200) {
-
-        }
-    })
-}
