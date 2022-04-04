@@ -1,16 +1,19 @@
 
 const likeButtons = document.querySelectorAll('[id^="like-button-"]')
-const likeButtonsArray = Array.from(likeButtons)
+const likedTweetsLikeButtons = document.querySelectorAll('[id^="liked-tweet-like-button-"]')
+const likedTweetsLikeButtonsArray = Array.from(likedTweetsLikeButtons)
+let likeButtonsArray = Array.from(likeButtons)
+likeButtonsArray = [...likeButtonsArray, ...likedTweetsLikeButtonsArray]
 
 likeButtonsArray.forEach(element => {
     element.onclick = () => {
         if (element.dataset.state == 'liked') {
             changeLikeButtonState(element)
-            tweetId = element.id.split('-')[2]
+            tweetId = element.dataset.id
             unlikeTweet(tweetId, element)
         } else {
             changeUnlikeButtonState(element)
-            tweetId = element.id.split('-')[2]
+            tweetId = element.dataset.id
             likeTweet(tweetId, element)
         }
     }
