@@ -33,5 +33,13 @@ class TweetTestCase(TestCase):
         self.assertEqual(tweet.likes.count(), 1)
         self.assertEqual(tweet.likes.first().email, self.user['email'])
 
-       
+    def test_tweet_can_be_unliked(self):
+        self.client.login(**self.user)
+        self.client.post(reverse('save_tweet'), {'body': 'Test tweet'})
+        tweet = Tweet.objects.first()
+        self.client.post(reverse('like_tweet', args=[tweet.id]))
+        response = self.client.post(reverse('unlike_tweet', args=[tweet.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(tweet.likes.count(), 0)
+               
        
