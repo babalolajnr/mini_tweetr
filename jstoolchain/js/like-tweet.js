@@ -8,12 +8,12 @@ likeButtonsArray = [...likeButtonsArray, ...likedTweetsLikeButtonsArray]
 likeButtonsArray.forEach(element => {
     element.onclick = () => {
         if (element.dataset.state == 'liked') {
-            changeLikeButtonState(element)
-            tweetId = element.dataset.id
+            let tweetId = element.dataset.id
+            changeLikeButtonState(tweetId)
             unlikeTweet(tweetId, element)
         } else {
-            changeUnlikeButtonState(element)
-            tweetId = element.dataset.id
+            let tweetId = element.dataset.id
+            changeUnlikeButtonState(tweetId)
             likeTweet(tweetId, element)
         }
     }
@@ -65,8 +65,10 @@ function unlikeTweet(id, unlikeButton) {
  * @param  {} likeButton
  *  Change like button state to ulike button state
  */
-function changeLikeButtonState(likeButton) {
-    const likeIcon = likeButton.querySelectorAll('i')[0]
+function changeLikeButtonState(dataId) {
+    const likeButton = document.querySelector(`[data-id="${dataId}"]`)
+
+    const likeIcon = likeButton.querySelector('i')
     likeIcon.classList.replace('fa-solid', 'fa-regular')
     likeIcon.classList.remove('text-red-500')
 
@@ -81,8 +83,9 @@ function changeLikeButtonState(likeButton) {
  * @param  {} unlikeButton
  *  Change unlike button state to like button state
  */
-function changeUnlikeButtonState(unlikeButton) {
-    const likeIcon = unlikeButton.querySelectorAll('i')[0]
+function changeUnlikeButtonState(dataId) {
+    const unlikeButton = document.querySelector(`[data-id="${dataId}"]`)
+    const likeIcon = unlikeButton.querySelector('i')
     likeIcon.classList.replace('fa-regular', 'fa-solid')
     likeIcon.classList.add('text-red-500')
 

@@ -174,12 +174,12 @@ $008d1ac2ee3314ea$var$likeButtonsArray = [
 $008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
     element.onclick = ()=>{
         if (element.dataset.state == 'liked') {
-            $008d1ac2ee3314ea$var$changeLikeButtonState(element);
-            tweetId = element.dataset.id;
+            let tweetId = element.dataset.id;
+            $008d1ac2ee3314ea$var$changeLikeButtonState(tweetId);
             $008d1ac2ee3314ea$var$unlikeTweet(tweetId, element);
         } else {
-            $008d1ac2ee3314ea$var$changeUnlikeButtonState(element);
-            tweetId = element.dataset.id;
+            let tweetId = element.dataset.id;
+            $008d1ac2ee3314ea$var$changeUnlikeButtonState(tweetId);
             $008d1ac2ee3314ea$var$likeTweet(tweetId, element);
         }
     };
@@ -221,8 +221,9 @@ $008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
 /**
  * @param  {} likeButton
  *  Change like button state to ulike button state
- */ function $008d1ac2ee3314ea$var$changeLikeButtonState(likeButton) {
-    const likeIcon = likeButton.querySelectorAll('i')[0];
+ */ function $008d1ac2ee3314ea$var$changeLikeButtonState(dataId) {
+    const likeButton = document.querySelector(`[data-id="${dataId}"]`);
+    const likeIcon = likeButton.querySelector('i');
     likeIcon.classList.replace('fa-solid', 'fa-regular');
     likeIcon.classList.remove('text-red-500');
     const likesCount = likeButton.querySelectorAll('span')[0];
@@ -233,8 +234,9 @@ $008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
 /**
  * @param  {} unlikeButton
  *  Change unlike button state to like button state
- */ function $008d1ac2ee3314ea$var$changeUnlikeButtonState(unlikeButton) {
-    const likeIcon = unlikeButton.querySelectorAll('i')[0];
+ */ function $008d1ac2ee3314ea$var$changeUnlikeButtonState(dataId) {
+    const unlikeButton = document.querySelector(`[data-id="${dataId}"]`);
+    const likeIcon = unlikeButton.querySelector('i');
     likeIcon.classList.replace('fa-regular', 'fa-solid');
     likeIcon.classList.add('text-red-500');
     // Increase likes count
