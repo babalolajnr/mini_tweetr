@@ -66,17 +66,19 @@ function unlikeTweet(id, unlikeButton) {
  *  Change like button state to ulike button state
  */
 function changeLikeButtonState(dataId) {
-    const likeButton = document.querySelector(`[data-id="${dataId}"]`)
+    const likeButtons = document.querySelectorAll(`[data-id="${dataId}"]`)
 
-    const likeIcon = likeButton.querySelector('i')
-    likeIcon.classList.replace('fa-solid', 'fa-regular')
-    likeIcon.classList.remove('text-red-500')
+    likeButtons.forEach(element => {
+        const likeIcon = element.querySelector('i')
+        likeIcon.classList.replace('fa-solid', 'fa-regular')
+        likeIcon.classList.remove('text-red-500')
 
-    const likesCount = likeButton.querySelectorAll('span')[0]
-    const likesCountNumber = parseInt(likesCount.innerText)
-    likesCount.innerText = likesCountNumber - 1
+        const likesCount = element.querySelectorAll('span')[0]
+        const likesCountNumber = parseInt(likesCount.innerText)
+        likesCount.innerText = likesCountNumber - 1
 
-    likeButton.dataset.state = 'unliked'
+        element.dataset.state = 'unliked'
+    })
 }
 
 /**
@@ -84,15 +86,17 @@ function changeLikeButtonState(dataId) {
  *  Change unlike button state to like button state
  */
 function changeUnlikeButtonState(dataId) {
-    const unlikeButton = document.querySelector(`[data-id="${dataId}"]`)
-    const likeIcon = unlikeButton.querySelector('i')
-    likeIcon.classList.replace('fa-regular', 'fa-solid')
-    likeIcon.classList.add('text-red-500')
+    const unlikeButtons = document.querySelectorAll(`[data-id="${dataId}"]`)
 
-    // Increase likes count
-    const likesCount = unlikeButton.querySelectorAll('span')[0]
-    const likesCountNumber = parseInt(likesCount.innerText)
-    likesCount.innerText = likesCountNumber + 1
+    unlikeButtons.forEach(element => {
+        const likeIcon = element.querySelector('i')
+        likeIcon.classList.replace('fa-regular', 'fa-solid')
+        likeIcon.classList.add('text-red-500')
 
-    unlikeButton.dataset.state = 'liked'
+        const likesCount = element.querySelectorAll('span')[0]
+        const likesCountNumber = parseInt(likesCount.innerText)
+        likesCount.innerText = likesCountNumber + 1
+
+        element.dataset.state = 'liked'
+    })
 }

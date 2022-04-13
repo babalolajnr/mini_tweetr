@@ -222,28 +222,31 @@ $008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
  * @param  {} likeButton
  *  Change like button state to ulike button state
  */ function $008d1ac2ee3314ea$var$changeLikeButtonState(dataId) {
-    const likeButton = document.querySelector(`[data-id="${dataId}"]`);
-    const likeIcon = likeButton.querySelector('i');
-    likeIcon.classList.replace('fa-solid', 'fa-regular');
-    likeIcon.classList.remove('text-red-500');
-    const likesCount = likeButton.querySelectorAll('span')[0];
-    const likesCountNumber = parseInt(likesCount.innerText);
-    likesCount.innerText = likesCountNumber - 1;
-    likeButton.dataset.state = 'unliked';
+    const likeButtons = document.querySelectorAll(`[data-id="${dataId}"]`);
+    likeButtons.forEach((element)=>{
+        const likeIcon = element.querySelector('i');
+        likeIcon.classList.replace('fa-solid', 'fa-regular');
+        likeIcon.classList.remove('text-red-500');
+        const likesCount = element.querySelectorAll('span')[0];
+        const likesCountNumber = parseInt(likesCount.innerText);
+        likesCount.innerText = likesCountNumber - 1;
+        element.dataset.state = 'unliked';
+    });
 }
 /**
  * @param  {} unlikeButton
  *  Change unlike button state to like button state
  */ function $008d1ac2ee3314ea$var$changeUnlikeButtonState(dataId) {
-    const unlikeButton = document.querySelector(`[data-id="${dataId}"]`);
-    const likeIcon = unlikeButton.querySelector('i');
-    likeIcon.classList.replace('fa-regular', 'fa-solid');
-    likeIcon.classList.add('text-red-500');
-    // Increase likes count
-    const likesCount = unlikeButton.querySelectorAll('span')[0];
-    const likesCountNumber = parseInt(likesCount.innerText);
-    likesCount.innerText = likesCountNumber + 1;
-    unlikeButton.dataset.state = 'liked';
+    const unlikeButtons = document.querySelectorAll(`[data-id="${dataId}"]`);
+    unlikeButtons.forEach((element)=>{
+        const likeIcon = element.querySelector('i');
+        likeIcon.classList.replace('fa-regular', 'fa-solid');
+        likeIcon.classList.add('text-red-500');
+        const likesCount = element.querySelectorAll('span')[0];
+        const likesCountNumber = parseInt(likesCount.innerText);
+        likesCount.innerText = likesCountNumber + 1;
+        element.dataset.state = 'liked';
+    });
 }
 
 
