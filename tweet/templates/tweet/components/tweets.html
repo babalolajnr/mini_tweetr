@@ -43,7 +43,7 @@
                 <span id="likes-count-{{tweet.id}}" class="ml-1 group-hover:text-red-500">43</span>
             </div>
             {% else %}
-            <div class="flex items-center group cursor-pointer" id="like-button-{{tweet.id}}" data-state="unliked">
+            <div class="flex items-center group cursor-pointer" id="like-button-{{tweet.id}}" data-state="unliked" data-id="{{tweet.id}}">
                 <div class="rounded-full bg-red-500 bg-opacity-0 group-hover:bg-opacity-10">
                     <i class="fa-regular fa-heart group-hover:text-red-500 px-3 py-3"></i>
                 </div>
