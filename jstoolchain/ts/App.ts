@@ -18,8 +18,10 @@ class App {
         console.log('App running...');
     }
 
+    /**
+     * Resize textarea on input dynamically
+     */
     private textarea() {
-        // Resize textarea on input dynamically
         const tx = document.getElementsByTagName("textarea");
         for (let i = 0; i < tx.length; i++) {
             tx[i].setAttribute(
@@ -35,6 +37,9 @@ class App {
         }
     }
 
+    /**
+     * Load classes based on view
+     */
     private loadClasses() {
         if (this.view === 'profile') {
             Profile.run();
