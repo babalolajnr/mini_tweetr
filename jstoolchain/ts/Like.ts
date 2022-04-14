@@ -10,11 +10,11 @@ class Like {
                 if (element.dataset.state == 'liked') {
                     let tweetId = element.dataset.id
                     this.changeLikeButtonState(tweetId)
-                    this.unlikeTweet(tweetId, element)
+                    this.unlikeTweet(tweetId)
                 } else {
                     let tweetId = element.dataset.id
                     this.changeUnlikeButtonState(tweetId)
-                    this.likeTweet(tweetId, element)
+                    this.likeTweet(tweetId)
                 }
             }
         })
@@ -39,24 +39,22 @@ class Like {
 
     /**
      * @param  {string} id
-     * @param  {HTMLElement} likeButton
      * Send like tweet request to server
      */
-    private likeTweet(id: string, likeButton: HTMLElement) {
+    private likeTweet(id: string) {
         fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, this.fetchInit()).then(response => {
             if (response.status != 200) {
                 // Reset like button and count when the request fails
-                changeLikeButtonState(likeButton)
+                this.changeLikeButtonState(id)
             }
         })
     }
 
     /**
-     * @param  {} id
-     * @param  {} unlikeButton
+     * @param  {string} id
      * Send unlike tweet request to server
      */
-    private unlikeTweet(id: string, unlikeButton: HTMLElement) {
+    private unlikeTweet(id: string) {
         fetch(`http://127.0.0.1:8000/tweet/unlike_tweet/${id}/`, this.fetchInit()).then(response => {
             if (response.status != 200) {
                 // Reset unlike button and count when the request fails
