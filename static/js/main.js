@@ -163,14 +163,8 @@ function $f47f3ce0831b0c7f$var$OnInput() {
 }
 
 
-const $008d1ac2ee3314ea$var$likeButtons = document.querySelectorAll('[id^="like-button-"]');
-const $008d1ac2ee3314ea$var$likedTweetsLikeButtons = document.querySelectorAll('[id^="liked-tweet-like-button-"]');
-const $008d1ac2ee3314ea$var$likedTweetsLikeButtonsArray = Array.from($008d1ac2ee3314ea$var$likedTweetsLikeButtons);
+const $008d1ac2ee3314ea$var$likeButtons = document.querySelectorAll('[data-button="like"]');
 let $008d1ac2ee3314ea$var$likeButtonsArray = Array.from($008d1ac2ee3314ea$var$likeButtons);
-$008d1ac2ee3314ea$var$likeButtonsArray = [
-    ...$008d1ac2ee3314ea$var$likeButtonsArray,
-    ...$008d1ac2ee3314ea$var$likedTweetsLikeButtonsArray
-];
 $008d1ac2ee3314ea$var$likeButtonsArray.forEach((element)=>{
     element.onclick = ()=>{
         if (element.dataset.state == 'liked') {

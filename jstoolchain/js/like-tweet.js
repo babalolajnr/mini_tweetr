@@ -1,9 +1,6 @@
 
-const likeButtons = document.querySelectorAll('[id^="like-button-"]')
-const likedTweetsLikeButtons = document.querySelectorAll('[id^="liked-tweet-like-button-"]')
-const likedTweetsLikeButtonsArray = Array.from(likedTweetsLikeButtons)
+const likeButtons = document.querySelectorAll('[data-button="like"]')
 let likeButtonsArray = Array.from(likeButtons)
-likeButtonsArray = [...likeButtonsArray, ...likedTweetsLikeButtonsArray]
 
 likeButtonsArray.forEach(element => {
     element.onclick = () => {
