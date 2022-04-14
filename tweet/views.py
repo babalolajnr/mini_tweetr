@@ -11,7 +11,10 @@ from tweet.models import Tweet
 @login_required
 def index(request):
     tweets = Tweet.objects.filter(user=request.user)
-    return render(request, "tweet/home.html", {"tweets": tweets})
+    liked_tweets = request.user.liked_tweets.all()
+    return render(
+        request, "tweet/home.html", {"tweets": tweets, "liked_tweets": liked_tweets}
+    )
 
 
 @login_required
@@ -29,21 +32,24 @@ def save_tweet(request):
                 request, "tweet/home.html", {"errors": form.errors, "form": form}
             )
 
+
 @login_required
 def like_tweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
     tweet.likes.add(request.user)
     return JsonResponse({"message": "Tweet liked!"})
 
+
 @login_required
 def unlike_tweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
     tweet.likes.remove(request.user)
-    return JsonResponse({"message": "Tweet unliked!"})    
-    
+    return JsonResponse({"message": "Tweet unliked!"})
+
+
 @login_required
 def retweet(request, tweet_id):
-    tweet = Tweet.objects.get(pk=tweet_id)  
+    tweet = Tweet.objects.get(pk=tweet_id)
     new_tweet = Tweet(user=request.user, retweet_parent=tweet)
     new_tweet.save()
-    return JsonResponse({"message": "Tweet retweeted!"})  
+    return JsonResponse({"message": "Tweet retweeted!"})
