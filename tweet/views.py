@@ -40,3 +40,10 @@ def unlike_tweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
     tweet.likes.remove(request.user)
     return JsonResponse({"message": "Tweet unliked!"})    
+    
+@login_required
+def retweet(request, tweet_id):
+    tweet = Tweet.objects.get(pk=tweet_id)  
+    new_tweet = Tweet(user=request.user, retweet_parent=tweet)
+    new_tweet.save()
+    return JsonResponse({"message": "Tweet retweeted!"})  
