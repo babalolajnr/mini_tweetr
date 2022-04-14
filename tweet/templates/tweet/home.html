@@ -67,8 +67,10 @@
   </div>
 </div>
 
-{% comment %} Posts {% endcomment %} {% for tweet in tweets %}
+{% comment %} Posts {% endcomment %}
+{% for tweet in tweets %}
 <div class="border-t border-gray-600 mt-3">
   {% include 'tweet/components/tweets.html' %}
 </div>
-{% endfor %} {% endblock %}
+{% endfor %}
+{% endblock %}
