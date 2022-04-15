@@ -7,7 +7,7 @@ class Like {
 
         this.likeButtons.forEach(element => {
             element.onclick = () => {
-                if (element.dataset.state == 'liked') {
+                if (element.dataset.action == 'unlike') {
                     let tweetId = element.dataset.id
                     this.changeLikeButtonState(tweetId)
                     this.unlikeTweet(tweetId)

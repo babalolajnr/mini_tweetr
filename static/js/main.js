@@ -46,14 +46,14 @@ class $f7d50bab9555af31$var$Like {
         this.likeButtons = likeButtons;
         this.likeButtons.forEach((element)=>{
             element.onclick = ()=>{
-                if (element.dataset.state == 'liked') {
+                if (element.dataset.action == 'unlike') {
                     let tweetId = element.dataset.id;
                     this.changeLikeButtonState(tweetId);
-                    this.unlikeTweet(tweetId, element);
+                    this.unlikeTweet(tweetId);
                 } else {
                     let tweetId = element.dataset.id;
                     this.changeUnlikeButtonState(tweetId);
-                    this.likeTweet(tweetId, element);
+                    this.likeTweet(tweetId);
                 }
             };
         });
@@ -74,19 +74,17 @@ class $f7d50bab9555af31$var$Like {
     }
     /**
      * @param  {string} id
-     * @param  {HTMLElement} likeButton
      * Send like tweet request to server
-     */ likeTweet(id, likeButton) {
+     */ likeTweet(id) {
         fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, this.fetchInit()).then((response)=>{
             if (response.status != 200) // Reset like button and count when the request fails
-            changeLikeButtonState(likeButton);
+            this.changeLikeButtonState(id);
         });
     }
     /**
-     * @param  {} id
-     * @param  {} unlikeButton
+     * @param  {string} id
      * Send unlike tweet request to server
-     */ unlikeTweet(id, unlikeButton) {
+     */ unlikeTweet(id) {
         fetch(`http://127.0.0.1:8000/tweet/unlike_tweet/${id}/`, this.fetchInit()).then((response)=>{
             if (response.status != 200) // Reset unlike button and count when the request fails
             this.changeUnlikeButtonState(id);
@@ -207,8 +205,9 @@ class $d07afc15d861e52d$var$App {
         this.loadClasses();
         console.log('App running...');
     }
-    textarea() {
-        // Resize textarea on input dynamically
+    /**
+     * Resize textarea on input dynamically
+     */ textarea() {
         const tx = document.getElementsByTagName("textarea");
         for(let i = 0; i < tx.length; i++){
             tx[i].setAttribute("style", "height:" + tx[i].scrollHeight + "px;overflow-y:hidden;");
@@ -219,7 +218,9 @@ class $d07afc15d861e52d$var$App {
             this.style.height = this.scrollHeight + "px";
         }
     }
-    loadClasses() {
+    /**
+     * Load classes based on view
+     */ loadClasses() {
         if (this.view === 'profile') {
             $1b687d53ec8042ef$export$2e2bcd8739ae039.run();
             $22927594a1eadbc7$export$2e2bcd8739ae039.run();
