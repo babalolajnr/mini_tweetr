@@ -3,22 +3,23 @@ from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from tweet.forms import TweetForm
-from tweet.models import Tweet
+from tweet.models import Retweet, Tweet
 
 # Create your views here.
 
 
 @login_required
 def index(request):
-    tweets = Tweet.objects.filter(retweet_parent_id__isnull=True).filter(
-        user=request.user
-    )
+    tweets = Tweet.objects.filter(user=request.user)
     liked_tweets = request.user.liked_tweets.all()
-    retweets = Tweet.objects.filter(retweet_parent_id__isnull=False)
-    retweet_counts = {}
-    for tweet in tweets:
-        retweet_count = tweet.retweets.count()
-        retweet_counts[tweet.id] = retweet_count
+    retweets = request.user.retweets.all()
+
+    # Get the tweet objects of the user's retweets
+    retweeted_tweets = []
+
+    for retweet in retweets:
+        tweet = retweet.tweet
+        retweeted_tweets.append(tweet)
 
     return render(
         request,
@@ -26,8 +27,7 @@ def index(request):
         {
             "tweets": tweets,
             "liked_tweets": liked_tweets,
-            "retweets": retweets,
-            "retweet_counts": retweet_counts,
+            "retweeted_tweets": retweeted_tweets,
         },
     )
 
@@ -65,17 +65,13 @@ def unlike_tweet(request, tweet_id):
 @login_required
 def retweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
-    retweet = (
-        Tweet.objects.filter(retweet_parent_id=tweet.id)
-        .filter(user=request.user)
-        .count()
-    )
-    if retweet == 0:
-        retweet = Tweet(
-            user=request.user,
-            retweet_parent_id=tweet.id,
-        )
-        retweet.save()
-        return JsonResponse({"message": "Retweeted!"})
-    else:
+
+    check = Retweet.objects.filter(tweet=tweet, user=request.user).exists()
+    if check:
         return HttpResponseForbidden("You can only retweet once!")
+    
+    retweet = Retweet(tweet=tweet, user=request.user)
+    retweet.save()
+    
+    return JsonResponse({"message": "Retweeted!"})
+
