@@ -9,11 +9,11 @@ class Like {
             element.onclick = () => {
                 if (element.dataset.action == 'unlike') {
                     let tweetId = element.dataset.id
-                    this.changeLikeButtonState(tweetId)
+                    this.changeLikeButtonAction(tweetId)
                     this.unlikeTweet(tweetId)
                 } else {
                     let tweetId = element.dataset.id
-                    this.changeUnlikeButtonState(tweetId)
+                    this.changeUnlikeButtonAction(tweetId)
                     this.likeTweet(tweetId)
                 }
             }
@@ -45,7 +45,7 @@ class Like {
         fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, this.fetchInit()).then(response => {
             if (response.status != 200) {
                 // Reset like button and count when the request fails
-                this.changeLikeButtonState(id)
+                this.changeLikeButtonAction(id)
             }
         })
     }
@@ -58,15 +58,15 @@ class Like {
         fetch(`http://127.0.0.1:8000/tweet/unlike_tweet/${id}/`, this.fetchInit()).then(response => {
             if (response.status != 200) {
                 // Reset unlike button and count when the request fails
-                this.changeUnlikeButtonState(id)
+                this.changeUnlikeButtonAction(id)
             }
         })
     }
 
     /**
-     *  Change unlike button state to like button state
+     *  Change unlike button action
      */
-    private changeUnlikeButtonState(dataId: string): void {
+    private changeUnlikeButtonAction(dataId: string): void {
         const unlikeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-id="${dataId}"]`)
 
         unlikeButtons.forEach(element => {
@@ -78,16 +78,16 @@ class Like {
             const likesCountNumber = parseInt(likesCount.innerText)
             likesCount.innerText = `${likesCountNumber + 1}`
 
-            element.dataset.state = 'liked'
+            element.dataset.action = 'unlike'
         })
     }
 
 
     /**
      * @param  {string} dataId
-     *  Change like button state to ulike button state
+     *  Change like button action
      */
-    private changeLikeButtonState(dataId: string) {
+    private changeLikeButtonAction(dataId: string) {
         const likeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-id="${dataId}"]`)
 
         likeButtons.forEach(element => {
@@ -99,7 +99,7 @@ class Like {
             const likesCountNumber = parseInt(likesCount.innerText)
             likesCount.innerText = `${likesCountNumber - 1}`
 
-            element.dataset.state = 'unliked'
+            element.dataset.action = 'like'
         })
     }
 }
