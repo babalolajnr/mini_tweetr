@@ -1,6 +1,7 @@
 import EditProfileModal from "./EditProfileModal";
 import Like from "./Like";
 import Profile from "./Profile";
+import Retweet from "./Retweet";
 
 class App {
     xcsrfToken: string
@@ -12,8 +13,13 @@ class App {
 
     run() {
         this.textarea();
+
         const likeButtons = Array.from(document.querySelectorAll('[data-button="like"]')) as HTMLElement[];
         new Like(likeButtons, this.xcsrfToken);
+
+        const retweetButtons = Array.from(document.querySelectorAll('[data-button="retweet"]')) as HTMLElement[];
+        new Retweet(retweetButtons, this.xcsrfToken);
+        
         this.loadClasses();
         console.log('App running...');
     }
