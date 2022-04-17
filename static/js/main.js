@@ -48,11 +48,11 @@ class $f7d50bab9555af31$var$Like {
             element.onclick = ()=>{
                 if (element.dataset.action == 'unlike') {
                     let tweetId = element.dataset.id;
-                    this.changeLikeButtonState(tweetId);
+                    this.changeLikeButtonAction(tweetId);
                     this.unlikeTweet(tweetId);
                 } else {
                     let tweetId = element.dataset.id;
-                    this.changeUnlikeButtonState(tweetId);
+                    this.changeUnlikeButtonAction(tweetId);
                     this.likeTweet(tweetId);
                 }
             };
@@ -78,7 +78,7 @@ class $f7d50bab9555af31$var$Like {
      */ likeTweet(id) {
         fetch(`http://127.0.0.1:8000/tweet/like_tweet/${id}/`, this.fetchInit()).then((response)=>{
             if (response.status != 200) // Reset like button and count when the request fails
-            this.changeLikeButtonState(id);
+            this.changeLikeButtonAction(id);
         });
     }
     /**
@@ -87,12 +87,12 @@ class $f7d50bab9555af31$var$Like {
      */ unlikeTweet(id) {
         fetch(`http://127.0.0.1:8000/tweet/unlike_tweet/${id}/`, this.fetchInit()).then((response)=>{
             if (response.status != 200) // Reset unlike button and count when the request fails
-            this.changeUnlikeButtonState(id);
+            this.changeUnlikeButtonAction(id);
         });
     }
     /**
-     *  Change unlike button state to like button state
-     */ changeUnlikeButtonState(dataId) {
+     *  Change unlike button action
+     */ changeUnlikeButtonAction(dataId) {
         const unlikeButtons = document.querySelectorAll(`[data-id="${dataId}"]`);
         unlikeButtons.forEach((element)=>{
             const likeIcon = element.querySelector('i');
@@ -101,13 +101,13 @@ class $f7d50bab9555af31$var$Like {
             const likesCount = element.querySelectorAll('span')[0];
             const likesCountNumber = parseInt(likesCount.innerText);
             likesCount.innerText = `${likesCountNumber + 1}`;
-            element.dataset.state = 'liked';
+            element.dataset.action = 'unlike';
         });
     }
     /**
      * @param  {string} dataId
-     *  Change like button state to ulike button state
-     */ changeLikeButtonState(dataId) {
+     *  Change like button action
+     */ changeLikeButtonAction(dataId) {
         const likeButtons = document.querySelectorAll(`[data-id="${dataId}"]`);
         likeButtons.forEach((element)=>{
             const likeIcon = element.querySelector('i');
@@ -116,7 +116,7 @@ class $f7d50bab9555af31$var$Like {
             const likesCount = element.querySelectorAll('span')[0];
             const likesCountNumber = parseInt(likesCount.innerText);
             likesCount.innerText = `${likesCountNumber - 1}`;
-            element.dataset.state = 'unliked';
+            element.dataset.action = 'like';
         });
     }
 }
