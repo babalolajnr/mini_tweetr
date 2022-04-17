@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from tweet.forms import TweetForm
@@ -10,13 +10,25 @@ from tweet.models import Tweet
 
 @login_required
 def index(request):
-    tweets = Tweet.objects.filter(retweet_parent_id__isnull=True).filter(user=request.user)
+    tweets = Tweet.objects.filter(retweet_parent_id__isnull=True).filter(
+        user=request.user
+    )
     liked_tweets = request.user.liked_tweets.all()
     retweets = Tweet.objects.filter(retweet_parent_id__isnull=False)
+    retweet_counts = {}
+    for tweet in tweets:
+        retweet_count = tweet.retweets.count()
+        retweet_counts[tweet.id] = retweet_count
+
     return render(
         request,
         "tweet/home.html",
-        {"tweets": tweets, "liked_tweets": liked_tweets, "retweets": retweets},
+        {
+            "tweets": tweets,
+            "liked_tweets": liked_tweets,
+            "retweets": retweets,
+            "retweet_counts": retweet_counts,
+        },
     )
 
 
@@ -53,7 +65,11 @@ def unlike_tweet(request, tweet_id):
 @login_required
 def retweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
-    retweet = Tweet.objects.filter(retweet_parent_id=tweet.id).filter(user=request.user).count()
+    retweet = (
+        Tweet.objects.filter(retweet_parent_id=tweet.id)
+        .filter(user=request.user)
+        .count()
+    )
     if retweet == 0:
         retweet = Tweet(
             user=request.user,
@@ -62,4 +78,4 @@ def retweet(request, tweet_id):
         retweet.save()
         return JsonResponse({"message": "Retweeted!"})
     else:
-        return JsonResponse({"message": "You already retweeted this tweet!"})
+        return HttpResponseForbidden("You can only retweet once!")
