@@ -10,9 +10,9 @@ from tweet.models import Tweet
 
 @login_required
 def index(request):
-    tweets = Tweet.objects.filter(user=request.user)
+    tweets = Tweet.objects.filter(retweet_parent_id__isnull=True).filter(user=request.user)
     liked_tweets = request.user.liked_tweets.all()
-    retweets = tweets.filter(parent__isnull=False)
+    retweets = Tweet.objects.filter(retweet_parent_id__isnull=False)
     return render(
         request,
         "tweet/home.html",
@@ -53,6 +53,13 @@ def unlike_tweet(request, tweet_id):
 @login_required
 def retweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
-    new_tweet = Tweet(user=request.user, retweet_parent=tweet)
-    new_tweet.save()
-    return JsonResponse({"message": "Tweet retweeted!"})
+    retweet = Tweet.objects.filter(retweet_parent_id=tweet.id).filter(user=request.user).count()
+    if retweet == 0:
+        retweet = Tweet(
+            user=request.user,
+            retweet_parent_id=tweet.id,
+        )
+        retweet.save()
+        return JsonResponse({"message": "Retweeted!"})
+    else:
+        return JsonResponse({"message": "You already retweeted this tweet!"})
