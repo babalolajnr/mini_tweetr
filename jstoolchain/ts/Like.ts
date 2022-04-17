@@ -75,13 +75,13 @@ class Like {
             likeIcon.classList.add('text-red-500')
 
             const likesCount = element.querySelectorAll('span')[0]
+            likesCount.classList.add('text-red-500')
             const likesCountNumber = parseInt(likesCount.innerText)
             likesCount.innerText = `${likesCountNumber + 1}`
 
             element.dataset.action = 'unlike'
         })
     }
-
 
     /**
      * @param  {string} dataId
@@ -96,6 +96,7 @@ class Like {
             likeIcon.classList.remove('text-red-500')
 
             const likesCount = element.querySelectorAll('span')[0]
+            likesCount.classList.remove('text-red-500')
             const likesCountNumber = parseInt(likesCount.innerText)
             likesCount.innerText = `${likesCountNumber - 1}`
 
