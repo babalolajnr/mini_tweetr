@@ -23,6 +23,7 @@
         <div class="text-sm">
             {{ tweet.body }}
         </div>
+
         {% comment %} Action buttons {% endcomment %}
         <div class="flex justify-between pr-20 text-slate-400 text-sm">
             <div class="flex items-center group cursor-pointer">
@@ -31,13 +32,13 @@
                 </div>
                 <span id="replies-count-{{tweet.id}}" class="ml-1 group-hover:text-blue-500">43</span>
             </div>
-            {% if tweet in retweets %}
+            {% if tweet in retweeted_tweets %}
             <div class="flex items-center group cursor-pointer" data-button="retweet" data-action="unretweet"
                 data-id="{{tweet.id}}">
                 <div class="rounded-full bg-green-500 bg-opacity-0 group-hover:bg-opacity-10">
                     <i class="fa-solid fa-repeat text-green-500 px-3 py-3"></i>
                 </div>
-                <span id="retweets-count-{{tweet.id}}" class="ml-1 text-green-500">{{retweet_counts.tweet.id}}</span>
+                <span id="retweets-count-{{tweet.id}}" class="ml-1 text-green-500">{{ tweet.retweets.count }}</span>
             </div>
             {% else %}
             <div class="flex items-center group cursor-pointer" data-button="retweet" data-action="retweet"
@@ -46,7 +47,7 @@
                     <i class="fa-solid fa-repeat group-hover:text-green-500 px-3 py-3"></i>
                 </div>
                 <span id="retweets-count-{{tweet.id}}"
-                    class="ml-1 group-hover:text-green-500">{{ retweet_counts|get_value:tweet.id }}</span>
+                    class="ml-1 group-hover:text-green-500">{{ tweet.retweets.count }}</span>
             </div>
             {% endif %}
 
