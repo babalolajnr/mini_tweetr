@@ -40,22 +40,12 @@ class Tweet(models.Model):
     4. A reply does not have a retweet_parent.
     5. A reply does not have a thread or thread_rank.
 
-    Retweet Rules:
-    1. A retweet does not have a body.
-    2. A retweet must have a related user.
-    3. A retweet must have a retweet_parent. A retweet_parent signifies what the tweet
-    is a retweet of.
-    4. A retweet does not have a reply_parent.
-    5. A retweet does not have a thread or thread_rank.
     """
 
     body = models.TextField(max_length=280, blank=True, null=True)
     user = models.ForeignKey(User, related_name="tweets", on_delete=models.CASCADE)
     reply_parent = models.ForeignKey(
         "self", null=True, blank=True, related_name="replies", on_delete=models.CASCADE
-    )
-    retweet_parent = models.ForeignKey(
-        "self", null=True, blank=True, related_name="retweets", on_delete=models.CASCADE
     )
     thread = models.ForeignKey(
         Thread, related_name="tweets", on_delete=models.CASCADE, null=True, blank=True
@@ -67,3 +57,13 @@ class Tweet(models.Model):
 
     def __str__(self):
         return self.body
+
+class Retweet(models.Model):
+    
+    tweet = models.ForeignKey(Tweet, related_name="retweets", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="retweets", on_delete=models.CASCADE)
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.tweet.body
