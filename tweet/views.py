@@ -12,8 +12,11 @@ from tweet.models import Tweet
 def index(request):
     tweets = Tweet.objects.filter(user=request.user)
     liked_tweets = request.user.liked_tweets.all()
+    retweets = tweets.filter(parent__isnull=False)
     return render(
-        request, "tweet/home.html", {"tweets": tweets, "liked_tweets": liked_tweets}
+        request,
+        "tweet/home.html",
+        {"tweets": tweets, "liked_tweets": liked_tweets, "retweets": retweets},
     )
 
 
