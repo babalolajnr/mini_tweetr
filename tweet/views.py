@@ -66,12 +66,20 @@ def unlike_tweet(request, tweet_id):
 def retweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
 
+    # check if the user has already retweeted the tweet
     check = Retweet.objects.filter(tweet=tweet, user=request.user).exists()
     if check:
         return HttpResponseForbidden("You can only retweet once!")
-    
+
     retweet = Retweet(tweet=tweet, user=request.user)
     retweet.save()
-    
+
     return JsonResponse({"message": "Retweeted!"})
 
+
+@login_required
+def unretweet(request, tweet_id):
+    tweet = Tweet.objects.get(pk=tweet_id)
+    retweet = Retweet.objects.get(tweet=tweet, user=request.user)
+    retweet.delete()
+    return JsonResponse({"message": "Unretweeted!"})
