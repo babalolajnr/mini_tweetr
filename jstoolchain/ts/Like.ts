@@ -67,7 +67,7 @@ class Like {
      *  Change unlike button action
      */
     private changeUnlikeButtonAction(dataId: string): void {
-        const unlikeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-id="${dataId}"]`)
+        const unlikeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-button="like"][data-id="${dataId}"]`)
 
         unlikeButtons.forEach(element => {
             const likeIcon = element.querySelector('i')
@@ -88,7 +88,7 @@ class Like {
      *  Change like button action
      */
     private changeLikeButtonAction(dataId: string) {
-        const likeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-id="${dataId}"]`)
+        const likeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-button="like"][data-id="${dataId}"]`)
 
         likeButtons.forEach(element => {
             const likeIcon = element.querySelector('i')
