@@ -69,7 +69,7 @@ class Retweet {
      *  Change unretweet button action
      */
     private changeUnretweetButtonAction(dataId: string): void {
-        const unlikeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-id="${dataId}"]`)
+        const unlikeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-button="retweet"][data-id="${dataId}"]`)
 
         unlikeButtons.forEach(element => {
             const retweetIcon = element.querySelector('i')
@@ -90,7 +90,7 @@ class Retweet {
      *  Change retweet button action
      */
     private changeRetweetButtonAction(dataId: string) {
-        const retweetButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-id="${dataId}"]`)
+        const retweetButtons: NodeListOf<HTMLElement> = document.querySelectorAll(`[data-button="retweet"][data-id="${dataId}"]`)
 
         retweetButtons.forEach(element => {
             const retweetIcon = element.querySelector('i')
