@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from tweet.factory import TweetFactory
-from tweet.models import Tweet
+from tweet.models import Retweet, Tweet
 
 from user.models import User
 
@@ -42,4 +42,12 @@ class TweetTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(tweet.likes.count(), 0)
                
-       
+    def test_tweet_can_be_retweeted(self):
+        self.client.login(**self.user)
+        self.client.post(reverse('save_tweet'), {'body': 'Test tweet'})
+        tweet = Tweet.objects.first()
+        response = self.client.post(reverse('retweet', args=[tweet.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Retweet.objects.count(), 1)
+        self.assertEqual(Retweet.objects.first().tweet.id, tweet.id)
+        self.assertEqual(Retweet.objects.first().user.email, self.user['email'])   
