@@ -228,24 +228,21 @@ class $eff0bedde61234ed$var$Retweet {
     }
     /**
      * @param  {string} id
-     * Send like tweet request to server
+     * Send retweet tweet request to server
      */ retweet(id) {
         fetch(`http://127.0.0.1:8000/tweet/retweet/${id}/`, this.fetchInit()).then((response)=>{
-            if (response.status != 200) // Reset like button and count when the request fails
+            if (response.status != 200) // Reset retweet button and count when the request fails
             this.changeRetweetButtonAction(id);
         });
     }
     /**
      * @param  {string} id
-     * Send unretweet tweet request to server
+     * Send unretweet request to server
      */ unretweet(id) {
-        // fetch(`http://127.0.0.1:8000/tweet/unlike_tweet/${id}/`, this.fetchInit()).then(response => {
-        //     if (response.status != 200) {
-        //         // Reset unretweet button and count when the request fails
-        //         this.changeUnretweetButtonAction(id)
-        //     }
-        // })
-        console.log("unretweeted");
+        fetch(`http://127.0.0.1:8000/tweet/unretweet/${id}/`, this.fetchInit()).then((response)=>{
+            if (response.status != 200) // Reset unretweet button and count when the request fails
+            this.changeUnretweetButtonAction(id);
+        });
     }
     /**
      *  Change unretweet button action
