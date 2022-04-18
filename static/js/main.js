@@ -93,7 +93,7 @@ class $f7d50bab9555af31$var$Like {
     /**
      *  Change unlike button action
      */ changeUnlikeButtonAction(dataId) {
-        const unlikeButtons = document.querySelectorAll(`[data-id="${dataId}"]`);
+        const unlikeButtons = document.querySelectorAll(`[data-button="like"][data-id="${dataId}"]`);
         unlikeButtons.forEach((element)=>{
             const likeIcon = element.querySelector('i');
             likeIcon.classList.replace('fa-regular', 'fa-solid');
@@ -109,7 +109,7 @@ class $f7d50bab9555af31$var$Like {
      * @param  {string} dataId
      *  Change like button action
      */ changeLikeButtonAction(dataId) {
-        const likeButtons = document.querySelectorAll(`[data-id="${dataId}"]`);
+        const likeButtons = document.querySelectorAll(`[data-button="like"][data-id="${dataId}"]`);
         likeButtons.forEach((element)=>{
             const likeIcon = element.querySelector('i');
             likeIcon.classList.replace('fa-solid', 'fa-regular');
@@ -250,7 +250,7 @@ class $eff0bedde61234ed$var$Retweet {
     /**
      *  Change unretweet button action
      */ changeUnretweetButtonAction(dataId) {
-        const unlikeButtons = document.querySelectorAll(`[data-id="${dataId}"]`);
+        const unlikeButtons = document.querySelectorAll(`[data-button="retweet"][data-id="${dataId}"]`);
         unlikeButtons.forEach((element)=>{
             const retweetIcon = element.querySelector('i');
             retweetIcon.classList.add('text-green-500');
@@ -265,7 +265,7 @@ class $eff0bedde61234ed$var$Retweet {
      * @param  {string} dataId
      *  Change retweet button action
      */ changeRetweetButtonAction(dataId) {
-        const retweetButtons = document.querySelectorAll(`[data-id="${dataId}"]`);
+        const retweetButtons = document.querySelectorAll(`[data-button="retweet"][data-id="${dataId}"]`);
         retweetButtons.forEach((element)=>{
             const retweetIcon = element.querySelector('i');
             retweetIcon.classList.remove('text-green-500');
