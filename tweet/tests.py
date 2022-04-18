@@ -51,3 +51,12 @@ class TweetTestCase(TestCase):
         self.assertEqual(Retweet.objects.count(), 1)
         self.assertEqual(Retweet.objects.first().tweet.id, tweet.id)
         self.assertEqual(Retweet.objects.first().user.email, self.user['email'])   
+
+    def test_tweet_can_be_unretweeted(self):
+        self.client.login(**self.user)
+        self.client.post(reverse('save_tweet'), {'body': 'Test tweet'})
+        tweet = Tweet.objects.first()
+        self.client.post(reverse('retweet', args=[tweet.id]))
+        response = self.client.post(reverse('unretweet', args=[tweet.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Retweet.objects.count(), 0)
