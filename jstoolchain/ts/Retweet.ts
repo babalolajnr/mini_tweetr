@@ -39,13 +39,13 @@ class Retweet {
 
     /**
      * @param  {string} id
-     * Send like tweet request to server
+     * Send retweet tweet request to server
      */
     private retweet(id: string) {
         fetch(`http://127.0.0.1:8000/tweet/retweet/${id}/`, this.fetchInit()).then(response => {
 
             if (response.status != 200) {
-                // Reset like button and count when the request fails
+                // Reset retweet button and count when the request fails
                 this.changeRetweetButtonAction(id)
             }
         })
@@ -53,16 +53,15 @@ class Retweet {
 
     /**
      * @param  {string} id
-     * Send unretweet tweet request to server
+     * Send unretweet request to server
      */
     private unretweet(id: string) {
-        // fetch(`http://127.0.0.1:8000/tweet/unlike_tweet/${id}/`, this.fetchInit()).then(response => {
-        //     if (response.status != 200) {
-        //         // Reset unretweet button and count when the request fails
-        //         this.changeUnretweetButtonAction(id)
-        //     }
-        // })
-        console.log("unretweeted")
+        fetch(`http://127.0.0.1:8000/tweet/unretweet/${id}/`, this.fetchInit()).then(response => {
+            if (response.status != 200) {
+                // Reset unretweet button and count when the request fails
+                this.changeUnretweetButtonAction(id)
+            }
+        })
     }
 
     /**
