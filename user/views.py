@@ -42,6 +42,14 @@ def profile(request):
     tweets = Tweet.objects.filter(user=user)
     count_tweets = tweets.count()
     liked_tweets = user.liked_tweets.all()
+    retweets = request.user.retweets.all()
+
+    # Get the tweet objects of the user's retweets
+    retweeted_tweets = []
+
+    for retweet in retweets:
+        tweet = retweet.tweet
+        retweeted_tweets.append(tweet)
 
     try:
         profile = Profile.objects.get(user=user)
@@ -56,6 +64,7 @@ def profile(request):
             "count_tweets": count_tweets,
             "profile": profile,
             "liked_tweets": liked_tweets,
+            "retweeted_tweets": retweeted_tweets,
         },
     )
 
