@@ -14,12 +14,10 @@ class Thread(models.Model):
 class Tweet(models.Model):
     """
     Note:
-    * There are three types of tweets: Tweet, Reply, and Retweet
+    * There are two types of tweets: Tweet and Reply
     * The body field can be null because the tweet can be a retweet of another tweet.
     * The reply_parent field is used to determine if the tweet is a reply to another tweet
     and also to know if a tweet is a tweet or a reply to a tweet.
-    * The retweet_parent field is used to determine if the tweet is a retweet of another
-    tweet.
     * The thread field is used to determine if the tweet is a thread. It links to a thread
     in the table.
     * The thread_rank field is used to determine the rank of the tweet in the thread.
@@ -28,8 +26,7 @@ class Tweet(models.Model):
     1. A tweet must have a body.
     2. A must have a related user.
     3. A tweet does not have a reply_parent.
-    4. A tweet does not have a retweet_parent.
-    5. A tweet may or may not have a thread.
+    4. A tweet may or may not have a thread.
     6. A tweet must have a thread_rank if the thread field is not empty.
 
     Reply Rules:
@@ -37,8 +34,7 @@ class Tweet(models.Model):
     2. A reply must have a related user.
     3. A reply must have a reply_parent. A reply_parent signifies what the tweet
     is a reply to.
-    4. A reply does not have a retweet_parent.
-    5. A reply does not have a thread or thread_rank.
+    4. A reply does not have a thread or thread_rank.
 
     """
 
