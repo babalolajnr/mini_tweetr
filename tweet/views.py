@@ -52,14 +52,14 @@ def save_tweet(request):
 def like_tweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
     tweet.likes.add(request.user)
-    return JsonResponse({"message": "Tweet liked!"})
+    return JsonResponse({"message": "success"})
 
 
 @login_required
 def unlike_tweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
     tweet.likes.remove(request.user)
-    return JsonResponse({"message": "Tweet unliked!"})
+    return JsonResponse({"message": "success"})
 
 
 @login_required
@@ -74,7 +74,7 @@ def retweet(request, tweet_id):
     retweet = Retweet(tweet=tweet, user=request.user)
     retweet.save()
 
-    return JsonResponse({"message": "Retweeted!"})
+    return JsonResponse({"message": "success"})
 
 
 @login_required
@@ -82,4 +82,21 @@ def unretweet(request, tweet_id):
     tweet = Tweet.objects.get(pk=tweet_id)
     retweet = Retweet.objects.get(tweet=tweet, user=request.user)
     retweet.delete()
-    return JsonResponse({"message": "Unretweeted!"})
+    return JsonResponse({"message": "success"})
+
+
+@login_required
+def reply(request, tweet_id):
+    if request.method == "POST":
+        form = TweetForm(request.POST)
+        if form.is_valid():
+            tweet = Tweet(
+                body=form.cleaned_data["body"], user=request.user, reply_parent=tweet_id
+            )
+            tweet.save()
+            return JsonResponse({"message": "Replied"})
+
+        else:
+            return JsonResponse(
+                {"message": "failed", "errors": form.errors, "form": form}, status=400
+            )
