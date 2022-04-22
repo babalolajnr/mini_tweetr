@@ -11,7 +11,7 @@
   <title>Mini Tweetr</title>
 </head>
 
-<body class="dark:bg-[#15202b] dark:text-white sans-pro" data-view="{{request.resolver_match.view_name}}">
+<body class="dark:bg-[#15202b] bg-white dark:text-white sans-pro" data-view="{{request.resolver_match.view_name}}">
   <div class="lg:flex">
     {% comment %} First column {% endcomment %}
     <div class="lg:basis-[23%] h-screen lg:flex lg:flex-col sticky top-0">
@@ -19,7 +19,7 @@
     </div>
 
     {% comment %} Second column {% endcomment %}
-    <div class="lg:basis-[45%] lg:border-l lg:border-r border-gray-600 pb-7">{% block content %}{% endblock %}</div>
+    <div class="lg:basis-[45%] lg:border-l lg:border-r dark:border-gray-600 pb-7">{% block content %}{% endblock %}</div>
 
     {% comment %} Third column {% endcomment %}
     <div class="lg:basis-[32%]">
