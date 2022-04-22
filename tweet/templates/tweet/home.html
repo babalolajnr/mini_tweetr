@@ -1,6 +1,6 @@
 {% extends 'layout.html' %} {% block content %}
 
-<div class="mt-4 px-10">
+<div class="mt-4 mx-4">
   {% comment %} Title row {% endcomment %}
   <div class="lg:flex justify-between">
     <div><span class="font-extrabold text-xl">Home</span></div>
@@ -11,9 +11,9 @@
   <div class="pt-5">
     <div class="lg:flex">
       {% comment %} Avatar {% endcomment %}
-      <div class="w-10 h-10 rounded-full shrink-0">
-        {% load static %}
-        <img src="{% static 'images/' %}{{request.user.avatar}}" alt="" />
+      {% load static %}
+      <div class="w-14 h-14 rounded-full shrink-0 bg-cover"
+        style="background-image: url({% static 'images/cat.jpg' %})">
       </div>
       {% comment %} Form {% endcomment %}
       <div class="pl-3 grow">
@@ -57,7 +57,7 @@
             </div>
             <div>
               <button class="bg-yellow-400 rounded-full h-8 w-16 hover:opacity-80" type="submit">
-                <span class="font-bold text-sm">Tweet</span>
+                <span class="font-bold text-sm text-white">Tweet</span>
               </button>
             </div>
           </div>
