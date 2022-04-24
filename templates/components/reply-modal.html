@@ -1,0 +1,38 @@
+<div id="reply-modal"
+    class="fixed top-0 left-0 bg-gray-800 w-screen h-screen bg-opacity-50 transition justify-center flex overscroll-contain">
+    <div class="h-[20rem] w-[37rem] bg-white dark:bg-gray-800 rounded-3xl overflow-auto mt-20" id="modal-content">
+        <div class="mx-5 mt-5 flex flex-col">
+            <svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 30L2 2M2 30L30 2L2 30Z" stroke="black" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            {% comment %} username {% endcomment %}
+            <div class="flex space-x-3 mt-10">
+                {% load static %}
+                <div class="w-14 h-14 rounded-full shrink-0 bg-cover"
+                    style="background-image: url({% static 'images/cat.jpg' %})">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-semibold">Abdulqudduus</span>
+                    <div>
+                        <span class="font-medium text-slate-500">@babalolajnr</span>
+                        <span class="font-medium text-xl text-slate-500 align-middle">&middot</span>
+                        <span class="font-medium text-slate-500">14m</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1">
+                I'm a big fan of the Rust programming language.
+            </div>
+            <div class="border-l-[.1rem] ml-7 h-10 mt-2"></div>
+            <div class="flex space-x-3 mt-2">
+                {% load static %}
+                <div class="w-14 h-14 rounded-full shrink-0 bg-cover"
+                    style="background-image: url({% static 'images/cat.jpg' %})">
+                </div>
+                <textarea name="reply" id="" class="w-full grow pt-5 focus:outline-none resize-none"
+                    placeholder="Tweet your reply"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
